@@ -1,0 +1,109 @@
+body {
+    background-image: url("background forex.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: auto;
+    height: auto;
+}
+
+nav {
+    margin-top: 30px;
+    list-style: none;
+    font-size: 19px;
+}
+
+nav ul {
+    text-decoration: none;
+    color: white;
+    margin-top: 0px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    padding-right: 22px;
+}
+
+nav li ul :hover {
+    color: limegreen;
+
+}
+
+div {
+    width: 400px;
+    display: inline-block;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-right: 0px;
+    padding-left: 10px;
+    margin-top: 20px;
+    margin-left: 23px;
+    background-color: #10548b;
+    color: #fff;
+    border-radius: 25px;
+    text-align: center;
+}
+
+div h3 {
+    cursor: pointer;
+}
+
+div h3 a {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+div p a {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+main :hover {
+    background-image: url("hover\ background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: lime;
+    background-blend-mode: luminosity;
+    text-transform: uppercase;
+
+    /* background-color: #dd243d;
+    box-shadow: 2px 2px #dd243d; */
+    /* color: black; */
+}
+
+main div :hover {
+    background-image: none;
+    background-color: none;
+}
+    
+p {
+    color: whitesmoke;
+    font-size: 18px;
+}
+
+section article {
+    margin-top: 230px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 19px;
+    color: white;
+    text-align: justify;
+}
+
+section article :hover {
+    background-color: royalblue;
+    border-radius: 5px;
+    color: black;
+}
+
+footer {
+    position:fixed;
+    left:20px;
+    bottom:20px;
+    height:30px;
+    width:100%;
+    color: #fff;
+  }

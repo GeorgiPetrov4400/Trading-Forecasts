@@ -1,0 +1,173 @@
+body {
+    background-image: url("dow\ jones.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: auto;
+    height: auto;
+}
+
+div {
+    width: 600px;
+    display: inline-block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 20px;
+    margin-top: 20px;
+    margin-left: 28px;
+    background-color: #10548b;
+    color: #fff;
+    border-radius: 25px;
+    text-align: center;
+    font-size: 19px;
+}
+
+div h3 {
+    cursor: pointer;
+}
+
+div h3 a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main div :hover {
+    background-color: #10548b;
+    color: gold;
+}
+
+p {
+    color: darkblue;
+    margin-top: 60px;
+    margin-left: 50px;
+    margin-right: 55px;
+    font-size: 19px;
+    padding: 8px;
+    text-align: justify;
+}
+
+nav {
+    margin-top: 20px;
+    list-style: none;
+    font-size: 19px;
+}
+
+nav ul {
+    text-decoration: none;
+    color: black;
+    margin-top: 0px;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+    padding-right: 22px;
+}
+
+nav li ul :hover {
+    color: limegreen;
+
+}
+
+@media only screen and (max-width:1340px) {
+
+    .main {
+        width: 80%;
+        padding: 0;
+    }
+
+    div {
+        width: 300px;
+        display: inline-block;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-right: 10px;
+        padding-left: 20px;
+        margin-top: 50px;
+        margin-left: 50px;
+        background-color: #10548b;
+        color: #fff;
+        border-radius: 25px;
+        text-align: center;
+        font-size: 19px;
+    }
+
+    p {
+        color: darkblue;
+        margin-top: 50px;
+        margin-left: 50px;
+        margin-right: 55px;
+        font-size: 19px;
+        padding: 8px;
+        text-align: justify;
+    }
+}
+
+@media only screen and (max-width:1150px) {
+
+    p {
+        color: darkblue;
+        margin-top: 310px;
+        margin-left: 40px;
+        margin-right: 45px;
+        font-size: 19px;
+        padding: 8px;
+        text-align: justify;
+    }
+}
+
+@media only screen and (max-width:860px) {
+
+    p {
+        color: darkblue;
+        margin-top: 240px;
+        margin-left: 40px;
+        margin-right: 45px;
+        font-size: 19px;
+        padding: 8px;
+        text-align: justify;
+    }
+}
+
+@media only screen and (max-width:780px) {
+
+    p {
+        color: darkblue;
+        margin-top: 100px;
+        margin-left: 40px;
+        margin-right: 45px;
+        font-size: 19px;
+        padding: 8px;
+        text-align: justify;
+    }
+}
+
+@media only screen and (max-width:500px) {
+
+    div {
+        width: 300px;
+        display: inline-block;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-right: 8px;
+        padding-left: 16px;
+        margin-top: 33px;
+        margin-left: 66px;
+        background-color: #10548b;
+        color: #fff;
+        border-radius: 25px;
+        text-align: center;
+        font-size: 18px;
+    }
+
+    p {
+        color: darkblue;
+        margin-top: 120px;
+        margin-left: 40px;
+        margin-right: 45px;
+        font-size: 18px;
+        padding: 8px;
+        text-align: justify;
+    }
+}
