@@ -1,15 +1,16 @@
 package forexbet.tradingforecasts.service.impl;
 
+import forexbet.tradingforecasts.repository.ForecastRepository;
 import forexbet.tradingforecasts.service.ForecastService;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ForecastServiceImpl implements ForecastService {
 
-    private final ForecastService forecastService;
+    private final ForecastRepository forecastRepository;
 
-    public ForecastServiceImpl(@Lazy ForecastService forecastService) {
-        this.forecastService = forecastService;
+
+    public ForecastServiceImpl(ForecastRepository forecastRepository) {
+        this.forecastRepository = forecastRepository;
     }
 }
