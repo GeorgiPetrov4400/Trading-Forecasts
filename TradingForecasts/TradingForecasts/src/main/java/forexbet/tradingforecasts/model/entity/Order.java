@@ -27,32 +27,35 @@ public class Order extends BaseEntity {
         return description;
     }
 
-    public void setDescription(String description) {
+    public Order setDescription(String description) {
         this.description = description;
+        return this;
     }
 
     public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public Order setPrice(BigDecimal price) {
         this.price = price;
+        return this;
     }
 
     public Forecast getForecast() {
         return forecast;
     }
 
-    public void setForecast(Forecast forecast) {
+    public Order setForecast(Forecast forecast) {
         this.forecast = forecast;
+        return this;
     }
 
     public User getBuyer() {
         return buyer;
     }
 
-    public void setBuyer(User buyer) {
+    public Order setBuyer(User buyer) {
         this.buyer = buyer;
+        return this;
     }
-
 }

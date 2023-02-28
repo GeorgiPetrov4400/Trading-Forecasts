@@ -32,7 +32,7 @@ public class Forecast extends BaseEntity {
     private Category category;
 
     @ManyToOne
-    private User user;
+    private User admin;
 
     public Forecast() {
         this.created = LocalDateTime.now();
@@ -44,63 +44,71 @@ public class Forecast extends BaseEntity {
         return description;
     }
 
-    public void setDescription(String description) {
+    public Forecast setDescription(String description) {
         this.description = description;
-    }
-
-    public LocalDateTime getCreated() {
-        return created;
-    }
-
-    public void setCreated(LocalDateTime created) {
-        this.created = created;
-    }
-
-    public LocalDateTime getClosed() {
-        return closed;
-    }
-
-    public void setClosed(LocalDateTime closed) {
-        this.closed = closed;
-    }
-
-    public ForecastTypeEnum getForecastType() {
-        return forecastType;
-    }
-
-    public void setForecastType(ForecastTypeEnum forecastType) {
-        this.forecastType = forecastType;
-    }
-
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean active) {
-        isActive = active;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
+        return this;
     }
 
     public String getPictureUrl() {
         return pictureUrl;
     }
 
-    public void setPictureUrl(String pictureUrl) {
+    public Forecast setPictureUrl(String pictureUrl) {
         this.pictureUrl = pictureUrl;
+        return this;
     }
 
-    public User getUser() {
-        return user;
+    public LocalDateTime getCreated() {
+        return created;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public Forecast setCreated(LocalDateTime created) {
+        this.created = created;
+        return this;
+    }
+
+    public LocalDateTime getClosed() {
+        return closed;
+    }
+
+    public Forecast setClosed(LocalDateTime closed) {
+        this.closed = closed;
+        return this;
+    }
+
+    public ForecastTypeEnum getForecastType() {
+        return forecastType;
+    }
+
+    public Forecast setForecastType(ForecastTypeEnum forecastType) {
+        this.forecastType = forecastType;
+        return this;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public Forecast setActive(boolean active) {
+        isActive = active;
+        return this;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public Forecast setCategory(Category category) {
+        this.category = category;
+        return this;
+    }
+
+    public User getAdmin() {
+        return admin;
+    }
+
+    public Forecast setAdmin(User admin) {
+        this.admin = admin;
+        return this;
     }
 }

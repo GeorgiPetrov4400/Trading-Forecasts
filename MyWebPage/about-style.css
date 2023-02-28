@@ -1,0 +1,32 @@
+.About-us {
+    width: 100%;
+    text-align: center;
+    background-color: #ccc;
+    /* margin-top: 30px;
+    margin-bottom: 30px; */
+}
+
+h1 {
+    color: royalblue;
+    font-size: 35px;
+}
+
+img {
+    border-radius: 50%;
+}
+
+p {
+    font-size: 20px;
+    padding: 3px;
+}
+
+/* a {
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    background: #3B5998;
+    color: white;
+    border-radius: 8px;
+    font-size: 50px;
+} */

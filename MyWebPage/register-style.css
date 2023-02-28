@@ -1,23 +1,34 @@
+body {
+  background-image: url("background register.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  width: auto;
+  height: auto;
+  background-color: #10548b;
+  color: whitesmoke;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+
 * {
   box-sizing: border-box
 }
 
-body {
-  background-color: #10548b;
-  color: whitesmoke;
-}
-
-/* Add padding to containers */
 .container {
-  padding: 16px;
+  padding: 8px;
+  align-items: center;
 }
 
-/* Full-width input fields */
 input[type=text],
 input[type=password] {
   width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
+  padding: 10px;
+  margin-top: 3px;
+  margin-bottom: 15px;
+  margin-left: 8px;
+  margin-right: 200px;
   display: inline-block;
   border: none;
   background: #f1f1f1;
@@ -29,18 +40,17 @@ input[type=password]:focus {
   outline: none;
 }
 
-/* Overwrite default styles of hr */
 hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
+  margin-right: -15px;
 }
 
-/* Set a style for the submit/register button */
 .registerbtn {
   background-color: #04AA6D;
   color: white;
   padding: 16px 20px;
-  margin: 8px 0;
+  margin: 8px;
   border: none;
   cursor: pointer;
   width: 100%;
@@ -51,13 +61,10 @@ hr {
   opacity: 1;
 }
 
-/* Add a blue text color to links */
 a {
-  color: black;
+  color: whitesmoke;
 }
 
-/* Set a grey background color and center the text of the "sign in" section */
-/* .signin {
-  background-color: #f1f1f1;
+ .signin {
   text-align: center;
-} */
+}
