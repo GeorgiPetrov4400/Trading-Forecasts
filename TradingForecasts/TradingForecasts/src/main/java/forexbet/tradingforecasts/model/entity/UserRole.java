@@ -7,33 +7,19 @@ import jakarta.persistence.*;
 @Table(name = "user_roles")
 public class UserRole extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private UserRoleEnum userRoleEnum;
+    private UserRoleEnum role;
 
     public UserRole() {
     }
 
-    @Override
-    public Long getId() {
-        return id;
+    public UserRoleEnum getRole() {
+        return role;
     }
 
-    @Override
-    public void setId(Long id) {
-        this.id = id;
+    public UserRole setRole(UserRoleEnum role) {
+        this.role = role;
+        return this;
     }
-
-    public UserRoleEnum getUserRoleEnum() {
-        return userRoleEnum;
-    }
-
-    public void setUserRoleEnum(UserRoleEnum userRoleEnum) {
-        this.userRoleEnum = userRoleEnum;
-    }
-
 }
