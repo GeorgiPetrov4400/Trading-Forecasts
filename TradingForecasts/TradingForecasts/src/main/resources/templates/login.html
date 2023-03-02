@@ -11,6 +11,8 @@
 
 </head>
 <body>
+<nav th:replace="~{fragments/commons::nav}"></nav>
+
 <form th:action="@{/users/login}" method="post" th:object="${userLoginDTO}">
 
     <div class="container">

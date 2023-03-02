@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NASDAQ</title>
+
+    <link rel="stylesheet" th:href="@{/css/nasdaq.css}">
+</head>
+
+<body>
+    <main>
+        <nav th:replace="~{fragments/commons::nav}"></nav>
+        <div>
+            <h3 class="forecast">
+                <a href="/forecast-link/nasdaq/nasdaq-forecast.html">Choose NASDAQ forecasts</a>
+            </h3>
+        </div>
+        <div>
+            <h3 class="history">
+                <a href="https://www.fxcm.com/markets/quotes/indices/nas100/" target="_blank">NASDAQ Historical
+                    data</a>
+            </h3>
+        </div>
+
+        <p>
+            The Nasdaq 100, also known as the Nasdaq 100 index, or US tech 100, is a market capitalization system
+            featuring more than 100 of the largest publicly-traded non-financial businesses on the Nasdaq composite
+            index.
+            When open "long" position you buy NAS100 index and when you open "short" position you sell NAS100 index.
+        </p>
+</body>
+
+</html>

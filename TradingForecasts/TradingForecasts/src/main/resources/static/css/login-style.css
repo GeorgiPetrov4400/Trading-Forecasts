@@ -1,5 +1,5 @@
 body {
-  background-image: url("background forex-trading.jpeg");
+  background-image: url(/images/backgroundForexTrading.jpeg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -13,6 +13,16 @@ body {
 
 form div label {
   color: white;
+}
+
+nav li {
+  list-style: none;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  padding-right: 22px;
 }
 
 /* form div label :hover {

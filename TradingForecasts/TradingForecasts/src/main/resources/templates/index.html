@@ -8,141 +8,128 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trading Forecasts</title>
 
-<!--    <link rel="stylesheet" th:href="@{/css/reset-css.css}"/>-->
+    <!--    <link rel="stylesheet" th:href="@{/css/reset-css.css}"/>-->
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
-    <header>
-        <!-- <h1>TRADING FORECASTS</h1> -->
-        <h2>Парите управляват света! Ние управляваме парите!</h2>
-    </header>
-    <nav>
-        <ul>
-            <li>
-                <a href="/">Home</a>
-                <a href="/users/register">Register</a>
-                <a href="/users/login">Login</a>
-                <a href="/users/logout">Logout</a>
-                <a href="/contact">Contact Us</a>
-                <a href="/about">About Us</a>
-                <a href="#">Add forecast</a>
-                <a href="#">Free forecast</a>
-            </li>
-        </ul>
-    </nav>
-    <main>
-        <div class="dollar">
-            <h3>
-                <a href="header-link/eur/eur-usd-header.html">EUR/USD</a>
-            </h3>
-            <p>
-                <a href="forecast-link/eur/eur-usd-forecasts.html">Choose EUR/USD forecasts</a>
-            </p>
-        </div>
-        <div class="pound">
-            <h3>
-                <a href="header-link/eur-gbp/eur-gbp-header.html">EUR/GBP</a>
-            </h3>
-            <p>
-                <a href="forecast-link/eur-gbp/eur-gbp-forecast.html">Choose EUR/GBP forecasts</a>
-            </p>
-        </div>
-        <div class="gold">
-            <h3>
-                <a href="header-link/gold/gold-header.html">XAU/USD</a>
-            </h3>
-            <p>
-                <a href="forecast-link/gold/gold-forecasts.html">Choose GOLD forecasts</a>
-            </p>
-        </div>
-        <div class="dax">
-            <h3>
-                <a href="header-link/dax/dax-header.html">DAX</a>
-            </h3>
-            <p>
-                <a href="forecast-link/dax/dax-forecast.html">Choose DAX forecasts</a>
-            </p>
-        </div>
-        <div class="dow">
-            <h3>
-                <a href="header-link/dow jones/dow jones-header.html">DOW JONES</a>
-            </h3>
-            <p>
-                <a href="forecast-link/dow jones/dow jones-forecast.html">Choose Dow Jones forecasts</a>
-            </p>
-        </div>
-        <div class="nasdaq">
-            <h3>
-                <a href="header-link/nasdaq/nasdaq-header.html">NASDAQ</a>
-            </h3>
-            <p>
-                <a href="forecast-link/nasdaq/nasdaq-forecast.html">Choose NASDAQ forecasts</a>
-            </p>
-        </div>
-        <!-- <div class="ukoil">
-            <h3>UK OIL</h3>
-            <p>Choose Brent Oil forecasts</p>
-        </div>
-        <div class="usoil">
-            <h3>US OIL</h3>
-            <p>Choose WTI Oil forecasts</p>
-        </div> -->
-    </main>
+<header>
+    <!-- <h1>TRADING FORECASTS</h1> -->
+    <h2>Парите управляват света! Ние управляваме парите!</h2>
+</header>
+<nav th:replace="~{fragments/commons::nav}"></nav>
+<main>
+    <div class="dollar">
+        <h3>
+            <a href="/categories/eur-usd">EUR/USD</a>
+        </h3>
+        <p>
+            <a href="forecast-link/eur/eur-usd-forecasts.html">Choose EUR/USD forecasts</a>
+        </p>
+    </div>
+    <div class="pound">
+        <h3>
+            <a href="/categories/eur-gbp">EUR/GBP</a>
+        </h3>
+        <p>
+            <a href="forecast-link/eur-gbp/eur-gbp-forecast.html">Choose EUR/GBP forecasts</a>
+        </p>
+    </div>
+    <div class="gold">
+        <h3>
+            <a href="/categories/gold">XAU/USD</a>
+        </h3>
+        <p>
+            <a href="forecast-link/gold/gold-forecasts.html">Choose GOLD forecasts</a>
+        </p>
+    </div>
+    <div class="dax">
+        <h3>
+            <a href="/categories/dax">DAX</a>
+        </h3>
+        <p>
+            <a href="forecast-link/dax/dax-forecast.html">Choose DAX forecasts</a>
+        </p>
+    </div>
+    <div class="dow">
+        <h3>
+            <a href="/categories/dow-jones">DOW JONES</a>
+        </h3>
+        <p>
+            <a href="forecast-link/dow jones/dow jones-forecast.html">Choose Dow Jones forecasts</a>
+        </p>
+    </div>
+    <div class="nasdaq">
+        <h3>
+            <a href="/categories/nasdaq">NASDAQ</a>
+        </h3>
+        <p>
+            <a href="forecast-link/nasdaq/nasdaq-forecast.html">Choose NASDAQ forecasts</a>
+        </p>
+    </div>
+    <!-- <div class="ukoil">
+        <h3>UK OIL</h3>
+        <p>Choose Brent Oil forecasts</p>
+    </div>
+    <div class="usoil">
+        <h3>US OIL</h3>
+        <p>Choose WTI Oil forecasts</p>
+    </div> -->
+</main>
 
-    <section>
-        <article>
-            <h4>
-                Какво представлява Договор за разлика (CFD)?
-                <br></br>
-                Това е продукт, който представя споразумение между инвеститор и брокер за обмяна на
-                разлика в текущата стойност на базисната валутна двойка/злато/индекси на Forex и неговата бъдеща
-                стойност. Договорите за разлика (CFD) предоставят на търгуващите всички ползи и рискове от
-                спекулирането с динамиката на базисния актив, без действително да го притежават. Важна разлика
-                между инвестирането в CFD и директното инвестиране в базисния актив е, че CFD се търгуват с
-                ливъридж и няма ограничение за късите продажби. CFD имат характеристики на възвръщаемост,
-                подобни на тези на базисния актив. Поради ефекта на лоста обаче, инвестицията в CFD е с
-                по-висок риск от директната инвестиция в базисния актив.
+<section>
+    <article>
+        <h4>
+            Какво представлява Договор за разлика (CFD)?
+            <br></br>
+            Това е продукт, който представя споразумение между инвеститор и брокер за обмяна на
+            разлика в текущата стойност на базисната валутна двойка/злато/индекси на Forex и неговата бъдеща
+            стойност. Договорите за разлика (CFD) предоставят на търгуващите всички ползи и рискове от
+            спекулирането с динамиката на базисния актив, без действително да го притежават. Важна разлика
+            между инвестирането в CFD и директното инвестиране в базисния актив е, че CFD се търгуват с
+            ливъридж и няма ограничение за късите продажби. CFD имат характеристики на възвръщаемост,
+            подобни на тези на базисния актив. Поради ефекта на лоста обаче, инвестицията в CFD е с
+            по-висок риск от директната инвестиция в базисния актив.
 
-            </h4>
-        </article>
+        </h4>
+    </article>
 
-        <article>
-            <h4>
-                Как се търгува с Договор за разлика (CFD)?
-                <br></br>
-                Целта на търгуването със CFD е да се даде възможност на инвеститора да спекулира с
-                движението на цените чрез търговия с ливъридж на базисна валутна двойка/злато/индекси на Forex чрез
-                получаване на индиректна експозиция на базисния актив. Вашата възвръщаемост зависи от
-                движението на цената на базисния актив и размера на Вашия залог. Например, ако смятате че
-                стойността на Forex инструмента ще се повиши, Вие ще закупите няколко CFD (това също е
-                известно като „дългосрочен залог“) с намерението по-късно да ги продадете, когато имат по-висока
-                стойност. Разликата между цената, на която купувате и цената, на която впоследствие продавате,
-                се равнява на печалбата минус свързаните разходи (в зависимост от брокера). Ако мислите, че стойността
-                на forex инструмент ще се понижи, ще продадете определен брой CFD (това е известно и като
-                „къса позиция“) на определена стойност, очаквайки по-късно да ги купите обратно на по-ниска цена
-                от тази, на която сте ги продали, в резултат на което ще реализирате печалба, минус всички
-                съответни разходи (в зависимост от брокера). Въпреки това, при всички обстоятелства, ако Forex
-                инструментът се движи в обратната посока, а позицията Ви е затворена, или от Ваша страна, или
-                в резултат от искане за предоставяне на допълнително обезпечение (в зависимост от брокера), ще дължите
-                сумата от възникналата загуба, заедно с всички разходи.
-            </h4>
-        </article>
+    <article>
+        <h4>
+            Как се търгува с Договор за разлика (CFD)?
+            <br></br>
+            Целта на търгуването със CFD е да се даде възможност на инвеститора да спекулира с
+            движението на цените чрез търговия с ливъридж на базисна валутна двойка/злато/индекси на Forex чрез
+            получаване на индиректна експозиция на базисния актив. Вашата възвръщаемост зависи от
+            движението на цената на базисния актив и размера на Вашия залог. Например, ако смятате че
+            стойността на Forex инструмента ще се повиши, Вие ще закупите няколко CFD (това също е
+            известно като „дългосрочен залог“) с намерението по-късно да ги продадете, когато имат по-висока
+            стойност. Разликата между цената, на която купувате и цената, на която впоследствие продавате,
+            се равнява на печалбата минус свързаните разходи (в зависимост от брокера). Ако мислите, че стойността
+            на forex инструмент ще се понижи, ще продадете определен брой CFD (това е известно и като
+            „къса позиция“) на определена стойност, очаквайки по-късно да ги купите обратно на по-ниска цена
+            от тази, на която сте ги продали, в резултат на което ще реализирате печалба, минус всички
+            съответни разходи (в зависимост от брокера). Въпреки това, при всички обстоятелства, ако Forex
+            инструментът се движи в обратната посока, а позицията Ви е затворена, или от Ваша страна, или
+            в резултат от искане за предоставяне на допълнително обезпечение (в зависимост от брокера), ще дължите
+            сумата от възникналата загуба, заедно с всички разходи.
+        </h4>
+    </article>
 
-        <article>
-            <h4>
-                ВНИМАНИЕ! Търговията със CFD носи високо ниво на риск за вашия капитал с възможността да загубите
-                повече от първоначалната си инвестиция. Тези продукти може да не са подходящи за всички инвеститори и не
-                са достъпни за лица под 18 години. Моля, уверете се, че сте напълно запознати с включените рискове. Ако
-                е необходимо, потърсете независим финансов съвет.
-            </h4>
-        </article>
-    </section>
-    <footer>
-        <p>© Trading Forecasts 2023. All rights reserved.</p>
-    </footer>
+    <article>
+        <h4>
+            ВНИМАНИЕ! Търговията със CFD носи високо ниво на риск за вашия капитал с възможността да загубите
+            повече от първоначалната си инвестиция. Тези продукти може да не са подходящи за всички инвеститори и не
+            са достъпни за лица под 18 години. Моля, уверете се, че сте напълно запознати с включените рискове. Ако
+            е необходимо, потърсете независим финансов съвет.
+        </h4>
+    </article>
+</section>
+<footer>
+    <p>© Trading Forecasts 2023. All rights reserved.</p>
+</footer>
 
 </body>
 
