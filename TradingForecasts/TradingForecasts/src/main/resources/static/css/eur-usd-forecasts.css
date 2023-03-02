@@ -1,0 +1,150 @@
+body {
+    background-image: url(/images/eur--usd.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: auto;
+    height: auto;
+}
+
+div {
+    width: 600px;
+    display: inline-block;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 5px;
+    margin-top: 30px;
+    margin-left: 45px;
+    background-color: #10548b;
+    color: #fff;
+    border-radius: 25px;
+    text-align: center;
+    font-size: 33px;
+}
+
+div h3 {
+    cursor: pointer;
+}
+
+.active :hover {
+    color: limegreen;
+}
+
+.expired :hover {
+    color: gold;
+}
+
+div h3 a {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+div p a {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+nav {
+    margin-top: 30px;
+    list-style: none;
+    font-size: 19px;
+}
+
+nav li {
+    list-style: none;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    padding-right: 22px;
+}
+
+nav li ul :hover {
+    color: limegreen;
+
+}
+
+/* body div h3 :hover {
+    background-image: url("hover\ background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: lime;
+    background-blend-mode: luminosity;
+    text-transform: uppercase;
+}
+
+body div :hover {
+    background-image: none;
+    background-color: none;
+} */
+
+@media only screen and (max-width:700px) {
+
+    /* For mobile phones: */
+    .menu,
+    .main,
+    .right {
+        width: 100%;
+    }
+
+    div {
+        width: 400px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-right: 10px;
+        padding-left: 20px;
+        margin-top: 80px;
+        margin-left: 80px;
+        background-color: #10548b;
+        color: #fff;
+        border-radius: 15px;
+        font-size: 19px;
+        text-align: center;
+    }
+
+    p {
+        color: darkblue;
+        margin-top: 80px;
+        margin-left: 50px;
+        margin-right: 50px;
+        font-size: 19px;
+        text-align: justify;
+    }
+}
+
+@media only screen and (max-width:540px) {
+
+    /* For mobile phones: */
+    .menu,
+    .main,
+    .right {
+        width: 100%;
+    }
+
+    div {
+        width: 300px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-right: 10px;
+        padding-left: 20px;
+        margin-top: 80px;
+        margin-left: 80px;
+        background-color: #10548b;
+        color: #fff;
+        border-radius: 15px;
+        font-size: 19px;
+        text-align: center;
+    }
+
+    p {
+        color: darkblue;
+        margin-top: 80px;
+        margin-left: 50px;
+        margin-right: 50px;
+        font-size: 19px;
+        text-align: justify;
+    }
+}

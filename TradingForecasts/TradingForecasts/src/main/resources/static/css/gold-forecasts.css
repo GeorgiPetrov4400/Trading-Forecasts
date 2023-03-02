@@ -1,0 +1,173 @@
+body {
+    background-image: url(/images/trading-gold-forex-market.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: auto;
+    height: auto;
+}
+
+div {
+    width: 400px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 5px;
+    margin-top: 60px;
+    margin-left: 850px;
+    background-color: #10548b;
+    color: #fff;
+    border-radius: 25px;
+    text-align: center;
+    font-size: 33px;
+}
+
+div h3 {
+    cursor: pointer;
+}
+
+.active :hover {
+    color: limegreen;
+}
+
+.expired :hover {
+    color: gold;
+}
+
+div h3 a {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+div p a {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+nav {
+    margin-top: 10px;
+    list-style: none;
+    font-size: 19px;
+}
+
+nav li {
+    list-style: none;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    padding-right: 22px;
+}
+
+nav li ul :hover {
+    color: limegreen;
+
+}
+
+@media only screen and (max-width:1280px) {
+
+    .menu,
+    .main,
+    .right {
+        width: 100%;
+    }
+
+    div {
+        width: 400px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 8px;
+        margin-top: 50px;
+        margin-left: 50px;
+        background-color: #10548b;
+        color: #fff;
+        border-radius: 25px;
+        text-align: center;
+        font-size: 25px;
+    }
+
+    div h3 a {
+        color: #fff;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    
+    div p a {
+        color: #fff;
+        text-decoration: none;
+        cursor: pointer;
+    }
+}
+
+
+@media only screen and (max-width:700px) {
+
+    .menu,
+    .main,
+    .right {
+        width: 100%;
+    }
+
+    div {
+        width: 400px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 8px;
+        margin-top: 50px;
+        margin-left: 40px;
+        background-color: #10548b;
+        color: #fff;
+        border-radius: 25px;
+        text-align: center;
+        font-size: 25px;
+    }
+
+    div h3 a {
+        color: #fff;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    
+    div p a {
+        color: #fff;
+        text-decoration: none;
+        cursor: pointer;
+    }
+}
+
+@media only screen and (max-width:500px) {
+
+    .menu,
+    .main,
+    .right {
+        width: 100%;
+    }
+
+    div {
+        width: 400px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 8px;
+        margin-top: 50px;
+        margin-left: 40px;
+        background-color: #10548b;
+        color: #fff;
+        border-radius: 25px;
+        text-align: center;
+        font-size: 25px;
+    }
+
+    div h3 a {
+        color: #fff;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    
+    div p a {
+        color: #fff;
+        text-decoration: none;
+        cursor: pointer;
+    }
+}
