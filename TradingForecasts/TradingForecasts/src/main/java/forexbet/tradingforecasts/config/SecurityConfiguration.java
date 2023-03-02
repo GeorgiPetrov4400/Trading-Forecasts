@@ -16,14 +16,14 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 public class SecurityConfiguration {
 
-//    @Bean
-//    public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-//        httpSecurity.authorizeHttpRequests()
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity.authorizeHttpRequests()
 //                .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
 //                .requestMatchers("/", "/users/login", "/users/register", "/users/login-error").permitAll()
 //                .requestMatchers("/pages/moderators").hasRole(UserRoleEnum.Moderator.name())
 //                .requestMatchers("/pages/admins").hasRole(UserRoleEnum.Admin.name())
-//                .anyRequest()
+                .anyRequest()
 //                .authenticated()
 //                .and()
 //                .formLogin()
@@ -31,9 +31,10 @@ public class SecurityConfiguration {
 //                .usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
 //                .passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY)
 //                .defaultSuccessUrl("/").failureForwardUrl("/users/login-error");
-//
-//        return httpSecurity.build();
-//    }
+                .permitAll();
+
+        return httpSecurity.build();
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
