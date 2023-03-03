@@ -15,7 +15,10 @@ public class DatabaseInit implements CommandLineRunner {
     private final UserService userService;
     private final UserRepository userRepository;
 
-    public DatabaseInit(CategoryService categoryService, UserRoleService userRoleService, UserService userService, UserRepository userRepository) {
+    public DatabaseInit(CategoryService categoryService,
+                        UserRoleService userRoleService,
+                        UserService userService,
+                        UserRepository userRepository) {
         this.categoryService = categoryService;
         this.userRoleService = userRoleService;
         this.userService = userService;
@@ -29,8 +32,8 @@ public class DatabaseInit implements CommandLineRunner {
         userRoleService.seedUserRoles();
 
         if (userRepository.count() == 0) {
-            userService.initAdmin();
-            userService.initModerator();
+        userService.initAdmin();
+        userService.initModerator();
         }
     }
 }

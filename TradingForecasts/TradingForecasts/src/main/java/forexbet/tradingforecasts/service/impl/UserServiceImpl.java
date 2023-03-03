@@ -30,6 +30,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void initAdmin() {
+//        if (userRepository.count() == 0) {
+//            return;
+//        }
         var adminRole = userRoleService.findUserRole(UserRoleEnum.Admin).orElseThrow();
 
         var adminUser = new User()
@@ -45,6 +48,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void initModerator() {
+//        if (userRepository.count() == 0) {
+//            return;
+//        }
         var moderatorRole = userRoleService.findUserRole(UserRoleEnum.Moderator).orElseThrow();
 
         var moderatorUser = new User()
