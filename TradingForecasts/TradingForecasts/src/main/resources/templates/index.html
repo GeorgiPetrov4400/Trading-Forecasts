@@ -6,67 +6,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trading Forecasts</title>
+    <title>Home</title>
 
-    <!--    <link rel="stylesheet" th:href="@{/css/reset-css.css}"/>-->
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/index-style.css}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
 <header>
-    <!-- <h1>TRADING FORECASTS</h1> -->
+<!--    <h1>TRADING FORECASTS</h1>-->
     <h2>Парите управляват света! Ние управляваме парите!</h2>
 </header>
 <nav th:replace="~{fragments/commons::nav}"></nav>
 <main>
     <div class="dollar">
-        <h3>
-            <a href="/categories/eur-usd">EUR/USD</a>
-        </h3>
+        <h3>EUR/USD</h3>
         <p>
             <a href="/forecasts/eur-usd-forecast">Choose EUR/USD forecasts</a>
         </p>
     </div>
     <div class="pound">
-        <h3>
-            <a href="/categories/eur-gbp">EUR/GBP</a>
-        </h3>
+        <h3>EUR/GBP</h3>
         <p>
             <a href="/forecasts/eur-gbp-forecast">Choose EUR/GBP forecasts</a>
         </p>
     </div>
     <div class="gold">
-        <h3>
-            <a href="/categories/gold">XAU/USD</a>
-        </h3>
+        <h3>XAU/USD</h3>
         <p>
-            <a href="/forecasts/gold-forecast">Choose GOLD forecasts</a>
+            <a href="/categories/gold">Choose Gold forecasts</a>
         </p>
     </div>
     <div class="dax">
-        <h3>
-            <a href="/categories/dax">DAX</a>
-        </h3>
+        <h3>DAX</h3>
         <p>
-            <a href="/forecasts/dax-forecast">Choose DAX forecasts</a>
+            <a href="/categories/dax">Choose DAX forecasts</a>
         </p>
     </div>
     <div class="dow">
-        <h3>
-            <a href="/categories/dow-jones">DOW JONES</a>
-        </h3>
+        <h3>DOW JONES</h3>
         <p>
-            <a href="/forecasts/dow-jones-forecast">Choose Dow Jones forecasts</a>
+            <a href="/categories/dow-jones">Choose Dow Jones forecasts</a>
         </p>
     </div>
     <div class="nasdaq">
-        <h3>
-            <a href="/categories/nasdaq">NASDAQ</a>
-        </h3>
+        <h3>NASDAQ</h3>
         <p>
-            <a href="/forecasts/nasdaq-forecast">Choose NASDAQ forecasts</a>
+            <a href="/categories/nasdaq">Choose NASDAQ forecasts</a>
         </p>
     </div>
     <!-- <div class="ukoil">

@@ -92,7 +92,7 @@ public class UserController {
 
         userService.loginUser(userServiceModel.getId(), userServiceModel.getUsername());
 
-        return "redirect:/";
+        return "redirect:/home";
     }
 
     @GetMapping("/logout")

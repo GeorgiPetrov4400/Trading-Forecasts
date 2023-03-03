@@ -1,5 +1,5 @@
 body {
-    background-image: url("background forex.jpg");
+    background-image: url(/images/backgroundForex.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -21,7 +21,6 @@ nav {
 nav li {
     list-style: none;
     color: white;
-    margin-top: 0px;
 }
 
 nav a {
@@ -38,12 +37,10 @@ nav li :hover {
 div {
     width: 400px;
     display: inline-block;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    padding-right: 0px;
     padding-left: 10px;
     margin-top: 20px;
-    margin-left: 23px;
+    margin-left: 30px;
+    margin-right: 30px;
     background-color: #10548b;
     color: #fff;
     border-radius: 25px;
@@ -57,7 +54,7 @@ div p a {
 }
 
 main :hover {
-    background-image: url("hover\ background.jpg");
+    background-image: url(/images/hoverBackground.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     color: lime;
@@ -70,11 +67,11 @@ main div :hover {
     background-color: none;
 }
 
-/* main div p :hover {
-    background-image: none;
-    background-color: none;
-    color: lime;
-} */
+/*main div p :hover {*/
+/*    background-image: none;*/
+/*    background-color: none;*/
+/*    color: lime;*/
+/*}*/
 
 p {
     color: whitesmoke;
@@ -101,7 +98,6 @@ section article :hover {
 }
 
 footer {
-    position: bottom;
     position: relative;
     left: 20px;
     bottom: 10px;
