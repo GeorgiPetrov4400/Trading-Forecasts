@@ -4,6 +4,5 @@ import forexbet.tradingforecasts.model.service.ForecastServiceModel;
 
 public interface ForecastService {
 
-
     void addForecast(ForecastServiceModel forecastServiceModel);
 }

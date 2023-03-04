@@ -31,7 +31,7 @@ public class Forecast extends BaseEntity {
     @Column(name = "is_active", nullable = false)
     private boolean isActive;
 
-//    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING)
     @ManyToOne
     private Category category;
 
@@ -59,6 +59,15 @@ public class Forecast extends BaseEntity {
 
     public Forecast setPictureUrl(String pictureUrl) {
         this.pictureUrl = pictureUrl;
+        return this;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public Forecast setPrice(BigDecimal price) {
+        this.price = price;
         return this;
     }
 
@@ -113,15 +122,6 @@ public class Forecast extends BaseEntity {
 
     public Forecast setAdmin(User admin) {
         this.admin = admin;
-        return this;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public Forecast setPrice(BigDecimal price) {
-        this.price = price;
         return this;
     }
 }

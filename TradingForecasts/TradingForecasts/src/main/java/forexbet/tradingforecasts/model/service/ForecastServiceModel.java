@@ -17,7 +17,7 @@ public class ForecastServiceModel {
 
     private CategoryNameEnum category;
 
-    private ForecastTypeEnum type;
+    private ForecastTypeEnum forecastType;
 
     public ForecastServiceModel() {
     }
@@ -67,12 +67,12 @@ public class ForecastServiceModel {
         return this;
     }
 
-    public ForecastTypeEnum getType() {
-        return type;
+    public ForecastTypeEnum getForecastType() {
+        return forecastType;
     }
 
-    public ForecastServiceModel setType(ForecastTypeEnum type) {
-        this.type = type;
+    public ForecastServiceModel setForecastType(ForecastTypeEnum forecastType) {
+        this.forecastType = forecastType;
         return this;
     }
 }

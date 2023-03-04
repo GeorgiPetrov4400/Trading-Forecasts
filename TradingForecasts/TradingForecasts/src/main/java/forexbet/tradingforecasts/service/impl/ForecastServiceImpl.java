@@ -32,8 +32,8 @@ public class ForecastServiceImpl implements ForecastService {
     public void addForecast(ForecastServiceModel forecastServiceModel) {
         Forecast forecast = modelMapper.map(forecastServiceModel, Forecast.class);
         forecast.setAdmin(userService.findById(currentUser.getId()))
-                .setCategory(categoryService.findByCategory(forecastServiceModel.getCategory()))
-                .setForecastType(forecastServiceModel.getType());
+                .setCategory(categoryService.findByCategoryNameEnum(forecastServiceModel.getCategory()))
+                .setForecastType(forecastServiceModel.getForecastType());
 
         forecastRepository.save(forecast);
     }
