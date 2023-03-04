@@ -12,29 +12,31 @@
 </head>
 
 <body>
-    <main>
-        <nav th:replace="~{fragments/commons::nav}"></nav>
+<main>
+    <nav th:replace="~{fragments/commons::nav}"></nav>
 
-        <div>
-            <h3 class="forecast">
-                <a href="/forecast-link/dax/dax-forecast.html">Choose GER30 forecasts</a>
-            </h3>
-        </div>
-        <div>
-            <h3 class="history">
-                <a href="https://www.fxcm.com/markets/quotes/indices/ger30/" target="_blank">DAX Historical
-                    data</a>
-            </h3>
-        </div>
+    <div>
+        <h3 class="forecast">
+            <a href="/forecast-link/dax/dax-forecast.html">Choose GER30 forecasts</a>
+        </h3>
+    </div>
+    <div>
+        <h3 class="history">
+            <a href="https://www.fxcm.com/markets/quotes/indices/ger30/" target="_blank">DAX Historical
+                data</a>
+        </h3>
+    </div>
 
-        <p>
-            The GER30's underlying instrument is the DAX index future. The DAX is a blue chip stock market index
-            consisting of the 40 major German companies trading on the Frankfurt Stock.
-            The DAX Index, is a German stock market index trading on the Frankfurt Stock Exchange (FSE). The DAX is
-            considered a strong measure of German and European economic health.
-            When open "long" position you buy GER30 and when you open "short" position you sell GER30.
-        </p>
-    </main>
+    <p>
+        The GER30's underlying instrument is the DAX index future. The DAX is a blue chip stock market index
+        consisting of the 40 major German companies trading on the Frankfurt Stock.
+        The DAX Index, is a German stock market index trading on the Frankfurt Stock Exchange (FSE). The DAX is
+        considered a strong measure of German and European economic health.
+        When open "long" position you buy GER30 and when you open "short" position you sell GER30.
+    </p>
+</main>
+
+<footer th:replace="~{fragments/commons::footer}"></footer>
 </body>
 
 </html>

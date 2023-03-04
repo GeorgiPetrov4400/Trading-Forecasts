@@ -13,6 +13,7 @@
 </head>
 
 <body>
+
 <form th:action="@{/users/register}" th:method="post" th:object="${userRegisterDTO}">
     <div class="container">
         <h1>Register</h1>
@@ -22,44 +23,44 @@
             <label for="email"><b>Email</b></label>
             <input th:field="*{email}" th:errorclass="is-invalid"
                    type="text" placeholder="Enter valid email" name="email" id="email" required>
-<!--            <small class="invalid-feedback text-danger">You have to enter valid email!</small>-->
+            <!--            <small class="invalid-feedback text-danger">You have to enter valid email!</small>-->
         </div>
         <div>
             <label for="first-name"><b>First name</b></label>
             <input th:field="*{firstName}" th:errorclass="is-invalid"
-                   type="text" placeholder="Enter your first name" name="first-name"
+                   type="text" placeholder="First name must be between 2 and 20 characters" name="first-name"
                    id="first-name" required minlength="2" maxlength="20">
-<!--            <small class="invalid-feedback text-danger">First name length must be between 2 and 20 characters!</small>-->
+            <!--            <small class="invalid-feedback text-danger">First name length must be between 2 and 20 characters!</small>-->
         </div>
         <div>
             <label for="last-name"><b>Last name</b></label>
             <input th:field="*{lastName}" th:errorclass="is-invalid"
-                   type="text" placeholder="Enter your last name" name="last-name"
+                   type="text" placeholder="First name must be between 2 and 20 characters" name="last-name"
                    id="last-name" required minlength="2" maxlength="20">
-<!--            <small class="invalid-feedback text-danger">Last name length must be between 2 and 20 characters!</small>-->
+            <!--            <small class="invalid-feedback text-danger">Last name length must be between 2 and 20 characters!</small>-->
         </div>
         <div>
             <label for="username"><b>Username</b></label>
             <input th:field="*{username}" th:errorclass="is-invalid"
-                   type="text" placeholder="Enter username" name="username"
+                   type="text" placeholder="Username must be between 3 and 20 characters" name="username"
                    id="username" required minlength="3" maxlength="20">
-<!--            <small class="invalid-feedback text-danger">Username length must be between 3 and 20 characters!</small>-->
+            <!--            <small class="invalid-feedback text-danger">Username length must be between 3 and 20 characters!</small>-->
 
         </div>
         <div>
             <label for="password"><b>Password</b></label>
             <input th:field="*{password}" th:errorclass="is-invalid"
-                   type="password" placeholder="Enter password" name="password"
+                   type="password" placeholder="Password must be between 5 and 20 characters" name="password"
                    id="password" required minlength="5" maxlength="20">
-<!--            <small class="invalid-feedback text-danger">Password length must be between 5 and 20 characters!</small>-->
+            <!--            <small class="invalid-feedback text-danger">Password length must be between 5 and 20 characters!</small>-->
         </div>
         <div>
-            <label for="password-repeat"><b>Repeat Password</b></label>
+            <label for="password-repeat"><b>Confirm Password</b></label>
             <input th:field="*{confirmPassword}" th:errorclass="is-invalid"
-                   type="password" placeholder="Enter password again"
+                   type="password" placeholder="Repeat your password"
                    name="password-repeat" id="password-repeat" required minlength="5" maxlength="20">
-<!--            <small class="invalid-feedback text-danger">Repeat password length must be between 5 and 20-->
-<!--                characters!</small>-->
+            <!--            <small class="invalid-feedback text-danger">Repeat password length must be between 5 and 20-->
+            <!--                characters!</small>-->
         </div>
 
         <hr>
@@ -72,6 +73,8 @@
         <p>Already have an account? <a th:href="@{/users/login}">Sign in</a>.</p>
     </div>
 </form>
+
+<footer th:replace="~{fragments/commons::footer}"></footer>
 </body>
 
 </html>

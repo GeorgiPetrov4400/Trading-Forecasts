@@ -12,26 +12,29 @@
 </head>
 
 <body>
-    <main>
-        <nav th:replace="~{fragments/commons::nav}"></nav>
-        <div>
-            <h3 class="forecast">
-                <a href="/forecast-link/nasdaq/nasdaq-forecast.html">Choose NASDAQ forecasts</a>
-            </h3>
-        </div>
-        <div>
-            <h3 class="history">
-                <a href="https://www.fxcm.com/markets/quotes/indices/nas100/" target="_blank">NASDAQ Historical
-                    data</a>
-            </h3>
-        </div>
+<main>
+    <nav th:replace="~{fragments/commons::nav}"></nav>
+    <div>
+        <h3 class="forecast">
+            <a href="/forecast-link/nasdaq/nasdaq-forecast.html">Choose NASDAQ forecasts</a>
+        </h3>
+    </div>
+    <div>
+        <h3 class="history">
+            <a href="https://www.fxcm.com/markets/quotes/indices/nas100/" target="_blank">NASDAQ Historical
+                data</a>
+        </h3>
+    </div>
 
-        <p>
-            The Nasdaq 100, also known as the Nasdaq 100 index, or US tech 100, is a market capitalization system
-            featuring more than 100 of the largest publicly-traded non-financial businesses on the Nasdaq composite
-            index.
-            When open "long" position you buy NAS100 index and when you open "short" position you sell NAS100 index.
-        </p>
+    <p>
+        The Nasdaq 100, also known as the Nasdaq 100 index, or US tech 100, is a market capitalization system
+        featuring more than 100 of the largest publicly-traded non-financial businesses on the Nasdaq composite
+        index.
+        When open "long" position you buy NAS100 index and when you open "short" position you sell NAS100 index.
+    </p>
+
+    <footer th:replace="~{fragments/commons::footer}"></footer>
+
 </body>
 
 </html>

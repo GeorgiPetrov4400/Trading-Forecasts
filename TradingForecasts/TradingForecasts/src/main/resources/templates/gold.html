@@ -12,27 +12,30 @@
 </head>
 
 <body>
-    <main>
-        <nav th:replace="~{fragments/commons::nav}"></nav>
+<main>
+    <nav th:replace="~{fragments/commons::nav}"></nav>
 
-        <div>
-            <h3 class="forecast">
-                <a href="/forecast-link/gold/gold-forecasts.html">Choose XAU/USD forecasts</a>
-            </h3>
-        </div>
-        <div>
-            <h3 class="history">
-                <a href="https://www.dailyfx.com/gold-price" target="_blank">XAU/USD Historical
-                    data</a>
-            </h3>
-        </div>
+    <div>
+        <h3 class="forecast">
+            <a href="/forecast-link/gold/gold-forecasts.html">Choose XAU/USD forecasts</a>
+        </h3>
+    </div>
+    <div>
+        <h3 class="history">
+            <a href="https://www.dailyfx.com/gold-price" target="_blank">XAU/USD Historical
+                data</a>
+        </h3>
+    </div>
 
-        <p>
-            Gold has been considered a highly valuable commodity for millennia and the gold price is widely followed in
-            financial markets around the world.
-            When open "long" position you buy gold and when you open "short" position you sell gold.
-        </p>
-    </main>
+    <p>
+        Gold has been considered a highly valuable commodity for millennia and the gold price is widely followed in
+        financial markets around the world.
+        When open "long" position you buy gold and when you open "short" position you sell gold.
+    </p>
+</main>
+
+<footer th:replace="~{fragments/commons::footer}"></footer>
+
 </body>
 
 </html>

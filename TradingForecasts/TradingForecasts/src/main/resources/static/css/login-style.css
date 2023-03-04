@@ -3,6 +3,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  background-position: center;
   width: auto;
   height: auto;
   background-color: #10548b;
@@ -19,14 +20,26 @@ form div label {
 /*  color: red;*/
 /*}*/
 
+nav {
+  margin-top: 30px;
+  list-style: none;
+  font-size: 19px;
+}
+
 nav li {
   list-style: none;
+  color: white;
 }
 
 nav a {
   text-decoration: none;
   color: white;
   padding-right: 22px;
+}
+
+nav li :hover {
+  color: limegreen;
+
 }
 
 /* form div label :hover {
@@ -104,4 +117,13 @@ span.psw {
   /*.cancelbtn {*/
   /*  width: 100%;*/
   /*}*/
+}
+
+footer {
+  position: fixed;
+  left: 20px;
+  bottom: 10px;
+  height: 30px;
+  width: 100%;
+  color: #fff;
 }

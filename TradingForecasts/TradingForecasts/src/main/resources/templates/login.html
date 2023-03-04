@@ -16,18 +16,18 @@
 
 <form th:action="@{/users/login}" th:method="post" th:object="${userLoginDTO}">
 
-<!--    <div th:each="error: ${#fields.errors()}" th:text="${error}" class="text-danger">Error messages</div>-->
+    <!--    <div th:each="error: ${#fields.errors()}" th:text="${error}" class="text-danger">Error messages</div>-->
     <!--    <div th:if="${isFound == false}" class="text-danger">Incorrect username or password!</div>-->
 
     <div class="container">
         <label for="username"><b>Username</b></label>
         <input th:field="*{username}" th:errorclass="is-invalid"
-               type="text" placeholder="Enter valid username" id="username" name="username"
+               type="text" placeholder="Enter your username" id="username" name="username"
                required minlength="3" maxlength="20">
 
         <label for="password"><b>Password</b></label>
         <input th:field="*{password}" th:errorclass="is-invalid"
-               type="password" placeholder="Enter valid password" id="password" name="password"
+               type="password" placeholder="Enter your password" id="password" name="password"
                required minlength="5" maxlength="20">
 
         <button type="submit">Login</button>
@@ -41,5 +41,8 @@
       <span class="psw">Forgot <a href="#">password?</a></span>
     </div> -->
 </form>
+
+<footer th:replace="~{fragments/commons::footer}"></footer>
+
 </body>
 </html>
