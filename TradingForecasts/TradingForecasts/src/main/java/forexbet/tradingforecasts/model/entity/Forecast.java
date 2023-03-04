@@ -3,6 +3,7 @@ package forexbet.tradingforecasts.model.entity;
 import forexbet.tradingforecasts.model.entity.enums.ForecastTypeEnum;
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -14,6 +15,8 @@ public class Forecast extends BaseEntity {
 
     @Column(name = "picture_url", nullable = false)
     private String pictureUrl;
+
+    private BigDecimal price;
 
     @Column(nullable = false)
     private LocalDateTime created;
@@ -28,6 +31,7 @@ public class Forecast extends BaseEntity {
     @Column(name = "is_active", nullable = false)
     private boolean isActive;
 
+//    @Enumerated(EnumType.STRING)
     @ManyToOne
     private Category category;
 
@@ -109,6 +113,15 @@ public class Forecast extends BaseEntity {
 
     public Forecast setAdmin(User admin) {
         this.admin = admin;
+        return this;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public Forecast setPrice(BigDecimal price) {
+        this.price = price;
         return this;
     }
 }

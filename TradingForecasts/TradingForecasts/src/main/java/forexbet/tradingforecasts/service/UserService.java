@@ -1,5 +1,6 @@
 package forexbet.tradingforecasts.service;
 
+import forexbet.tradingforecasts.model.entity.User;
 import forexbet.tradingforecasts.model.service.UserServiceModel;
 
 public interface UserService {
@@ -13,4 +14,6 @@ public interface UserService {
     UserServiceModel findByUsernameAndPassword(String username, String password);
 
     void loginUser(Long id, String username);
+
+    User findById(Long id);
 }

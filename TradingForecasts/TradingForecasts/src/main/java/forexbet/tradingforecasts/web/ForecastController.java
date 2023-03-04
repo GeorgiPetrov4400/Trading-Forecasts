@@ -1,12 +1,37 @@
 package forexbet.tradingforecasts.web;
 
+import forexbet.tradingforecasts.model.dto.ForecastAddDTO;
+import forexbet.tradingforecasts.model.service.ForecastServiceModel;
+import forexbet.tradingforecasts.service.ForecastService;
+import forexbet.tradingforecasts.util.CurrentUser;
+import jakarta.validation.Valid;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/forecasts")
 public class ForecastController {
+
+    private final CurrentUser currentUser;
+    private final ForecastService forecastService;
+    private final ModelMapper modelMapper;
+
+    public ForecastController(CurrentUser currentUser, ForecastService forecastService, ModelMapper modelMapper) {
+        this.currentUser = currentUser;
+        this.forecastService = forecastService;
+        this.modelMapper = modelMapper;
+    }
+
+    @ModelAttribute
+    public ForecastAddDTO forecastAddDTO() {
+        return new ForecastAddDTO();
+    }
 
     @GetMapping("/eur-usd-forecast")
     public String forecastEurUsd() {
@@ -36,5 +61,37 @@ public class ForecastController {
     @GetMapping("/nasdaq-forecast")
     public String forecastNasdaq() {
         return "nasdaq-forecast";
+    }
+
+    @GetMapping("/add")
+    public String add() {
+        if (currentUser.getId() == null) {
+            return "redirect:/users/login";
+        }
+        return "forecast-add";
+    }
+
+    @PostMapping("/add")
+    public String addForecast(@Valid ForecastAddDTO forecastAddDTO,
+                              BindingResult bindingResult,
+                              RedirectAttributes redirectAttributes) {
+
+        if (currentUser.getId() == null) {
+            return "redirect:/";
+
+        }
+
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("forecastAddDTO", forecastAddDTO)
+                    .addFlashAttribute("org.springframework.validation.BindingResult.forecastAddDTO",
+                            bindingResult);
+
+            return "redirect:add";
+        }
+
+        forecastService.addForecast(modelMapper.map(forecastAddDTO, ForecastServiceModel.class));
+
+        return "redirect:/home";
+
     }
 }
