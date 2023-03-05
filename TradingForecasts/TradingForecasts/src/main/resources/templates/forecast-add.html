@@ -62,7 +62,7 @@
             </div>
             <div>
                 <select class="custom-select" id="category" name="category">
-                    <option value="">Select condition</option>
+                    <option value="">Select category</option>
                     <option th:each="c : ${T(forexbet.tradingforecasts.model.entity.enums.CategoryNameEnum).values()}"
                             th:value="${c}" th:text="${c}"></option>
 
@@ -83,12 +83,12 @@
             </div>
             <div>
                 <select class="custom-select" id="type" name="type">
-                    <option value="">Select condition</option>
+                    <option value="">Select type</option>
                     <option>Long</option>
                     <option>Short</option>
                 </select>
             </div>
-            <small class="text-danger">You must select a condition!</small>
+            <small class="text-danger">You must select a type!</small>
         </div>
 
         <div class="button">

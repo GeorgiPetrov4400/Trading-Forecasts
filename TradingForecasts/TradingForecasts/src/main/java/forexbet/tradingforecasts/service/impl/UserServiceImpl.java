@@ -69,6 +69,15 @@ public class UserServiceImpl implements UserService {
     public UserServiceModel registerUser(UserServiceModel userServiceModel) {
         var normalUserRole = userRoleService.findUserRole(UserRoleEnum.User).orElseThrow();
 
+//        var normalUser = new User()
+//                .setEmail(userServiceModel.getEmail())
+//                .setUsername(userServiceModel.getUsername())
+//                .setPassword(passwordEncoder.encode(userServiceModel.getPassword()))
+//                .setFirstName(userServiceModel.getFirstName())
+//                .setLastName(userServiceModel.getLastName())
+//                .setUserRole(normalUserRole);
+
+
         User user = modelMapper.map(userServiceModel, User.class);
 
         user.setUserRole(normalUserRole);

@@ -1,0 +1,63 @@
+body {
+    background-image: url("background-order.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    width: auto;
+    height: auto;
+}
+
+h2 {
+    margin-left: 20px;
+    color: white;
+}
+
+nav {
+    margin-top: 30px;
+    font-size: 19px;
+}
+
+nav li {
+    list-style: none;
+    color: white;
+    margin-top: 0px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    padding-right: 22px;
+}
+
+nav li :hover {
+    color: limegreen;
+
+}
+
+table {
+    width: 100%;
+    /* margin-left: 20px;
+    margin-right: 20px; */
+}
+
+table,
+th,
+td {
+    background-color: rgb(36, 32, 32);
+    border: 3px solid whitesmoke;
+    color: white;
+    text-align: center;
+}
+
+a {
+    color: white;
+}
+
+footer {
+    position: relative;
+    left: 20px;
+    height: 30px;
+    width: 100%;
+    color: #fff;
+}

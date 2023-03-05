@@ -31,7 +31,6 @@ public class Forecast extends BaseEntity {
     @Column(name = "is_active", nullable = false)
     private boolean isActive;
 
-    @Enumerated(EnumType.STRING)
     @ManyToOne
     private Category category;
 
