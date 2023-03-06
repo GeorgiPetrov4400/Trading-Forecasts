@@ -8,6 +8,19 @@ body {
     height: auto;
 }
 
+.bg-blur {
+    background-color: rgb(0, 0, 0); 
+    background-color: rgba(0, 0, 0, 0.8); 
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    z-index: 2;
+    width: auto;
+    margin-top: 3%;
+    padding: 20px;
+    text-align: center;
+}
+
 h2 {
     margin-left: 20px;
     color: white;
@@ -37,8 +50,6 @@ nav li :hover {
 
 table {
     width: 100%;
-    /* margin-left: 20px;
-    margin-right: 20px; */
 }
 
 table,
@@ -50,8 +61,42 @@ td {
     text-align: center;
 }
 
+table, tr, td {
+    height: 6vh;
+}
+
 a {
     color: white;
+}
+
+ul li {
+    list-style: none;
+}
+
+.active-forecast {
+    margin-left: -40px;
+}
+
+button {
+    background-color: green;
+    color: white;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+.buy-button :hover {
+    background-color: lime;
+    color: black;
+}
+
+.expired-button :hover {
+    background-color: gold;
+    color: black;
+}
+
+textarea {
+    resize: none;
 }
 
 footer {
@@ -61,3 +106,4 @@ footer {
     width: 100%;
     color: #fff;
 }
+

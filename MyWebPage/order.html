@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
 
     <link rel="stylesheet" href="order-style.css">
 </head>
+
 <body>
 
     <nav>
@@ -20,69 +22,129 @@
                 <a href="contact.html">Contact Us</a>
                 <a href="about.html">About Us</a>
                 <a href="forecast-add.html">Add forecast</a>
-                <a href="order.html">Buy Forecast</a>
+                <a href="order.html">Orders</a>
                 <a href="#">Free forecast</a>
             </li>
         </ul>
     </nav>
-    
-<h2>My orders</h2>
 
-<table>
-  <tr>
-    <th>EUR/USD</th>
-    <th>EUR/GBP</th>
-    <th>GOLD</th>
-    <th>DAX</th>
-    <th>DOW JONES</th>
-    <th>NASDAQ</th>
-  </tr>
-  <tr>
-    <td>
-        <a href="#">Active Forecasts</a>
-    </td>
-    <td>
-        <a href="#">Active Forecasts</a>
-    </td>
-    <td>
-        <a href="#">Active Forecasts</a>
-    </td>
-    <td>
-        <a href="#">Active Forecasts</a>
-    </td>
-    <td>
-        <a href="#">Active Forecasts</a>
-    </td>
-    <td>
-        <a href="#">Active Forecasts</a>
-    </td>
-  </tr>
-  <tr>
-    <td>
-        <a href="#">Expired Forecasts</a>
-    </td>
-    <td>
-        <a href="#">Expired Forecasts</a>
-    </td>
-    <td>
-        <a href="#">Expired Forecasts</a>
-    </td>
-    <td>
-        <a href="#">Expired Forecasts</a>
-    </td>
-    <td>
-        <a href="#">Expired Forecasts</a>
-    </td>
-    <td>
-        <a href="#">Expired Forecasts</a>
-    </td>
-  </tr>
-</table>
+    <table>
+        <tr>
+            <th>EUR/USD</th>
+            <th>EUR/GBP</th>
+            <th>GOLD</th>
+            <th>DAX</th>
+            <th>DOW JONES</th>
+            <th>NASDAQ</th>
+        </tr>
+        <tr>
+            <td>
+                <a href="#">Active Forecasts</a>
+            </td>
+            <td>
+                <a href="#">Active Forecasts</a>
+            </td>
+            <td>
+                <a href="#">Active Forecasts</a>
+            </td>
+            <td>
+                <a href="#">Active Forecasts</a>
+            </td>
+            <td>
+                <a href="#">Active Forecasts</a>
+            </td>
+            <td>
+                <a href="#">Active Forecasts</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="#">Expired Forecasts</a>
+            </td>
+            <td>
+                <a href="#">Expired Forecasts</a>
+            </td>
+            <td>
+                <a href="#">Expired Forecasts</a>
+            </td>
+            <td>
+                <a href="#">Expired Forecasts</a>
+            </td>
+            <td>
+                <a href="#">Expired Forecasts</a>
+            </td>
+            <td>
+                <a href="#">Expired Forecasts</a>
+            </td>
+        </tr>
+    </table>
 
-<!-- <img src="background-order.jpg" alt="order.jpg" width="250" height="250"> -->
+    <main>
+        <div class="container bg-blur rounded mt-1 mb-4">
+            <h3>My Orders</h3>
+            <h6>Username</h6>
+            <div style="height: 30vh; overflow: auto">
+                <table>
+                    <tr>
+                        <td style="width: 10%">Category</td>
+                        <td style="width: 10%">Type</td>
+                        <td style="width: 10%">Picture</td>
+                        <td style="width: 10%">Price €</td>
+                        <td style="width: 10%">Description</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container bg-blur rounded mt-1 mb-4">
+            <h3>Active Forecasts</h3>
+            <h6>totalOffers</h6>
+
+            <div class="active-forecast" style="height: 30vh; overflow: auto">
+                <ul>
+                    <li>
+                        <table>
+                            <tr>
+                                <td style="width: 10%">
+                                    <a>Category</a>
+                                </td>
+                                <td style="width: 10%">
+                                    <a>Type</a>
+                                </td>
+                                <td style="width: 10%">
+                                    <a>Picture</a>
+                                </td>
+                                <td style="width: 10%">
+                                    <a>Price: €</a>
+                                </td>
+                                <td style="width: 10%">
+                                    <a>Description</a>
+                                </td>
+                                <td class="buy-button" style="width: 1%">
+                                    <a>
+                                        <button>
+                                            BUY
+                                        </button>
+                                    </a>
+                                </td>
+                                <td class="expired-button" style="width: 1%">
+                                    <a>
+                                        <button>
+                                            Expired
+                                        </button>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </main>
 
     <footer>
         <p>© Trading Forecasts 2023. All rights reserved.</p>
     </footer>
 </body>
+
 </html>
