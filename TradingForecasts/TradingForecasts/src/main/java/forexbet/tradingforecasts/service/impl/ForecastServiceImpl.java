@@ -10,6 +10,8 @@ import forexbet.tradingforecasts.util.CurrentUser;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ForecastServiceImpl implements ForecastService {
 
@@ -36,5 +38,10 @@ public class ForecastServiceImpl implements ForecastService {
                 .setForecastType(forecastServiceModel.getForecastType());
 
         forecastRepository.save(forecast);
+    }
+
+    @Override
+    public List<Forecast> getAllActiveForecasts(long id) {
+        return forecastRepository.findAllByBuyer_IdIsNullAndAdmin_IdNot(id);
     }
 }

@@ -24,6 +24,9 @@ public class ForecastAddDTO {
     private BigDecimal price;
 
     @NotNull
+    private boolean isActive;
+
+    @NotNull
     @Enumerated(EnumType.STRING)
     private CategoryNameEnum category;
 
@@ -32,6 +35,7 @@ public class ForecastAddDTO {
     private ForecastTypeEnum type;
 
     public ForecastAddDTO() {
+        this.isActive = true;
     }
 
     public String getDescription() {
@@ -76,6 +80,15 @@ public class ForecastAddDTO {
 
     public ForecastAddDTO setType(ForecastTypeEnum type) {
         this.type = type;
+        return this;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public ForecastAddDTO setActive(boolean active) {
+        isActive = active;
         return this;
     }
 }

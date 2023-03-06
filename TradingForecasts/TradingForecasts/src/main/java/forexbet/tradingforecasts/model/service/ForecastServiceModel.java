@@ -15,6 +15,8 @@ public class ForecastServiceModel {
 
     private BigDecimal price;
 
+    private boolean isActive;
+
     private CategoryNameEnum category;
 
     private ForecastTypeEnum forecastType;
@@ -73,6 +75,15 @@ public class ForecastServiceModel {
 
     public ForecastServiceModel setForecastType(ForecastTypeEnum forecastType) {
         this.forecastType = forecastType;
+        return this;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public ForecastServiceModel setActive(boolean active) {
+        isActive = active;
         return this;
     }
 }

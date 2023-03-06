@@ -22,4 +22,9 @@ public class Category extends BaseEntity {
         this.category = category;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(category);
+    }
 }

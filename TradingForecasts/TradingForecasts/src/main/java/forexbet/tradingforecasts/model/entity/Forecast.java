@@ -37,6 +37,9 @@ public class Forecast extends BaseEntity {
     @ManyToOne
     private User admin;
 
+    @ManyToOne
+    private User buyer;
+
     public Forecast() {
         this.created = LocalDateTime.now();
         this.closed = null;
@@ -121,6 +124,15 @@ public class Forecast extends BaseEntity {
 
     public Forecast setAdmin(User admin) {
         this.admin = admin;
+        return this;
+    }
+
+    public User getBuyer() {
+        return buyer;
+    }
+
+    public Forecast setBuyer(User buyer) {
+        this.buyer = buyer;
         return this;
     }
 }
