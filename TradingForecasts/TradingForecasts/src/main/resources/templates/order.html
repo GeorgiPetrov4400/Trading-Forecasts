@@ -71,22 +71,22 @@
 <main>
     <div class="container bg-blur rounded mt-1 mb-4">
         <h3>My Orders</h3>
-        <h6>Username</h6>
+        <h6 th:text="${@currentUser.username}">Username</h6>
         <div style="height: 30vh; overflow: auto">
             <table>
-                <tr>
-                    <td style="width: 10%">Category</td>
-                    <td style="width: 10%">Type</td>
-                    <td style="width: 10%">Picture</td>
-                    <td style="width: 10%">Price €</td>
-                    <td style="width: 10%">Description</td>
+                <tr th:each="f : ${currentUserForecasts}">
+                    <td th:text="${f.category.getCategory().name()}" style="width: 10%">Category</td>
+                    <td th:text="${f.forecastType.name()}" style="width: 10%">Type</td>
+                    <td th:text="${f.pictureUrl}" style="width: 10%">Picture</td>
+                    <td th:text="${f.price}" style="width: 10%">Price €</td>
+                    <td th:text="${f.description}" style="width: 10%">Description</td>
                 </tr>
             </table>
         </div>
     </div>
     <div class="container bg-blur rounded mt-1 mb-4">
         <h3>Active Forecasts: <span th:text="${allActiveForecasts.size()}">totalOffers</span></h3>
-<!--        <h6 th:text="${activeForecast.size()}">totalOffers</h6>-->
+        <!--        <h6 th:text="${activeForecast.size()}">totalOffers</h6>-->
 
         <div class="active-forecast" style="height: 30vh; overflow: auto">
             <ul th:each="f : ${allActiveForecasts}">

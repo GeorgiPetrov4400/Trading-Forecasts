@@ -1,7 +1,10 @@
 package forexbet.tradingforecasts.service;
 
+import forexbet.tradingforecasts.model.entity.Forecast;
 import forexbet.tradingforecasts.model.entity.User;
 import forexbet.tradingforecasts.model.service.UserServiceModel;
+
+import java.util.List;
 
 public interface UserService {
 
@@ -16,4 +19,6 @@ public interface UserService {
     void loginUser(Long id, String username);
 
     User findById(Long id);
+
+    List<Forecast> getCurrentUserForecasts();
 }

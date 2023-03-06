@@ -1,5 +1,6 @@
 package forexbet.tradingforecasts.service.impl;
 
+import forexbet.tradingforecasts.model.entity.Forecast;
 import forexbet.tradingforecasts.model.entity.User;
 import forexbet.tradingforecasts.model.entity.enums.UserRoleEnum;
 import forexbet.tradingforecasts.model.service.UserServiceModel;
@@ -10,6 +11,8 @@ import forexbet.tradingforecasts.util.CurrentUser;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -100,5 +103,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findById(Long id) {
         return userRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Forecast> getCurrentUserForecasts() {
+        return userRepository.findByUsername(currentUser.getUsername()).get().getForecasts();
     }
 }

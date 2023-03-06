@@ -1,9 +1,9 @@
 package forexbet.tradingforecasts.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -27,7 +27,11 @@ public class User extends BaseEntity {
     @OneToOne
     private UserRole userRole;
 
+    @OneToMany(mappedBy = "buyer", fetch = FetchType.EAGER)
+    private List<Forecast> forecasts;
+
     public User() {
+        this.forecasts = new ArrayList<>();
     }
 
     public String getEmail() {
@@ -81,6 +85,15 @@ public class User extends BaseEntity {
 
     public User setUserRole(UserRole userRole) {
         this.userRole = userRole;
+        return this;
+    }
+
+    public List<Forecast> getForecasts() {
+        return forecasts;
+    }
+
+    public User setForecasts(List<Forecast> forecasts) {
+        this.forecasts = forecasts;
         return this;
     }
 }
