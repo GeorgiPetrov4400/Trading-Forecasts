@@ -66,6 +66,7 @@ table, tr, td {
 
 a {
     color: white;
+    text-decoration: none;
 }
 
 ul li {
@@ -76,21 +77,21 @@ ul li {
     margin-left: -40px;
 }
 
-button {
+.buy-button {
     background-color: green;
-    color: white;
-    height: 100%;
-    width: 100%;
-    cursor: pointer;
+    text-decoration: none;
+    list-style: none;
 }
 
 .buy-button :hover {
-    background-color: lime;
     color: black;
 }
 
+.expired-button {
+    background-color: darkgoldenrod;
+}
+
 .expired-button :hover {
-    background-color: gold;
     color: black;
 }
 

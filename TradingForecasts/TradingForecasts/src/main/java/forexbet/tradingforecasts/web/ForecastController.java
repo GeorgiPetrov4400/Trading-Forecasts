@@ -8,10 +8,7 @@ import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -93,5 +90,20 @@ public class ForecastController {
 
         return "redirect:/home";
 
+    }
+
+    @GetMapping("/orders/order/buy/{id}")
+    public String buyForecast(@PathVariable Long id) {
+
+        this.forecastService.buyForecast(id, currentUser.getId());
+
+        return "redirect:/orders/order";
+    }
+
+    @GetMapping("/orders/order/remove/{id}")
+    public String expiredForecast(@PathVariable Long id) {
+        forecastService.removeForecastById(id);
+
+        return "redirect:/orders/order";
     }
 }

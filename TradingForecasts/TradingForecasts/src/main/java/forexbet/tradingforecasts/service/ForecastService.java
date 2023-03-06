@@ -10,4 +10,8 @@ public interface ForecastService {
     void addForecast(ForecastServiceModel forecastServiceModel);
 
     List<Forecast> getAllActiveForecasts(long id);
+
+    void buyForecast(Long id, Long currentUserId);
+
+    void removeForecastById(Long id);
 }

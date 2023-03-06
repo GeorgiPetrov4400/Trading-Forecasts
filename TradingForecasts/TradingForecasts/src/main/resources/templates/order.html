@@ -71,15 +71,15 @@
 <main>
     <div class="container bg-blur rounded mt-1 mb-4">
         <h3>My Orders</h3>
-        <h6 th:text="${@currentUser.username}">Username</h6>
+        <h4 th:text="${@currentUser.username}">Username</h4>
         <div style="height: 30vh; overflow: auto">
             <table>
                 <tr th:each="f : ${currentUserForecasts}">
-                    <td th:text="${f.category.getCategory().name()}" style="width: 10%">Category</td>
-                    <td th:text="${f.forecastType.name()}" style="width: 10%">Type</td>
-                    <td th:text="${f.pictureUrl}" style="width: 10%">Picture</td>
-                    <td th:text="${f.price}" style="width: 10%">Price €</td>
-                    <td th:text="${f.description}" style="width: 10%">Description</td>
+                    <td th:text="${f.category.getCategory().name()}" style="width: 5%">Category</td>
+                    <td th:text="${f.forecastType.name()}" style="width: 5%">Type</td>
+                    <td th:text="${f.description}" style="width: 20%">Description</td>
+                    <td th:text="${f.pictureUrl}" style="width: 60%">Picture</td>
+                    <td th:text="${f.price}" style="width: 5%">Price €</td>
                 </tr>
             </table>
         </div>
@@ -93,34 +93,26 @@
                 <li>
                     <table>
                         <tr>
-                            <td style="width: 10%">
+                            <td style="width: 5%">
                                 <a th:text="*{f.getCategory().toString()}">Category</a>
                             </td>
-                            <td style="width: 10%">
+                            <td style="width: 5%">
                                 <a th:text="*{f.getForecastType()}">Type</a>
                             </td>
-                            <td style="width: 10%">
-                                <a th:text="*{f.getPictureUrl()}">Picture</a>
-                            </td>
-                            <td style="width: 10%">
-                                <a th:text="*{f.getPrice() + ' €'}">Price</a>
-                            </td>
-                            <td style="width: 10%">
+                            <td style="width: 20%">
                                 <a th:text="*{f.getDescription()}">Description</a>
                             </td>
+                            <td style="width: 60%">
+                                <a th:text="*{f.getPictureUrl()}">Picture</a>
+                            </td>
+                            <td style="width: 5%">
+                                <a th:text="*{f.getPrice() + ' €'}">Price</a>
+                            </td>
                             <td class="buy-button" style="width: 1%">
-                                <a>
-                                    <button>
-                                        BUY
-                                    </button>
-                                </a>
+                                <a th:href="@{/forecasts/orders/order/buy/{id}(id=${f.id})}">BUY</a>
                             </td>
                             <td class="expired-button" style="width: 1%">
-                                <a>
-                                    <button>
-                                        Expired
-                                    </button>
-                                </a>
+                                <a th:href="@{/forecasts/orders/order/remove/{id}(id=*{f.id})}">Expired</a>
                             </td>
                         </tr>
                     </table>
