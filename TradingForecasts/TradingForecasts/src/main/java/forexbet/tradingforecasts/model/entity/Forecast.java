@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "forecasts")
@@ -37,13 +39,14 @@ public class Forecast extends BaseEntity {
     @ManyToOne
     private User admin;
 
-    @ManyToOne
-    private User buyer;
+    @ManyToMany
+    private List<User> buyer;
 
     public Forecast() {
         this.created = LocalDateTime.now();
         this.closed = null;
         this.isActive = true;
+        this.buyer = new ArrayList<>();
     }
 
     public String getDescription() {
@@ -127,11 +130,11 @@ public class Forecast extends BaseEntity {
         return this;
     }
 
-    public User getBuyer() {
+    public List<User> getBuyer() {
         return buyer;
     }
 
-    public Forecast setBuyer(User buyer) {
+    public Forecast setBuyer(List<User> buyer) {
         this.buyer = buyer;
         return this;
     }

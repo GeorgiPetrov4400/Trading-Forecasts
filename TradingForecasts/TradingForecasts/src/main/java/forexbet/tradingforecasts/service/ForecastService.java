@@ -13,5 +13,7 @@ public interface ForecastService {
 
     void buyForecast(Long id, Long currentUserId);
 
-    void removeForecastById(Long id);
+    void expireForecastById(Long id);
+
+    List<Forecast> getOwnForecastsAdded(long id);
 }

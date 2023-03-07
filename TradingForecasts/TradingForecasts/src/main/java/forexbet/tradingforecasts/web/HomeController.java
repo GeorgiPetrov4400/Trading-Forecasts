@@ -40,6 +40,9 @@ public class HomeController {
         List<Forecast> currentUserForecasts = userService.getCurrentUserForecasts();
         model.addAttribute("currentUserForecasts", currentUserForecasts);
 
+        List<Forecast> ownForecastsAdded = this.forecastService.getOwnForecastsAdded(currentUser.getId());
+        model.addAttribute("ownForecastsAdded", ownForecastsAdded);
+
         List<Forecast> allActiveForecasts = forecastService.getAllActiveForecasts(currentUser.getId());
         model.addAttribute("allActiveForecasts", allActiveForecasts);
 
