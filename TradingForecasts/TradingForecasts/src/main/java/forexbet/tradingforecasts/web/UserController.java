@@ -64,40 +64,40 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String login(Model model) {
-        if (!model.containsAttribute("isFound")) {
-            model.addAttribute("isFound", true);
-        }
+    public String login() {
+//        if (!model.containsAttribute("isFound")) {
+//            model.addAttribute("isFound", true);
+//        }
         return "login";
     }
 
-    @PostMapping("/login")
-    public String loginConfirm(@Valid UserLoginDTO userLoginDTO,
-                               BindingResult bindingResult,
-                               RedirectAttributes redirectAttributes) {
-
-        if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("userLoginDTO", userLoginDTO)
-                    .addFlashAttribute("org.springframework.validation.BindingResult.userLoginDTO",
-                            bindingResult);
-
-            return "redirect:login";
-        }
-
-        UserServiceModel userServiceModel = userService
-                .findByUsernameAndPassword(userLoginDTO.getUsername(), userLoginDTO.getPassword());
-
-        if (userServiceModel == null) {
-            redirectAttributes.addFlashAttribute("userLoginDTO", userLoginDTO)
-                    .addFlashAttribute("isFound", false);
-
-            return "redirect:login";
-        }
-
-        userService.loginUser(userServiceModel.getId(), userServiceModel.getUsername());
-
-        return "redirect:/home";
-    }
+//    @PostMapping("/login")
+//    public String loginConfirm(@Valid UserLoginDTO userLoginDTO,
+//                               BindingResult bindingResult,
+//                               RedirectAttributes redirectAttributes) {
+//
+//        if (bindingResult.hasErrors()) {
+//            redirectAttributes.addFlashAttribute("userLoginDTO", userLoginDTO)
+//                    .addFlashAttribute("org.springframework.validation.BindingResult.userLoginDTO",
+//                            bindingResult);
+//
+//            return "redirect:login";
+//        }
+//
+//        UserServiceModel userServiceModel = userService
+//                .findByUsernameAndPassword(userLoginDTO.getUsername(), userLoginDTO.getPassword());
+//
+//        if (userServiceModel == null) {
+//            redirectAttributes.addFlashAttribute("userLoginDTO", userLoginDTO)
+//                    .addFlashAttribute("isFound", false);
+//
+//            return "redirect:login";
+//        }
+//
+//        userService.loginUser(userServiceModel.getId(), userServiceModel.getUsername());
+//
+//        return "redirect:/home";
+//    }
 
     @GetMapping("/logout")
     public String logout(HttpSession httpSession) {

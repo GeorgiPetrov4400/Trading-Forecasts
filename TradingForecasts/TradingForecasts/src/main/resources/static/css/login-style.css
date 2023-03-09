@@ -37,6 +37,10 @@ nav a {
   padding-right: 22px;
 }
 
+.nav li {
+  display: inline-block;
+}
+
 nav li :hover {
   color: limegreen;
 

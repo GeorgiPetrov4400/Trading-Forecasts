@@ -19,6 +19,10 @@ nav {
     font-size: 19px;
 }
 
+.nav li {
+    display: inline-block;
+}
+
 nav li {
     list-style: none;
     color: white;

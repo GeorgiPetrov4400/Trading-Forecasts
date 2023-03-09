@@ -9,10 +9,12 @@ import forexbet.tradingforecasts.service.UserRoleService;
 import forexbet.tradingforecasts.service.UserService;
 import forexbet.tradingforecasts.util.CurrentUser;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -33,9 +35,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void initAdmin() {
-//        if (userRepository.count() == 0) {
-//            return;
-//        }
         var adminRole = userRoleService.findUserRole(UserRoleEnum.Admin).orElseThrow();
 
         var adminUser = new User()
@@ -44,16 +43,13 @@ public class UserServiceImpl implements UserService {
                 .setPassword(passwordEncoder.encode("12345"))
                 .setFirstName("Admin")
                 .setLastName("Adminov")
-                .setUserRole(adminRole);
+                .setRoles(userRoleService.findAll());
 
         userRepository.save(adminUser);
     }
 
     @Override
     public void initModerator() {
-//        if (userRepository.count() == 0) {
-//            return;
-//        }
         var moderatorRole = userRoleService.findUserRole(UserRoleEnum.Moderator).orElseThrow();
 
         var moderatorUser = new User()
@@ -62,7 +58,7 @@ public class UserServiceImpl implements UserService {
                 .setPassword(passwordEncoder.encode("12345"))
                 .setFirstName("Moder")
                 .setLastName("Moderatorov")
-                .setUserRole(moderatorRole);
+                .setRoles(List.of(moderatorRole));
 
         userRepository.save(moderatorUser);
 
@@ -72,33 +68,54 @@ public class UserServiceImpl implements UserService {
     public UserServiceModel registerUser(UserServiceModel userServiceModel) {
         var normalUserRole = userRoleService.findUserRole(UserRoleEnum.User).orElseThrow();
 
-//        var normalUser = new User()
-//                .setEmail(userServiceModel.getEmail())
-//                .setUsername(userServiceModel.getUsername())
-//                .setPassword(passwordEncoder.encode(userServiceModel.getPassword()))
-//                .setFirstName(userServiceModel.getFirstName())
-//                .setLastName(userServiceModel.getLastName())
-//                .setUserRole(normalUserRole);
+        if (!userServiceModel.getPassword().equals(userServiceModel.getConfirmPassword())) {
+            throw new RuntimeException("Passwords should match");
+        }
+
+        Optional<User> findByEmail = userRepository.findByEmail(userServiceModel.getEmail());
+
+        if (findByEmail.isPresent()) {
+            throw new RuntimeException("Email is already used");
+        }
+
+        Optional<User> findByUsername = userRepository.findByUsername(userServiceModel.getUsername());
+
+        if (findByUsername.isPresent()) {
+            throw new RuntimeException("Username is already used");
+        }
+
+        var normalUser = new User()
+                .setEmail(userServiceModel.getEmail())
+                .setUsername(userServiceModel.getUsername())
+                .setPassword(passwordEncoder.encode(userServiceModel.getPassword()))
+                .setFirstName(userServiceModel.getFirstName())
+                .setLastName(userServiceModel.getLastName())
+                .setRoles(List.of(normalUserRole));
 
 
-        User user = modelMapper.map(userServiceModel, User.class);
+//        User user = modelMapper.map(userServiceModel, User.class);
+//
+//        user.setUserRole(normalUserRole);
 
-        user.setUserRole(normalUserRole);
-
-        return modelMapper.map(userRepository.save(user), UserServiceModel.class);
+        return modelMapper.map(userRepository.save(normalUser), UserServiceModel.class);
     }
 
-    @Override
-    public UserServiceModel findByUsernameAndPassword(String username, String password) {
-        return userRepository.findByUsernameAndPassword(username, password)
-                .map(user -> modelMapper.map(user, UserServiceModel.class)).orElse(null);
+//    @Override
+//    public UserServiceModel findByUsernameAndPassword(String username, String password) {
+//        return userRepository.findByUsernameAndPassword(username, password)
+//                .map(user -> modelMapper.map(user, UserServiceModel.class)).orElse(null);
+//    }
+
+    public User getUserByUsername(String username) {
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found!"));
     }
 
-    @Override
-    public void loginUser(Long id, String username) {
-        currentUser.setId(id);
-        currentUser.setUsername(username);
-    }
+//    @Override
+//    public void loginUser(Long id, String username) {
+//        currentUser.setId(id);
+//        currentUser.setUsername(username);
+//    }
 
     @Override
     public User findById(Long id) {

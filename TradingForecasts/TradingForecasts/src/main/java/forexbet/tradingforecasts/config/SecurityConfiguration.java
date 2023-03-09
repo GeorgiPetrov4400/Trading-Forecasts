@@ -2,7 +2,9 @@ package forexbet.tradingforecasts.config;
 
 import forexbet.tradingforecasts.model.entity.enums.UserRoleEnum;
 //import forexbet.tradingforecasts.model.service.ApplicationUserDetailsService;
-import forexbet.tradingforecasts.repository.UserRepository;
+import forexbet.tradingforecasts.model.service.TradingForecastsUserDetailsService;
+import forexbet.tradingforecasts.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,22 +18,32 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 public class SecurityConfiguration {
 
+//    private final UserService userService;
+//
+//    @Autowired
+//    public SecurityConfiguration(UserService userService) {
+//        this.userService = userService;
+//    }
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeHttpRequests()
-//                .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-//                .requestMatchers("/", "/users/login", "/users/register", "/users/login-error").permitAll()
-//                .requestMatchers("/pages/moderators").hasRole(UserRoleEnum.Moderator.name())
-//                .requestMatchers("/pages/admins").hasRole(UserRoleEnum.Admin.name())
+                .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+                .requestMatchers("/", "/users/register", "/users/login", "/about", "/users/login-error").permitAll()
+                //       .requestMatchers("/users/register", "/users/login", "/about", "/users/login-error").anonymous()
+                .requestMatchers("/users/logout", "/about", "/contact", "/orders/order", "/freeForecasts").authenticated()
+                .requestMatchers("/forecasts/add").hasRole(UserRoleEnum.Moderator.name())
+                .requestMatchers("/admin", "/forecasts/add").hasRole(UserRoleEnum.Admin.name())
                 .anyRequest()
-//                .authenticated()
-//                .and()
-//                .formLogin()
-//                .loginPage("/users/login")
-//                .usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
-//                .passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY)
-//                .defaultSuccessUrl("/").failureForwardUrl("/users/login-error");
-                .permitAll();
+                .authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/users/login")
+                .usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
+                .passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY)
+                .defaultSuccessUrl("/")
+                .failureForwardUrl("/users/login-error");
+        //   .permitAll();
 
         return httpSecurity.build();
     }
@@ -42,7 +54,7 @@ public class SecurityConfiguration {
     }
 
 //    @Bean
-//    public UserDetailsService userDetailsService(UserRepository userRepository) {
-//        return new ApplicationUserDetailsService(userRepository);
+//    public UserDetailsService userDetailsService() {
+//        return new TradingForecastsUserDetailsService(userService);
 //    }
 }

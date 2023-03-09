@@ -25,10 +25,16 @@ public class HomeController {
 
     @GetMapping("/home")
     public String index() {
-        if (currentUser.getId() == null) {
-            return "redirect:/";
-        }
-        return "home";
+//        if (currentUser.getId() == null) {
+//            return "redirect:/";
+//        }
+
+        return "index";
+    }
+
+    @GetMapping("/admin")
+    public String admin() {
+        return "admin";
     }
 
     @GetMapping("/orders/order")

@@ -19,6 +19,7 @@ public class UserRegisterDTO {
     @NotBlank
     @Size(min = 5, max = 20)
     private String password;
+
     @NotBlank
     @Size(min = 5, max = 20)
     private String confirmPassword;

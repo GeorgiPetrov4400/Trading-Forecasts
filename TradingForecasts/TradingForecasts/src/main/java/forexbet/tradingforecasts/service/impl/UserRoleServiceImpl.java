@@ -7,6 +7,7 @@ import forexbet.tradingforecasts.service.UserRoleService;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -35,5 +36,10 @@ public class UserRoleServiceImpl implements UserRoleService {
     @Override
     public Optional<UserRole> findUserRole(UserRoleEnum role) {
         return userRoleRepository.findUserRoleByRole(role);
+    }
+
+    @Override
+    public List<UserRole> findAll() {
+        return userRoleRepository.findAll();
     }
 }

@@ -24,8 +24,8 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     private String lastName;
 
-    @OneToOne
-    private UserRole userRole;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<UserRole> roles;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Forecast> forecasts;
@@ -79,12 +79,12 @@ public class User extends BaseEntity {
         return this;
     }
 
-    public UserRole getUserRole() {
-        return userRole;
+    public List<UserRole> getRoles() {
+        return roles;
     }
 
-    public User setUserRole(UserRole userRole) {
-        this.userRole = userRole;
+    public User setRoles(List<UserRole> roles) {
+        this.roles = roles;
         return this;
     }
 
