@@ -30,7 +30,7 @@ public class TradingForecastsUserDetailsService implements UserDetailsService {
                         user.getPassword(),
                         user.getRoles()
                                 .stream()
-                                .map(role -> new SimpleGrantedAuthority("ROLE_" + role.getRole()))
+                                .map(role -> new SimpleGrantedAuthority("ROLE_" + role.getRole().name()))
                                 .collect(Collectors.toList())
                 );
     }

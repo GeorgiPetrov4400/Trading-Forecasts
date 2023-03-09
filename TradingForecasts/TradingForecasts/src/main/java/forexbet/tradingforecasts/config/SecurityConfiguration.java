@@ -38,12 +38,11 @@ public class SecurityConfiguration {
                 .authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/users/login")
+                .loginPage("/users/login").permitAll()
                 .usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
                 .passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY)
                 .defaultSuccessUrl("/")
                 .failureForwardUrl("/users/login-error");
-        //   .permitAll();
 
         return httpSecurity.build();
     }
