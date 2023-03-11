@@ -36,7 +36,11 @@ nav a {
 
 nav li :hover {
     color: limegreen;
+}
 
+li form .button {
+    background-color: #10548b;
+    color: white;
 }
 
 div {

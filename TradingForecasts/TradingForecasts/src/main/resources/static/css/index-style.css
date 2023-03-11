@@ -39,6 +39,15 @@ nav li :hover {
 
 }
 
+li form .button {
+    background-color: #10548b;
+    color: white;
+}
+
+li form .button :hover {
+    background-color: red;
+}
+
 div {
     width: 400px;
     display: inline-block;

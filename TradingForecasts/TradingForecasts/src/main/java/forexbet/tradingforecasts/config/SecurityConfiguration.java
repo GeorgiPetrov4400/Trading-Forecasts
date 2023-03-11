@@ -39,11 +39,12 @@ public class SecurityConfiguration {
                 .and()
                 .formLogin()
                 .loginPage("/users/login")
+                .failureForwardUrl("/login?bad_credentials=true")
                 .permitAll()
                 .usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
                 .passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY)
                 .defaultSuccessUrl("/")
-                .failureForwardUrl("/users/login-error")
+         //       .failureForwardUrl("/users/login-error")
                 .and().logout().logoutUrl("/users/logout")
                 .logoutSuccessUrl("/").invalidateHttpSession(true);
 
