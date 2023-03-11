@@ -15,6 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+
 <nav>
     <ul class="nav">
         <li>
@@ -28,9 +29,6 @@
         </li>
         <li sec:authorize="!isAuthenticated()">
             <a th:href="@{/users/login}">Login</a>
-        </li>
-        <li sec:authorize="isAuthenticated()" th:method="post">
-            <a th:href="@{/users/logout}">Logout</a>
         </li>
         <li sec:authorize="isAuthenticated()">
             <a th:href="@{/contact}">Contact Us</a>
@@ -46,6 +44,13 @@
         </li>
         <li sec:authorize="!isAuthenticated()">
             <a th:href="@{/freeForecasts}">Free Forecast</a>
+        </li>
+        <li class="welcome" sec:authorize="isAuthenticated()">
+            Welcome,
+            <th:block sec:authentication="name"></th:block>!
+        </li>
+        <li sec:authorize="isAuthenticated()" th:method="post">
+            <a th:href="@{/users/logout}">Logout</a>
         </li>
     </ul>
 </nav>

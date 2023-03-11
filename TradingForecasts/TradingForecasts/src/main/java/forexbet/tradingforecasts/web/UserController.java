@@ -7,6 +7,7 @@ import forexbet.tradingforecasts.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -71,6 +72,18 @@ public class UserController {
         return "login";
     }
 
+    @PostMapping("/users/login-error")
+    public String loginFailed(
+            @ModelAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY) String username,
+            RedirectAttributes redirectAttributes) {
+
+        redirectAttributes.addFlashAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY,
+                username);
+        redirectAttributes.addFlashAttribute("bad_credentials", true);
+
+        return "redirect:login";
+    }
+
 //    @PostMapping("/login")
 //    public String loginConfirm(@Valid UserLoginDTO userLoginDTO,
 //                               BindingResult bindingResult,
@@ -99,6 +112,7 @@ public class UserController {
 //        return "redirect:/home";
 //    }
 
+    //TODO Refactor logout
     @GetMapping("/logout")
     public String logout(HttpSession httpSession) {
         httpSession.invalidate();

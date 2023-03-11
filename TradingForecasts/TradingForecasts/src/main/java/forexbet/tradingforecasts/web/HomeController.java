@@ -23,8 +23,8 @@ public class HomeController {
         this.userService = userService;
     }
 
-    @GetMapping("/home")
-    public String index() {
+    @GetMapping("/")
+    public String home() {
 //        if (currentUser.getId() == null) {
 //            return "redirect:/";
 //        }

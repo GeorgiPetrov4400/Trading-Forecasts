@@ -14,26 +14,38 @@
 <body>
 <nav th:replace="~{fragments/commons::nav}"></nav>
 
-<form th:action="@{/users/login}" th:method="post" th:object="${userLoginDTO}">
+<form th:action="@{/users/login}" th:method="post">
 
-    <!--    <div th:each="error: ${#fields.errors()}" th:text="${error}" class="text-danger">Error messages</div>-->
-    <!--    <div th:if="${isFound == false}" class="text-danger">Incorrect username or password!</div>-->
+    <!--        <div th:each="error: ${#fields.errors()}" th:text="${error}" class="text-danger">Error messages</div>-->
+    <!--        <div th:if="${bad_credentials}" class="text-danger">Invalid username or password!</div>-->
 
     <div class="container">
-        <label for="username"><b>Username</b></label>
-        <input th:field="*{username}" th:errorclass="is-invalid"
-               type="text" placeholder="Enter your username" id="username" name="username"
-               required minlength="3" maxlength="20">
+        <div>
+            <label for="username"><b>Username</b></label>
+            <input th:value="${username}" id="username" name="username"
+                   type="text" placeholder="Enter your username"
+                   required minlength="3" maxlength="20">
+        </div>
 
-        <label for="password"><b>Password</b></label>
-        <input th:field="*{password}" th:errorclass="is-invalid"
-               type="password" placeholder="Enter your password" id="password" name="password"
-               required minlength="5" maxlength="20">
+        <div>
+            <label for="password"><b>Password</b></label>
+            <input type="password" placeholder="Enter your password" id="password" name="password"
+                   required minlength="5" maxlength="20">
+<!--            <small class="text-danger" th:if="${bad_credentials}">Invalid username or password!</small>-->
+        </div>
 
-        <button type="submit">Login</button>
-        <label>
-            <input type="checkbox" checked="checked" name="remember"> Remember me
-        </label>
+        <div>
+            <button type="submit">Login</button>
+        </div>
+
+        <div>
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+        </div>
+    </div>
+    <div class="errors alert alert-danger" th:if="${bad_credentials}">
+        Invalid username or password.
     </div>
 
     <!-- <div class="container" style="background-color:lightblue">

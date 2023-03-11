@@ -31,18 +31,21 @@ public class SecurityConfiguration {
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                 .requestMatchers("/", "/users/register", "/users/login", "/about", "/users/login-error").permitAll()
                 //       .requestMatchers("/users/register", "/users/login", "/about", "/users/login-error").anonymous()
-                .requestMatchers("/users/logout", "/about", "/contact", "/orders/order", "/freeForecasts").authenticated()
+                .requestMatchers("/about", "/contact", "/orders/order", "/freeForecasts").authenticated()
                 .requestMatchers("/forecasts/add").hasRole(UserRoleEnum.Moderator.name())
                 .requestMatchers("/admin", "/forecasts/add").hasRole(UserRoleEnum.Admin.name())
                 .anyRequest()
                 .authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/users/login").permitAll()
+                .loginPage("/users/login")
+                .permitAll()
                 .usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
                 .passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY)
                 .defaultSuccessUrl("/")
-                .failureForwardUrl("/users/login-error");
+                .failureForwardUrl("/users/login-error")
+                .and().logout().logoutUrl("/users/logout")
+                .logoutSuccessUrl("/").invalidateHttpSession(true);
 
         return httpSecurity.build();
     }
