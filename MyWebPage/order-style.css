@@ -104,6 +104,14 @@ ul li {
     color: black;
 }
 
+.delete-button {
+    background-color: red;
+}
+
+.delete-button :hover {
+    color: black;
+}
+
 textarea {
     resize: none;
 }

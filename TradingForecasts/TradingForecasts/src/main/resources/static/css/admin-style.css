@@ -34,13 +34,15 @@ nav a {
     display: inline-block;
 }
 
-nav li :hover {
-    color: limegreen;
+form .button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: medium;
 }
 
-li form .button {
-    background-color: #10548b;
-    color: white;
+nav li :hover {
+    color: limegreen;
 }
 
 div {

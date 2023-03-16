@@ -31,9 +31,18 @@ nav a {
     padding-right: 22px;
 }
 
+form .button {
+    /* background-color: darkgrey; */
+    background: none;
+    border: none;
+    color: white;
+    /* width: 20%;
+    height: 30px; */
+    font-size: medium;
+}
+
 nav li :hover {
     color: limegreen;
-
 }
 
 div {

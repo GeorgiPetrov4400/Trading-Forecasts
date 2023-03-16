@@ -23,12 +23,16 @@
                 <a href="home.html">Home</a>
                 <a href="register.html">Register</a>
                 <a href="login.html">Login</a>
-                <a href="#">Logout</a>
                 <a href="contact.html">Contact Us</a>
                 <a href="about.html">About Us</a>
                 <a href="forecast-add.html">Add forecast</a>
                 <a href="order.html">Buy Forecast</a>
                 <a href="#">Free forecast</a>
+                <li>
+                    <form th:action="@{/users/logout}" sec:authorize="isAuthenticated()" th:method="post">
+                        <input class="button" type="submit" value="Logout">
+                    </form>
+                </li>
             </li>
         </ul>
     </nav>

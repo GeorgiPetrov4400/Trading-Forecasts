@@ -39,9 +39,11 @@ nav li :hover {
 
 }
 
-li form .button {
-    background-color: #10548b;
+form .button {
+    background: none;
+    border: none;
     color: white;
+    font-size: medium;
 }
 
 li form .button :hover {
