@@ -66,8 +66,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserServiceModel registerUser(UserServiceModel userServiceModel) {
-        var normalUserRole = userRoleService.findUserRole(UserRoleEnum.User).orElseThrow();
-
         if (!userServiceModel.getPassword().equals(userServiceModel.getConfirmPassword())) {
             throw new RuntimeException("Passwords should match");
         }
@@ -84,6 +82,8 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("Username is already used");
         }
 
+        var normalUserRole = userRoleService.findUserRole(UserRoleEnum.User).orElseThrow();
+
         var normalUser = new User()
                 .setEmail(userServiceModel.getEmail())
                 .setUsername(userServiceModel.getUsername())
@@ -92,30 +92,13 @@ public class UserServiceImpl implements UserService {
                 .setLastName(userServiceModel.getLastName())
                 .setRoles(List.of(normalUserRole));
 
-
-//        User user = modelMapper.map(userServiceModel, User.class);
-//
-//        user.setUserRole(normalUserRole);
-
         return modelMapper.map(userRepository.save(normalUser), UserServiceModel.class);
     }
-
-//    @Override
-//    public UserServiceModel findByUsernameAndPassword(String username, String password) {
-//        return userRepository.findByUsernameAndPassword(username, password)
-//                .map(user -> modelMapper.map(user, UserServiceModel.class)).orElse(null);
-//    }
 
     public User getUserByUsername(String username) {
         return userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found!"));
     }
-
-//    @Override
-//    public void loginUser(Long id, String username) {
-//        currentUser.setId(id);
-//        currentUser.setUsername(username);
-//    }
 
     @Override
     public User findById(Long id) {

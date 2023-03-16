@@ -44,6 +44,7 @@ form .button {
     border: none;
     color: white;
     font-size: medium;
+    cursor: pointer;
 }
 
 li form .button :hover {

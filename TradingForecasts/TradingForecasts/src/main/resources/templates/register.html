@@ -35,32 +35,26 @@
         <div>
             <label for="last-name"><b>Last name</b></label>
             <input th:field="*{lastName}" th:errorclass="is-invalid"
-                   type="text" placeholder="First name must be between 2 and 20 characters" name="last-name"
+                   type="text" placeholder="Last name must be between 2 and 20 characters" name="last-name"
                    id="last-name" required minlength="2" maxlength="20">
-            <!--            <small class="invalid-feedback text-danger">Last name length must be between 2 and 20 characters!</small>-->
         </div>
         <div>
             <label for="username"><b>Username</b></label>
             <input th:field="*{username}" th:errorclass="is-invalid"
                    type="text" placeholder="Username must be between 3 and 20 characters" name="username"
                    id="username" required minlength="3" maxlength="20">
-            <!--            <small class="invalid-feedback text-danger">Username length must be between 3 and 20 characters!</small>-->
-
         </div>
         <div>
             <label for="password"><b>Password</b></label>
             <input th:field="*{password}" th:errorclass="is-invalid"
                    type="password" placeholder="Password must be between 5 and 20 characters" name="password"
                    id="password" required minlength="5" maxlength="20">
-            <!--            <small class="invalid-feedback text-danger">Password length must be between 5 and 20 characters!</small>-->
         </div>
         <div>
             <label for="password-repeat"><b>Confirm Password</b></label>
             <input th:field="*{confirmPassword}" th:errorclass="is-invalid"
                    type="password" placeholder="Repeat your password"
                    name="password-repeat" id="password-repeat" required minlength="5" maxlength="20">
-            <!--            <small class="invalid-feedback text-danger">Repeat password length must be between 5 and 20-->
-            <!--                characters!</small>-->
         </div>
 
         <hr>

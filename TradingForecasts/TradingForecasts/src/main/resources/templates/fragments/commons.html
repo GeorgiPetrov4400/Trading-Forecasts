@@ -24,16 +24,16 @@
         <li sec:authorize="hasRole('Admin')">
             <a th:href="@{/admin}">Admin</a>
         </li>
-        <li sec:authorize="!isAuthenticated()">
+        <li sec:authorize="isAnonymous()">
             <a th:href="@{/users/register}">Register</a>
         </li>
-        <li sec:authorize="!isAuthenticated()">
+        <li sec:authorize="isAnonymous()">
             <a th:href="@{/users/login}">Login</a>
         </li>
         <li sec:authorize="isAuthenticated()">
             <a th:href="@{/contact}">Contact Us</a>
         </li>
-        <li sec:authorize="!isAuthenticated()">
+        <li>
             <a th:href="@{/about}">About Us</a>
         </li>
         <li sec:authorize="hasRole('Admin')">
@@ -42,7 +42,7 @@
         <li sec:authorize="isAuthenticated()">
             <a th:href="@{/orders/order}">Orders</a>
         </li>
-        <li sec:authorize="!isAuthenticated()">
+        <li sec:authorize="isAnonymous()">
             <a th:href="@{/freeForecasts}">Free Forecast</a>
         </li>
         <li class="welcome" sec:authorize="isAuthenticated()">

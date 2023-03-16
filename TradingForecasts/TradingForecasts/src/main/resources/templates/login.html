@@ -12,47 +12,51 @@
 
 </head>
 <body>
-<nav th:replace="~{fragments/commons::nav}"></nav>
 
-<form th:action="@{/users/login}" th:method="post">
+<div>
+    <form th:action="@{/users/login}" th:method="post">
 
-    <!--        <div th:each="error: ${#fields.errors()}" th:text="${error}" class="text-danger">Error messages</div>-->
-    <!--        <div th:if="${bad_credentials}" class="text-danger">Invalid username or password!</div>-->
+<!--        <div th:each="error: ${#fields.errors()}" th:text="${error}" class="text-danger">Error messages</div>-->
+<!--        <div th:if="${bad_credentials}" class="text-danger">Invalid username or password!</div>-->
 
-    <div class="container">
-        <div>
-            <label for="username"><b>Username</b></label>
-            <input th:value="${username}" id="username" name="username"
-                   type="text" placeholder="Enter your username"
-                   required minlength="3" maxlength="20">
+        <div class="container">
+            <div th:if="${param.error}" class="alert alert-danger">
+                <strong>Wrong username or password!</strong>
+            </div>
+
+            <div>
+                <label for="username"><b>Username</b></label>
+                <input th:value="${username}" id="username" name="username"
+                       type="text" placeholder="Enter your username"
+                       required minlength="3" maxlength="20">
+            </div>
+
+            <div>
+                <label for="password"><b>Password</b></label>
+                <input type="password" placeholder="Enter your password" id="password" name="password"
+                       required minlength="5" maxlength="20">
+<!--                <small class="text-danger" th:if="${bad_credentials}">Invalid username or password!</small>-->
+            </div>
+
+            <div>
+                <button type="submit">Login</button>
+            </div>
+
+            <div>
+                <label>
+                    <input type="checkbox" checked="checked" name="remember-me"> Remember me
+                </label>
+            </div>
         </div>
+<!--        <div class="errors alert alert-danger" th:if="${bad_credentials}">-->
+<!--            Invalid username or password.-->
+<!--        </div>-->
+    </form>
 
-        <div>
-            <label for="password"><b>Password</b></label>
-            <input type="password" placeholder="Enter your password" id="password" name="password"
-                   required minlength="5" maxlength="20">
-<!--            <small class="text-danger" th:if="${bad_credentials}">Invalid username or password!</small>-->
-        </div>
-
-        <div>
-            <button type="submit">Login</button>
-        </div>
-
-        <div>
-            <label>
-                <input type="checkbox" checked="checked" name="remember"> Remember me
-            </label>
-        </div>
-    </div>
-    <div class="errors alert alert-danger" th:if="${bad_credentials}">
-        Invalid username or password.
-    </div>
-
-    <!-- <div class="container" style="background-color:lightblue">
-      <button type="button" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
-    </div> -->
-</form>
+<!--    <div th:if="${param.error}" class="alert alert-danger">-->
+<!--        <strong>Wrong username or password!</strong>-->
+<!--    </div>-->
+</div>
 
 <footer th:replace="~{fragments/commons::footer}"></footer>
 
