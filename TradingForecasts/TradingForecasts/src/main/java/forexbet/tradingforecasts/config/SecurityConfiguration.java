@@ -1,10 +1,13 @@
 package forexbet.tradingforecasts.config;
 
 import forexbet.tradingforecasts.model.entity.enums.UserRoleEnum;
+import forexbet.tradingforecasts.model.service.TradingForecastsUserDetailsService;
+import forexbet.tradingforecasts.repository.UserRepository;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -12,6 +15,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 public class SecurityConfiguration {
+
+    private final UserRepository userRepository;
+
+    public SecurityConfiguration(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
@@ -38,12 +47,12 @@ public class SecurityConfiguration {
                 .logoutUrl("/users/logout")
                 .logoutSuccessUrl("/")
                 .deleteCookies("JSESSIONID")
-                .invalidateHttpSession(true);
-//                .and()
-//                .rememberMe()
-//                .key("someUniqueKey")
-//                .tokenValiditySeconds(604800)
-//                .userDetailsService(userDetailsService);
+                .invalidateHttpSession(true)
+                .and()
+                .rememberMe()
+                .key("uniqueAndSecret")
+                .tokenValiditySeconds(604800)
+                .userDetailsService(userDetailsService());
 
         return httpSecurity.build();
     }
@@ -53,8 +62,8 @@ public class SecurityConfiguration {
         return new BCryptPasswordEncoder();
     }
 
-//    @Bean
-//    public UserDetailsService userDetailsService() {
-//        return new TradingForecastsUserDetailsService(userService);
-//    }
+    @Bean
+    public UserDetailsService userDetailsService() {
+        return new TradingForecastsUserDetailsService(userRepository);
+    }
 }

@@ -8,12 +8,10 @@ import forexbet.tradingforecasts.repository.UserRepository;
 import forexbet.tradingforecasts.service.CategoryService;
 import forexbet.tradingforecasts.service.ForecastService;
 import forexbet.tradingforecasts.service.UserService;
-import forexbet.tradingforecasts.util.CurrentUser;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,16 +20,16 @@ public class ForecastServiceImpl implements ForecastService {
 
     private final ForecastRepository forecastRepository;
     private final ModelMapper modelMapper;
-    private final CurrentUser currentUser;
+//    private final CurrentUser currentUser;
     private final UserService userService;
     private final CategoryService categoryService;
     private final UserRepository userRepository;
 
 
-    public ForecastServiceImpl(ForecastRepository forecastRepository, ModelMapper modelMapper, CurrentUser currentUser, UserService userService, CategoryService categoryService, UserRepository userRepository) {
+    public ForecastServiceImpl(ForecastRepository forecastRepository, ModelMapper modelMapper, UserService userService, CategoryService categoryService, UserRepository userRepository) {
         this.forecastRepository = forecastRepository;
         this.modelMapper = modelMapper;
-        this.currentUser = currentUser;
+//        this.currentUser = currentUser;
         this.userService = userService;
         this.categoryService = categoryService;
         this.userRepository = userRepository;
@@ -40,9 +38,9 @@ public class ForecastServiceImpl implements ForecastService {
     @Override
     public void addForecast(ForecastServiceModel forecastServiceModel) {
         Forecast forecast = modelMapper.map(forecastServiceModel, Forecast.class);
-        forecast.setAdmin(userService.findById(currentUser.getId()))
-                .setCategory(categoryService.findByCategoryNameEnum(forecastServiceModel.getCategory()))
-                .setForecastType(forecastServiceModel.getForecastType());
+//        forecast.setAdmin(userService.findById(currentUser.getId()))
+//                .setCategory(categoryService.findByCategoryNameEnum(forecastServiceModel.getCategory()))
+//                .setForecastType(forecastServiceModel.getForecastType());
 
         forecastRepository.save(forecast);
     }

@@ -7,7 +7,6 @@ import forexbet.tradingforecasts.model.service.UserServiceModel;
 import forexbet.tradingforecasts.repository.UserRepository;
 import forexbet.tradingforecasts.service.UserRoleService;
 import forexbet.tradingforecasts.service.UserService;
-import forexbet.tradingforecasts.util.CurrentUser;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -23,14 +22,14 @@ public class UserServiceImpl implements UserService {
     private final UserRoleService userRoleService;
     private final PasswordEncoder passwordEncoder;
     private final ModelMapper modelMapper;
-    private final CurrentUser currentUser;
+  //  private final CurrentUser currentUser;
 
-    public UserServiceImpl(UserRepository userRepository, UserRoleService userRoleService, PasswordEncoder passwordEncoder, ModelMapper modelMapper, CurrentUser currentUser) {
+    public UserServiceImpl(UserRepository userRepository, UserRoleService userRoleService, PasswordEncoder passwordEncoder, ModelMapper modelMapper) {
         this.userRepository = userRepository;
         this.userRoleService = userRoleService;
         this.passwordEncoder = passwordEncoder;
         this.modelMapper = modelMapper;
-        this.currentUser = currentUser;
+     //   this.currentUser = currentUser;
     }
 
     @Override
@@ -107,6 +106,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<Forecast> getCurrentUserForecasts() {
-        return userRepository.findByUsername(currentUser.getUsername()).get().getForecasts();
+//        return userRepository.findByUsername(currentUser.getUsername()).get().getForecasts();
+        return null;
     }
 }

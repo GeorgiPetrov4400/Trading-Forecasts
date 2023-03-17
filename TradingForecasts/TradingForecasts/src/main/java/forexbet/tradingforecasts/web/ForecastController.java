@@ -3,7 +3,6 @@ package forexbet.tradingforecasts.web;
 import forexbet.tradingforecasts.model.dto.ForecastAddDTO;
 import forexbet.tradingforecasts.model.service.ForecastServiceModel;
 import forexbet.tradingforecasts.service.ForecastService;
-import forexbet.tradingforecasts.util.CurrentUser;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
@@ -15,12 +14,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/forecasts")
 public class ForecastController {
 
-    private final CurrentUser currentUser;
+//    private final CurrentUser currentUser;
     private final ForecastService forecastService;
     private final ModelMapper modelMapper;
 
-    public ForecastController(CurrentUser currentUser, ForecastService forecastService, ModelMapper modelMapper) {
-        this.currentUser = currentUser;
+    public ForecastController(ForecastService forecastService, ModelMapper modelMapper) {
+//        this.currentUser = currentUser;
         this.forecastService = forecastService;
         this.modelMapper = modelMapper;
     }
@@ -62,9 +61,9 @@ public class ForecastController {
 
     @GetMapping("/add")
     public String add() {
-        if (currentUser.getId() == null) {
-            return "redirect:/users/login";
-        }
+//        if (currentUser.getId() == null) {
+//            return "redirect:/users/login";
+//        }
         return "forecast-add";
     }
 
@@ -73,10 +72,10 @@ public class ForecastController {
                               BindingResult bindingResult,
                               RedirectAttributes redirectAttributes) {
 
-        if (currentUser.getId() == null) {
-            return "redirect:/";
-
-        }
+//        if (currentUser.getId() == null) {
+//            return "redirect:/";
+//
+//        }
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("forecastAddDTO", forecastAddDTO)
@@ -94,7 +93,7 @@ public class ForecastController {
 
     @GetMapping("/order/buy/{id}")
     public String buyForecast(@PathVariable Long id) {
-        this.forecastService.buyForecast(id, currentUser.getId());
+//        this.forecastService.buyForecast(id, currentUser.getId());
 
         return "redirect:/orders/order";
     }

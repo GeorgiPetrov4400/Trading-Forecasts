@@ -1,28 +1,26 @@
 package forexbet.tradingforecasts.model.service;
 
-import forexbet.tradingforecasts.service.UserRoleService;
-import forexbet.tradingforecasts.service.UserService;
+import forexbet.tradingforecasts.repository.UserRepository;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
 
 import java.util.stream.Collectors;
 
-@Service
 public class TradingForecastsUserDetailsService implements UserDetailsService {
 
-    private final UserService userService;
+    private final UserRepository userRepository;
 
-    public TradingForecastsUserDetailsService(UserService userService) {
-        this.userService = userService;
+    public TradingForecastsUserDetailsService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        var user = userService.getUserByUsername(username);
+
+        var user = userRepository.findByUsername(username).orElseThrow();
 
         return
                 new User(
