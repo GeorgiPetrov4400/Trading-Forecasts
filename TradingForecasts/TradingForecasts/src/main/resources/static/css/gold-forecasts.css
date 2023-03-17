@@ -47,13 +47,14 @@ div p a {
 }
 
 nav {
-    margin-top: 10px;
+    margin-top: 30px;
     list-style: none;
     font-size: 19px;
 }
 
 nav li {
     list-style: none;
+    color: white;
 }
 
 nav a {
@@ -62,20 +63,21 @@ nav a {
     padding-right: 22px;
 }
 
-nav li ul :hover {
-    color: limegreen;
-
+.nav li {
+    display: inline-block;
 }
 
-/*footer {*/
-/*    !*position: bottom;*!*/
-/*    position: relative;*/
-/*    left: 20px;*/
-/*    bottom: 10px;*/
-/*    height: 30px;*/
-/*    width: 100%;*/
-/*    color: #fff;*/
-/*}*/
+form .button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: medium;
+    cursor: pointer;
+}
+
+nav li :hover {
+    color: limegreen;
+}
 
 @media only screen and (max-width:1280px) {
 

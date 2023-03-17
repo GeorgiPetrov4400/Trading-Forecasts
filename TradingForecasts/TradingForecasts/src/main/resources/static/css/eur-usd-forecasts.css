@@ -55,6 +55,7 @@ nav {
 
 nav li {
     list-style: none;
+    color: white;
 }
 
 nav a {
@@ -63,24 +64,21 @@ nav a {
     padding-right: 22px;
 }
 
-nav li ul :hover {
+.nav li {
+    display: inline-block;
+}
+
+form .button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: medium;
+    cursor: pointer;
+}
+
+nav li :hover {
     color: limegreen;
-
 }
-
-/* body div h3 :hover {
-    background-image: url("hover\ background.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: lime;
-    background-blend-mode: luminosity;
-    text-transform: uppercase;
-}
-
-body div :hover {
-    background-image: none;
-    background-color: none;
-} */
 
 @media only screen and (max-width:700px) {
 

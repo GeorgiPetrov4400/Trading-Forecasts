@@ -48,24 +48,36 @@ div p a {
 }
 
 nav {
-    margin-top: 40px;
+    margin-top: 30px;
     list-style: none;
     font-size: 19px;
 }
 
 nav li {
     list-style: none;
+    color: white;
 }
 
 nav a {
     text-decoration: none;
-    color: white;
+    color: black;
     padding-right: 22px;
 }
 
-nav li ul :hover {
-    color: limegreen;
+.nav li {
+    display: inline-block;
+}
 
+form .button {
+    background: none;
+    border: none;
+    color: black;
+    font-size: medium;
+    cursor: pointer;
+}
+
+nav li :hover {
+    color: limegreen;
 }
 
 @media only screen and (max-width:700px) {

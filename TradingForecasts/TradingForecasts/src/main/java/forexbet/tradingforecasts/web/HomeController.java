@@ -24,10 +24,6 @@ public class HomeController {
 
     @GetMapping("/")
     public String home() {
-//        if (currentUser.getId() == null) {
-//            return "redirect:/";
-//        }
-
         return "index";
     }
 
