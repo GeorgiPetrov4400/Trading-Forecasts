@@ -61,7 +61,7 @@ public class UserController {
         return "login";
     }
 
-    @PostMapping("/users/login-error")
+    @PostMapping("/login-error")
     public String loginFailed(
             @ModelAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY) String username,
             RedirectAttributes redirectAttributes) {

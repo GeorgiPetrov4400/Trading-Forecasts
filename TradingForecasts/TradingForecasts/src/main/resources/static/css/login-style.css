@@ -16,9 +16,11 @@ form div label {
   color: white;
 }
 
-/*form div .text-danger {*/
-/*  color: red;*/
-/*}*/
+.text-danger {
+  background-color: whitesmoke;
+  color: red;
+  font-size: large;
+}
 
 nav {
   margin-top: 30px;

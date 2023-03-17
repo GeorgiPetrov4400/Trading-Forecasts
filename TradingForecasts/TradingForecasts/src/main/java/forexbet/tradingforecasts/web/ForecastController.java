@@ -14,12 +14,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/forecasts")
 public class ForecastController {
 
-//    private final CurrentUser currentUser;
     private final ForecastService forecastService;
     private final ModelMapper modelMapper;
 
     public ForecastController(ForecastService forecastService, ModelMapper modelMapper) {
-//        this.currentUser = currentUser;
         this.forecastService = forecastService;
         this.modelMapper = modelMapper;
     }
@@ -61,9 +59,6 @@ public class ForecastController {
 
     @GetMapping("/add")
     public String add() {
-//        if (currentUser.getId() == null) {
-//            return "redirect:/users/login";
-//        }
         return "forecast-add";
     }
 
