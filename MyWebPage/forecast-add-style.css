@@ -37,9 +37,14 @@ textarea {
     resize: none;
 }
 
+/* .button {
+    width: 100%;
+    background-color: aqua;
+    height: 30px;
+} */
+
 .button :hover {
     background-color: green;
-    /* border-radius: 4px; */
     color: white;
     cursor: pointer;
 }

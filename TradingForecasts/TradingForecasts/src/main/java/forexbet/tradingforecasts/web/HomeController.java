@@ -32,23 +32,23 @@ public class HomeController {
         return "admin";
     }
 
-    @GetMapping("/orders/order")
-    public String order(Model model) {
-//        if (currentUser.getId() == null) {
-//            return "redirect:/users/login";
-//        }
-
-        List<Forecast> currentUserForecasts = userService.getCurrentUserForecasts();
-        model.addAttribute("currentUserForecasts", currentUserForecasts);
-
-//        List<Forecast> ownForecastsAdded = this.forecastService.getOwnForecastsAdded(currentUser.getId());
-//        model.addAttribute("ownForecastsAdded", ownForecastsAdded);
+//    @GetMapping("/orders/order")
+//    public String order(Model model) {
+////        if (currentUser.getId() == null) {
+////            return "redirect:/users/login";
+////        }
 //
-//        List<Forecast> allActiveForecasts = forecastService.getAllActiveForecasts(currentUser.getId());
-//        model.addAttribute("allActiveForecasts", allActiveForecasts);
-
-        return "order";
-    }
+//        List<Forecast> currentUserForecasts = userService.getCurrentUserForecasts();
+//        model.addAttribute("currentUserForecasts", currentUserForecasts);
+//
+////        List<Forecast> ownForecastsAdded = this.forecastService.getOwnForecastsAdded(currentUser.getId());
+////        model.addAttribute("ownForecastsAdded", ownForecastsAdded);
+////
+////        List<Forecast> allActiveForecasts = forecastService.getAllActiveForecasts(currentUser.getId());
+////        model.addAttribute("allActiveForecasts", allActiveForecasts);
+//
+//        return "order";
+//    }
 
     @GetMapping("/contact")
     public String contact() {

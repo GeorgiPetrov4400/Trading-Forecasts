@@ -12,6 +12,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.context.DelegatingSecurityContextRepository;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
+import org.springframework.security.web.context.RequestAttributeSecurityContextRepository;
+import org.springframework.security.web.context.SecurityContextRepository;
 
 @Configuration
 public class SecurityConfiguration {
@@ -23,14 +27,15 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity httpSecurity,
+                                           SecurityContextRepository securityContextRepository) throws Exception {
         httpSecurity.authorizeHttpRequests()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                 .requestMatchers("/", "/about", "/users/login-error").permitAll()
                 .requestMatchers("/users/register", "/users/login").anonymous()
                 .requestMatchers("/about", "/contact", "/orders/order").authenticated()
-                .requestMatchers("/forecasts/add").hasRole(UserRoleEnum.Moderator.name())
-                .requestMatchers("/admin", "/forecasts/add").hasRole(UserRoleEnum.Admin.name())
+                .requestMatchers("/orders/order").hasRole(UserRoleEnum.Moderator.name())
+                .requestMatchers("/admin", "/forecasts/add", "/orders/order").hasRole(UserRoleEnum.Admin.name())
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -65,5 +70,13 @@ public class SecurityConfiguration {
     @Bean
     public UserDetailsService userDetailsService() {
         return new TradingForecastsUserDetailsService(userRepository);
+    }
+
+    @Bean
+    public SecurityContextRepository securityContextRepository() {
+        return new DelegatingSecurityContextRepository(
+                new RequestAttributeSecurityContextRepository(),
+                new HttpSessionSecurityContextRepository()
+        );
     }
 }

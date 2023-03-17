@@ -20,7 +20,6 @@ public class ForecastServiceImpl implements ForecastService {
 
     private final ForecastRepository forecastRepository;
     private final ModelMapper modelMapper;
-//    private final CurrentUser currentUser;
     private final UserService userService;
     private final CategoryService categoryService;
     private final UserRepository userRepository;
@@ -29,7 +28,6 @@ public class ForecastServiceImpl implements ForecastService {
     public ForecastServiceImpl(ForecastRepository forecastRepository, ModelMapper modelMapper, UserService userService, CategoryService categoryService, UserRepository userRepository) {
         this.forecastRepository = forecastRepository;
         this.modelMapper = modelMapper;
-//        this.currentUser = currentUser;
         this.userService = userService;
         this.categoryService = categoryService;
         this.userRepository = userRepository;

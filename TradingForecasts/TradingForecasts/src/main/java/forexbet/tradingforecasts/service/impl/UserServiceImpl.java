@@ -8,8 +8,10 @@ import forexbet.tradingforecasts.repository.UserRepository;
 import forexbet.tradingforecasts.service.UserRoleService;
 import forexbet.tradingforecasts.service.UserService;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,15 +23,17 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final UserRoleService userRoleService;
     private final PasswordEncoder passwordEncoder;
+    private final UserDetailsService userDetailsService;
+    private final SecurityContextRepository securityContextRepository;
     private final ModelMapper modelMapper;
-  //  private final CurrentUser currentUser;
 
-    public UserServiceImpl(UserRepository userRepository, UserRoleService userRoleService, PasswordEncoder passwordEncoder, ModelMapper modelMapper) {
+    public UserServiceImpl(UserRepository userRepository, UserRoleService userRoleService, PasswordEncoder passwordEncoder, UserDetailsService userDetailsService, SecurityContextRepository securityContextRepository, ModelMapper modelMapper) {
         this.userRepository = userRepository;
         this.userRoleService = userRoleService;
         this.passwordEncoder = passwordEncoder;
+        this.userDetailsService = userDetailsService;
+        this.securityContextRepository = securityContextRepository;
         this.modelMapper = modelMapper;
-     //   this.currentUser = currentUser;
     }
 
     @Override
@@ -64,7 +68,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserServiceModel registerUser(UserServiceModel userServiceModel) {
+    public void registerUser(UserServiceModel userServiceModel) {
         if (!userServiceModel.getPassword().equals(userServiceModel.getConfirmPassword())) {
             throw new RuntimeException("Passwords should match");
         }
@@ -91,7 +95,7 @@ public class UserServiceImpl implements UserService {
                 .setLastName(userServiceModel.getLastName())
                 .setRoles(List.of(normalUserRole));
 
-        return modelMapper.map(userRepository.save(normalUser), UserServiceModel.class);
+        modelMapper.map(userRepository.save(normalUser), UserServiceModel.class);
     }
 
     public User getUserByUsername(String username) {

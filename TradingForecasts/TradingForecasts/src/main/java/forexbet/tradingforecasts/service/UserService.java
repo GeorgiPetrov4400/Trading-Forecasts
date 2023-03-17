@@ -5,7 +5,6 @@ import forexbet.tradingforecasts.model.entity.User;
 import forexbet.tradingforecasts.model.service.UserServiceModel;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface UserService {
 
@@ -13,7 +12,7 @@ public interface UserService {
 
     void initModerator();
 
-    UserServiceModel registerUser(UserServiceModel userServiceModel);
+    void registerUser(UserServiceModel userServiceModel);
 
     User getUserByUsername(String username);
 

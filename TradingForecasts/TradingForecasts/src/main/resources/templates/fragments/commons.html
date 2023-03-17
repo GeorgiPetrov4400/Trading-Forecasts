@@ -46,7 +46,7 @@
             <a th:href="@{/freeForecasts}">Free Forecast</a>
         </li>
         <li class="welcome" sec:authorize="isAuthenticated()">
-            Welcome,
+            Welcome
             <th:block sec:authentication="name"></th:block>!
         </li>
         <li>

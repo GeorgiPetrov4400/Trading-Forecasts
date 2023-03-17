@@ -3,15 +3,14 @@ package forexbet.tradingforecasts.web;
 import forexbet.tradingforecasts.model.dto.UserRegisterDTO;
 import forexbet.tradingforecasts.model.service.UserServiceModel;
 import forexbet.tradingforecasts.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -37,7 +36,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String registerConfirm(@Valid UserRegisterDTO userRegisterDTO,
+    public String registerNewUser(@Valid UserRegisterDTO userRegisterDTO,
                                   BindingResult bindingResult,
                                   RedirectAttributes redirectAttributes) {
 
