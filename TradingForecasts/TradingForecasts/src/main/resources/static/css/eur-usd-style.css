@@ -33,15 +33,6 @@ div h3 a {
     text-decoration: none;
 }
 
-/* main :hover {
-    background-image: url("hover\ background.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    width: auto;
-    height: auto;
-} */
-
 main div :hover {
     background-color: #10548b;
     color: gold;
@@ -57,24 +48,36 @@ p {
 }
 
 nav {
-    margin-top: 20px;
+    margin-top: 30px;
     list-style: none;
     font-size: 19px;
 }
 
 nav li {
     list-style: none;
+    color: black;
 }
 
 nav a {
     text-decoration: none;
-    color: #10548b;
+    color: black;
     padding-right: 22px;
 }
 
-nav li ul :hover {
-    color: limegreen;
+.nav li {
+    display: inline-block;
+}
 
+form .button {
+    background: none;
+    border: none;
+    color: black;
+    font-size: medium;
+    cursor: pointer;
+}
+
+nav li :hover {
+    color: limegreen;
 }
 
 @media only screen and (max-width:1200px) {

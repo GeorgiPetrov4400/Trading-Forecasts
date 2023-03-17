@@ -60,7 +60,7 @@ nav li {
 
 nav a {
     text-decoration: none;
-    color: black;
+    color: white;
     padding-right: 22px;
 }
 
@@ -71,7 +71,7 @@ nav a {
 form .button {
     background: none;
     border: none;
-    color: black;
+    color: white;
     font-size: medium;
     cursor: pointer;
 }
