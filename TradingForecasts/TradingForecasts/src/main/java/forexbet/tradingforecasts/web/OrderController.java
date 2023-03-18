@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 //@RequestMapping("/orders")
 public class OrderController {
 
-    @GetMapping("/order")
+    @GetMapping("/orders/order")
     public String order() {
         return "order";
     }

@@ -12,7 +12,7 @@ import java.util.List;
 @Controller
 public class HomeController {
 
-//    private final CurrentUser currentUser;
+    //    private final CurrentUser currentUser;
     private final ForecastService forecastService;
     private final UserService userService;
 
@@ -31,6 +31,11 @@ public class HomeController {
     public String admin() {
         return "admin";
     }
+
+//    @GetMapping("/orders/order")
+//    public String orders() {
+//        return "redirect:order";
+//    }
 
 //    @GetMapping("/orders/order")
 //    public String order(Model model) {

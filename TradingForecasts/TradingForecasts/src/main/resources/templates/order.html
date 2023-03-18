@@ -72,7 +72,7 @@
 <main>
     <div class="container bg-blur rounded mt-1 mb-4">
         <h3>My Orders</h3>
-        <h4 th:text="${@currentUser.username}">Username</h4>
+        <h4 th:text="${username}">Username</h4>
         <div style="height: 30vh; overflow: auto">
             <table>
                 <tr th:each="f : ${currentUserForecasts}">
