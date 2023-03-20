@@ -16,8 +16,8 @@
 <div>
     <form th:action="@{/users/login}" th:method="post">
 
-<!--        <div th:each="error: ${#fields.errors()}" th:text="${error}" class="text-danger">Error messages</div>-->
-<!--        <div th:if="${bad_credentials}" class="text-danger">Invalid username or password!</div>-->
+        <!--        <div th:each="error: ${#fields.errors()}" th:text="${error}" class="text-danger">Error messages</div>-->
+        <!--        <div th:if="${bad_credentials}" class="text-danger">Invalid username or password!</div>-->
 
         <div class="container">
             <div th:if="${param.error}" class="alert alert-danger">
@@ -36,6 +36,10 @@
                 <input type="password" placeholder="Enter your password" id="password" name="password"
                        required minlength="5" maxlength="20">
                 <small class="text-danger" th:if="${bad_credentials}">Invalid username or password!</small>
+
+                <div class="container register" th:if="${bad_credentials}">
+                    <p>Create new account?<a th:href="@{/users/register}">Register</a>.</p>
+                </div>
             </div>
 
             <div>
@@ -48,9 +52,9 @@
                 <button type="submit">Login</button>
             </div>
         </div>
-<!--        <div class="errors alert alert-danger" th:if="${bad_credentials}">-->
-<!--            Invalid username or password.-->
-<!--        </div>-->
+        <!--        <div class="errors alert alert-danger" th:if="${bad_credentials}">-->
+        <!--            Invalid username or password.-->
+        <!--        </div>-->
     </form>
 </div>
 

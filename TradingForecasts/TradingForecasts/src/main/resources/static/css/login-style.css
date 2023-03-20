@@ -1,52 +1,63 @@
 body {
-  background-image: url(/images/backgroundForexTrading.jpeg);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
-  width: auto;
-  height: auto;
-  background-color: #10548b;
-  margin-left: 100px;
-  margin-right: 100px;
-  margin-top: 12px;
+    background-image: url(/images/backgroundForexTrading.jpeg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    width: auto;
+    height: auto;
+    background-color: #10548b;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 12px;
 }
 
 form div label {
-  color: white;
+    color: white;
 }
 
 .text-danger {
-  background-color: whitesmoke;
-  color: red;
-  font-size: large;
+    background-color: whitesmoke;
+    color: red;
+    font-size: large;
 }
 
 nav {
-  margin-top: 30px;
-  list-style: none;
-  font-size: 19px;
+    margin-top: 30px;
+    list-style: none;
+    font-size: 19px;
 }
 
 nav li {
-  list-style: none;
-  color: white;
+    list-style: none;
+    color: white;
 }
 
 nav a {
-  text-decoration: none;
-  color: white;
-  padding-right: 22px;
+    text-decoration: none;
+    color: white;
+    padding-right: 22px;
 }
 
 .nav li {
-  display: inline-block;
+    display: inline-block;
 }
 
 nav li :hover {
-  color: limegreen;
+    color: limegreen;
 
 }
+
+p {
+    font-size: 18px;
+    color: whitesmoke;
+}
+
+a {
+    font-size: 18px;
+    color: whitesmoke;
+}
+
 
 /* form div label :hover {
   background-color: #10548b;
@@ -55,62 +66,63 @@ nav li :hover {
 
 /* Bordered form */
 form {
-  border: 3px solid #f1f1f1;
+    border: 3px solid #f1f1f1;
 }
 
 /* Full-width inputs */
 input[type=text], input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 
 /* Set a style for all buttons */
 button {
-  background-color: #04AA6D;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
 }
 
 /* Add a hover effect for buttons */
 button:hover {
-  opacity: 0.8;
+    opacity: 0.8;
 }
 
 /* Add padding to containers */
 .container {
-  padding: 16px;
+    padding: 16px;
 }
 
 /* The "Forgot password" text */
 span.psw {
-  float: right;
-  padding-top: 16px;
+    float: right;
+    padding-top: 16px;
 }
 
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
-  span.psw {
-    display: block;
-    float: none;
-  }
-  /*.cancelbtn {*/
-  /*  width: 100%;*/
-  /*}*/
+    span.psw {
+        display: block;
+        float: none;
+    }
+
+    /*.cancelbtn {*/
+    /*  width: 100%;*/
+    /*}*/
 }
 
 footer {
-  position: fixed;
-  left: 20px;
-  bottom: 10px;
-  height: 30px;
-  width: 100%;
-  color: #fff;
+    position: fixed;
+    left: 20px;
+    bottom: 10px;
+    height: 30px;
+    width: 100%;
+    color: #fff;
 }
