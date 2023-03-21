@@ -1,5 +1,5 @@
 body {
-    background-image: url(/images/background-order.jpg);
+    background-image: url("/images/background-order.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
@@ -32,10 +32,6 @@ nav {
     font-size: 19px;
 }
 
-.nav li {
-    display: inline-block;
-}
-
 nav li {
     list-style: none;
     color: white;
@@ -47,8 +43,8 @@ nav a {
     padding-right: 22px;
 }
 
-nav li :hover {
-    color: limegreen;
+.nav li {
+    display: inline-block;
 }
 
 form .button {
@@ -57,6 +53,10 @@ form .button {
     color: white;
     font-size: medium;
     cursor: pointer;
+}
+
+nav li :hover {
+    color: limegreen;
 }
 
 table {
@@ -89,16 +89,6 @@ ul li {
     margin-left: -40px;
 }
 
-.buy-button {
-    background-color: green;
-    text-decoration: none;
-    list-style: none;
-}
-
-.buy-button :hover {
-    color: black;
-}
-
 .expired-button {
     background-color: darkgoldenrod;
 }
@@ -116,7 +106,7 @@ ul li {
 }
 
 textarea {
-    resize: vertical;
+    resize: none;
 }
 
 footer {

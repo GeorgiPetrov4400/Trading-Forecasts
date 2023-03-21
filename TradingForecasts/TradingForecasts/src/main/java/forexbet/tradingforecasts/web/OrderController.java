@@ -9,10 +9,10 @@ import org.springframework.web.servlet.ModelAndView;
 //@RequestMapping("/orders")
 public class OrderController {
 
-    @GetMapping("/orders/order")
-    public String order() {
-        return "order";
-    }
+//    @GetMapping("/orders/order")
+//    public String order() {
+//        return "order";
+//    }
 
     @GetMapping("/orders/{id}")
     public String getOrderById(@PathVariable("id") Long id) {

@@ -75,46 +75,46 @@
         <h4 th:text="${username}">Username</h4>
         <div style="height: 30vh; overflow: auto">
             <table>
-                <tr th:each="f : ${currentUserForecasts}">
-                    <td th:text="${f.category.getCategory().name()}" style="width: 5%">Category</td>
-                    <td th:text="${f.forecastType.name()}" style="width: 5%">Type</td>
-                    <td th:text="${f.description}" style="width: 20%">Description</td>
-                    <td th:text="${f.pictureUrl}" style="width: 60%">Picture</td>
-                    <td th:text="${f.price + ' €'}" style="width: 5%">Price €</td>
+                <tr each="f : ${currentUserForecasts}">
+                    <td text="${f.category.getCategory().name()}" style="width: 5%">Category</td>
+                    <td text="${f.forecastType.name()}" style="width: 5%">Type</td>
+                    <td text="${f.description}" style="width: 20%">Description</td>
+                    <td text="${f.pictureUrl}" style="width: 60%">Picture</td>
+                    <td text="${f.price + ' €'}" style="width: 5%">Price €</td>
                 </tr>
             </table>
         </div>
     </div>
 
     <div class="container bg-blur rounded mt-1 mb-4">
-        <h3>My Added Forecasts: <span th:text="${ownForecastsAdded.size()}">totalOffers</span></h3>
+        <h3>My Added Forecasts: <span text="${ownForecastsAdded.size()}">Total Offers</span></h3>
         <!--        <h6 th:text="${activeForecast.size()}">totalOffers</h6>-->
 
         <div class="active-forecast" style="height: 30vh; overflow: auto">
-            <ul th:each="f : ${ownForecastsAdded}">
+            <ul each="f : ${ownForecastsAdded}">
                 <li>
                     <table>
                         <tr>
                             <td style="width: 5%">
-                                <a th:text="*{f.getCategory().toString()}">Category</a>
+                                <a text="*{f.getCategory().toString()}">Category</a>
                             </td>
                             <td style="width: 5%">
-                                <a th:text="*{f.getForecastType()}">Type</a>
+                                <a text="*{f.getForecastType()}">Type</a>
                             </td>
                             <td style="width: 20%">
-                                <a th:text="*{f.getDescription()}">Description</a>
+                                <a text="*{f.getDescription()}">Description</a>
                             </td>
                             <td style="width: 60%">
-                                <a th:text="*{f.getPictureUrl()}">Picture</a>
+                                <a text="*{f.getPictureUrl()}">Picture</a>
                             </td>
                             <td style="width: 5%">
-                                <a th:text="*{f.getPrice() + ' €'}">Price</a>
+                                <a text="*{f.getPrice() + ' €'}">Price</a>
                             </td>
                             <td class="buy-button" style="width: 1%">
-                                <a th:href="@{/forecasts/order/buy/{id}(id=${f.id})}">BUY</a>
+                                <a href="@{/forecasts/order/buy/{id}(id=${f.id})}">BUY</a>
                             </td>
                             <td class="expired-button" style="width: 1%">
-                                <a th:href="@{/forecasts/order/expire/{id}(id=*{f.id})}">Expired</a>
+                                <a href="@{/forecasts/order/expire/{id}(id=*{f.id})}">Expired</a>
                             </td>
                             <td class="delete-button" style="width: 1%">
                                 <a href="#">Delete</a>
@@ -127,34 +127,37 @@
     </div>
 
     <div class="container bg-blur rounded mt-1 mb-4">
-        <h3>Active Forecasts: <span th:text="${allActiveForecasts.size()}">totalOffers</span></h3>
+        <h3>Active Forecasts: <span text="${allActiveForecasts.size()}">Total Offers</span></h3>
         <!--        <h6 th:text="${activeForecast.size()}">totalOffers</h6>-->
 
         <div class="active-forecast" style="height: 30vh; overflow: auto">
-            <ul th:each="f : ${allActiveForecasts}">
+            <ul each="f : ${allActiveForecasts}">
                 <li>
                     <table>
                         <tr>
                             <td style="width: 5%">
-                                <a th:text="*{f.getCategory().toString()}">Category</a>
+                                <a text="*{f.getCategory().toString()}">Category</a>
                             </td>
                             <td style="width: 5%">
-                                <a th:text="*{f.getForecastType()}">Type</a>
+                                <a text="*{f.getForecastType()}">Type</a>
                             </td>
                             <td style="width: 20%">
-                                <a th:text="*{f.getDescription()}">Description</a>
+                                <a text="*{f.getDescription()}">Description</a>
                             </td>
                             <td style="width: 60%">
-                                <a th:text="*{f.getPictureUrl()}">Picture</a>
+                                <a text="*{f.getPictureUrl()}">Picture</a>
                             </td>
                             <td style="width: 5%">
-                                <a th:text="*{f.getPrice() + ' €'}">Price</a>
+                                <a text="*{f.getPrice() + ' €'}">Price</a>
                             </td>
                             <td class="buy-button" style="width: 1%">
-                                <a th:href="@{/forecasts/order/buy/{id}(id=${f.id})}">BUY</a>
+                                <a href="@{/forecasts/order/buy/{id}(id=${f.id})}">BUY</a>
                             </td>
                             <td class="expired-button" style="width: 1%">
-                                <a th:href="@{/forecasts/order/expire/{id}(id=*{f.id})}">Expired</a>
+                                <a href="@{/forecasts/order/expire/{id}(id=*{f.id})}">Expired</a>
+                            </td>
+                            <td class="delete-button" style="width: 1%">
+                                <a href="#">Delete</a>
                             </td>
                         </tr>
                     </table>

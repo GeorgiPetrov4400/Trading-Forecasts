@@ -1,23 +1,16 @@
 package forexbet.tradingforecasts.web;
 
-import forexbet.tradingforecasts.model.entity.Forecast;
 import forexbet.tradingforecasts.service.ForecastService;
 import forexbet.tradingforecasts.service.UserService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.List;
 
 @Controller
 public class HomeController {
-
-    //    private final CurrentUser currentUser;
     private final ForecastService forecastService;
     private final UserService userService;
 
     public HomeController(ForecastService forecastService, UserService userService) {
-//        this.currentUser = currentUser;
         this.forecastService = forecastService;
         this.userService = userService;
     }
@@ -32,10 +25,10 @@ public class HomeController {
         return "admin";
     }
 
-//    @GetMapping("/orders/order")
-//    public String orders() {
-//        return "redirect:order";
-//    }
+    @GetMapping("/orders/order")
+    public String orders() {
+        return "order";
+    }
 
 //    @GetMapping("/orders/order")
 //    public String order(Model model) {
@@ -63,5 +56,10 @@ public class HomeController {
     @GetMapping("/about")
     public String about() {
         return "about";
+    }
+
+    @GetMapping("/free-forecasts")
+    public String freeForecasts() {
+        return "free-forecast";
     }
 }

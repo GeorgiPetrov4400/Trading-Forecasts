@@ -42,8 +42,8 @@
         <li sec:authorize="isAuthenticated()">
             <a th:href="@{/orders/order}">Orders</a>
         </li>
-        <li sec:authorize="isAnonymous()">
-            <a th:href="@{/freeForecasts}">Free Forecast</a>
+        <li>
+            <a th:href="@{/free-forecasts}">Free Forecast</a>
         </li>
         <li class="welcome" sec:authorize="isAuthenticated()">
             Welcome

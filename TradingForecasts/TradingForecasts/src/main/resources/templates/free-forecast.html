@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Forecasts</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" th:href="@{/images/favicon.png}">
+    <link rel="stylesheet" th:href="@{/css/free-forecast.css}">
+</head>
+<body>
+
+<nav th:replace="~{fragments/commons::nav}"></nav>
+
+<main>
+    <div class="container bg-blur rounded mt-1 mb-4">
+        <h3>Free Forecasts</h3>
+        <h6>Total Offers</h6>
+
+        <div class="active-forecast" style="height: 30vh; overflow: auto">
+            <ul>
+                <li>
+                    <table>
+                        <tr>
+                            <td style="width: 10%">
+                                <a>Category</a>
+                            </td>
+                            <td style="width: 10%">
+                                <a>Type</a>
+                            </td>
+                            <td style="width: 10%">
+                                <a>Picture</a>
+                            </td>
+                            <td style="width: 10%">
+                                <a>Description</a>
+                            </td>
+                            <td class="expired-button" style="width: 1%">
+                                <a href="#">Expired</a>
+                            </td>
+                            <td class="delete-button" style="width: 1%">
+                                <a href="#">Delete</a>
+                            </td>
+                        </tr>
+                    </table>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</main>
+
+<footer th:replace="~{fragments/commons::footer}"></footer>
+
+</body>
+</html>

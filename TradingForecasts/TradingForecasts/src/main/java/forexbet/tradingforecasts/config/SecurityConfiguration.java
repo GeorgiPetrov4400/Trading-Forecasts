@@ -31,7 +31,7 @@ public class SecurityConfiguration {
                                            SecurityContextRepository securityContextRepository) throws Exception {
         httpSecurity.authorizeHttpRequests()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                .requestMatchers("/", "/about", "/users/login-error").permitAll()
+                .requestMatchers("/", "/about", "/users/login-error", "/free-forecasts").permitAll()
                 .requestMatchers("/users/register", "/users/login").anonymous()
                 .requestMatchers("/about", "/contact", "/orders/order").authenticated()
                 .requestMatchers("/orders/order").hasRole(UserRoleEnum.Moderator.name())
