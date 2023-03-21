@@ -63,10 +63,12 @@ nav li :hover {
 }
 
 .button-add {
-    width: 100%;
+    width: 50%;
     background-color: rgb(69, 201, 201);
-    height: 30px;
+    height: 40px;
     font-size: 18px;
+    margin-top: 20px;
+    border-radius: 20px;
 }
 
 .button :hover {

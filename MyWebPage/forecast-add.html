@@ -47,7 +47,7 @@
                     <label for="picture" class="picture">Picture Url</label>
                 </div>
                 <div>
-                    <textarea th:field="*{picture}" th:errorclass="is-invalid" type="text" class="picture"
+                    <textarea th:field="*{picture}" th:errorclass="is-invalid" type="text" class="form-control"
                         id="picture" name="picture"></textarea>
                 </div>
                 <small class="invalid-feedback text-danger">
@@ -71,7 +71,7 @@
                 </div>
                 <div>
                     <select class="custom-select" id="category" name="category">
-                        <option value="">Select condition</option>
+                        <option value="">Select category</option>
                         <option>EUR/USD</option>
                         <option>EUR/GBP</option>
                         <option>Gold</option>
@@ -89,7 +89,7 @@
                 </div>
                 <div>
                     <select class="custom-select" id="type" name="type">
-                        <option value="">Select condition</option>
+                        <option value="">Select type</option>
                         <option>Long</option>
                         <option>Short</option>
                     </select>
@@ -98,7 +98,7 @@
             </div>
 
             <div class="button">
-                <button type="submit" class="btn-warning" value="Register">Add Forecast</button>
+                <button type="submit" class="button" value="Register">Add Forecast</button>
             </div>
 
         </form>
