@@ -38,7 +38,7 @@
             </div>
             <div>
                     <textarea th:field="*{pictureUrl}"
-                              type="text" class="picture"
+                              type="text" class="form-control"
                               id="picture" name="picture"></textarea>
             </div>
             <small class="errors alert alert-danger" th:if="${#fields.hasErrors('pictureUrl')}">Picture url must be
@@ -50,11 +50,11 @@
                 <label th:for="price" class="price">Price</label>
             </div>
             <div>
-                <input th:field="*{price}" th:errorclass="is-invalid" type="number" step="1.00" class="form-control"
+                <input th:field="*{price}" th:errorclass="is-invalid" type="number" step="1.00" class="price-input"
                        id="price" name="price"/>
             </div>
-            <small class="errors alert alert-danger" th:if="${#fields.hasErrors('price')}">Price must be positive
-                number!</small>
+            <small class="errors alert alert-danger" th:if="${#fields.hasErrors('price')}">Price must be null or
+                positive number!</small>
         </div>
 
         <div class="form-group">
@@ -95,7 +95,7 @@
         </div>
 
         <div class="button">
-            <button type="submit" class="btn-warning" value="Register">Add Forecast</button>
+            <button type="submit" class="button-add" value="Register">Add Forecast</button>
         </div>
 
     </form>

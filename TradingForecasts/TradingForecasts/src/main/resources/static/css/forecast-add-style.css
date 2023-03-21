@@ -42,10 +42,31 @@ nav li :hover {
     margin-top: 10px;
     padding: 10px;
     align-items: center;
+    font-size: 18px;
 }
 
-textarea {
-    resize: none;
+.form-control {
+    width: 100%;
+    height: 30px;
+}
+
+.price-input {
+    width: 100%;
+    height: 30px;
+    text-align: right;
+}
+
+.custom-select {
+    width: 100%;
+    height: 30px;
+    font-size: 18px;
+}
+
+.button-add {
+    width: 100%;
+    background-color: rgb(69, 201, 201);
+    height: 30px;
+    font-size: 18px;
 }
 
 .button :hover {
@@ -55,18 +76,26 @@ textarea {
     cursor: pointer;
 }
 
+textarea {
+    resize: none;
+}
 
 .bg-blur {
-    background-color: rgb(0, 0, 0); 
-    background-color: rgba(0, 0, 0, 0.8); 
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.8);
     color: white;
     font-weight: bold;
     border: 3px solid whitesmoke;
     z-index: 1;
-    width: max-content;
-    padding: 20px;
+    width: auto;
+    padding: 50px;
     text-align: center;
-    margin: 20px;
+    margin: 20px 50px;
+}
+
+small {
+    color: red;
+    font-size: 16px;
 }
 
 footer {
