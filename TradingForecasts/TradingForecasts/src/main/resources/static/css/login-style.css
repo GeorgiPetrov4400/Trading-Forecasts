@@ -54,17 +54,10 @@ p {
 }
 
 a {
-    font-size: 18px;
+    font-size: 20px;
     color: whitesmoke;
 }
 
-
-/* form div label :hover {
-  background-color: #10548b;
-  color: gold;
-} */
-
-/* Bordered form */
 form {
     border: 3px solid #f1f1f1;
 }
@@ -81,6 +74,7 @@ input[type=text], input[type=password] {
 
 /* Set a style for all buttons */
 button {
+    font-size: 20px;
     background-color: #04AA6D;
     color: white;
     padding: 14px 20px;
@@ -90,7 +84,6 @@ button {
     width: 100%;
 }
 
-/* Add a hover effect for buttons */
 button:hover {
     opacity: 0.8;
 }

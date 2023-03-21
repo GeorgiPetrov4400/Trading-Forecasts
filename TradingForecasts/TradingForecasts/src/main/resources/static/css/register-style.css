@@ -47,6 +47,7 @@ hr {
 }
 
 .registerbtn {
+    font-size: 20px;
     background-color: #04AA6D;
     color: white;
     padding: 16px 20px;
@@ -65,8 +66,16 @@ a {
     color: whitesmoke;
 }
 
+.errors {
+    color: red;
+    font-size: 18px;
+    margin-left: 20px;
+    margin-top: 3px;
+}
+
 .signin {
     text-align: center;
+    font-size: 20px;
 }
 
 footer {
