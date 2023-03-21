@@ -1,6 +1,7 @@
 package forexbet.tradingforecasts.repository;
 
 import forexbet.tradingforecasts.model.entity.User;
+import forexbet.tradingforecasts.model.entity.enums.UserRoleEnum;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

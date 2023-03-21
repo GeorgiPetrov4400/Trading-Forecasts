@@ -1,25 +1,23 @@
 package forexbet.tradingforecasts.web;
 
 import forexbet.tradingforecasts.model.dto.ForecastAddDTO;
-import forexbet.tradingforecasts.model.service.ForecastServiceModel;
 import forexbet.tradingforecasts.service.ForecastService;
 import jakarta.validation.Valid;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.security.Principal;
 
 @Controller
 @RequestMapping("/forecasts")
 public class ForecastController {
 
     private final ForecastService forecastService;
-    private final ModelMapper modelMapper;
 
-    public ForecastController(ForecastService forecastService, ModelMapper modelMapper) {
+    public ForecastController(ForecastService forecastService) {
         this.forecastService = forecastService;
-        this.modelMapper = modelMapper;
     }
 
     @ModelAttribute
@@ -65,12 +63,8 @@ public class ForecastController {
     @PostMapping("/add")
     public String addForecast(@Valid ForecastAddDTO forecastAddDTO,
                               BindingResult bindingResult,
-                              RedirectAttributes redirectAttributes) {
-
-//        if (currentUser.getId() == null) {
-//            return "redirect:/";
-//
-//        }
+                              RedirectAttributes redirectAttributes,
+                              Principal principal) {
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("forecastAddDTO", forecastAddDTO)
@@ -80,9 +74,9 @@ public class ForecastController {
             return "redirect:add";
         }
 
-        forecastService.addForecast(modelMapper.map(forecastAddDTO, ForecastServiceModel.class));
+        forecastService.addForecast(principal, forecastAddDTO);
 
-        return "redirect:/home";
+        return "redirect:/";
 
     }
 

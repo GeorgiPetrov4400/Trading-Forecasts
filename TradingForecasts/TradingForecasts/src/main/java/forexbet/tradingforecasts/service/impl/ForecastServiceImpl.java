@@ -1,8 +1,8 @@
 package forexbet.tradingforecasts.service.impl;
 
+import forexbet.tradingforecasts.model.dto.ForecastAddDTO;
 import forexbet.tradingforecasts.model.entity.Forecast;
 import forexbet.tradingforecasts.model.entity.User;
-import forexbet.tradingforecasts.model.service.ForecastServiceModel;
 import forexbet.tradingforecasts.repository.ForecastRepository;
 import forexbet.tradingforecasts.repository.UserRepository;
 import forexbet.tradingforecasts.service.CategoryService;
@@ -11,8 +11,10 @@ import forexbet.tradingforecasts.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -34,13 +36,17 @@ public class ForecastServiceImpl implements ForecastService {
     }
 
     @Override
-    public void addForecast(ForecastServiceModel forecastServiceModel) {
-        Forecast forecast = modelMapper.map(forecastServiceModel, Forecast.class);
-//        forecast.setAdmin(userService.findById(currentUser.getId()))
-//                .setCategory(categoryService.findByCategoryNameEnum(forecastServiceModel.getCategory()))
-//                .setForecastType(forecastServiceModel.getForecastType());
+    public void addForecast(Principal principal, ForecastAddDTO forecastAddDTO) {
+        Optional<User> adminOptional = userRepository.findByUsername(principal.getName());
 
-        forecastRepository.save(forecast);
+        if (adminOptional.isPresent()) {
+            Forecast forecast = modelMapper.map(forecastAddDTO, Forecast.class);
+            forecast.setAdmin(userService.findById(adminOptional.get().getId()))
+                    .setCategory(categoryService.findByCategoryNameEnum(forecastAddDTO.getCategory()))
+                    .setForecastType(forecastAddDTO.getType());
+
+            forecastRepository.save(forecast);
+        }
     }
 
     @Override
