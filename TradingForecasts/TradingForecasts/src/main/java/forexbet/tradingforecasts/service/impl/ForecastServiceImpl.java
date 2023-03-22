@@ -43,7 +43,10 @@ public class ForecastServiceImpl implements ForecastService {
             Forecast forecast = modelMapper.map(forecastAddDTO, Forecast.class);
             forecast.setAdmin(userService.findById(adminOptional.get().getId()))
                     .setCategory(categoryService.findByCategoryNameEnum(forecastAddDTO.getCategory()))
-                    .setForecastType(forecastAddDTO.getType());
+                    .setForecastType(forecastAddDTO.getType())
+                    .setDescription(forecastAddDTO.getDescription())
+                    .setPictureUrl(forecastAddDTO.getPictureUrl())
+                    .setPrice(forecastAddDTO.getPrice());
 
             forecastRepository.save(forecast);
         }
