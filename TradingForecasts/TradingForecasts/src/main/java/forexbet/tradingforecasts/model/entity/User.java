@@ -27,7 +27,7 @@ public class User extends BaseEntity {
     @ManyToMany(fetch = FetchType.EAGER)
     private List<UserRole> roles;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "buyer",fetch = FetchType.EAGER)
     private List<Forecast> forecasts;
 
     public User() {

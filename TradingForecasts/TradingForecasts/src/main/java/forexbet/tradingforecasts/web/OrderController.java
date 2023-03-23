@@ -1,18 +1,50 @@
 package forexbet.tradingforecasts.web;
 
+import forexbet.tradingforecasts.model.dto.ForecastDTO;
 import forexbet.tradingforecasts.model.exception.OrderNotFoundException;
+import forexbet.tradingforecasts.service.ForecastService;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
-@RestController
-//@RequestMapping("/orders")
+import java.util.List;
+
+@Controller
 public class OrderController {
 
-//    @GetMapping("/orders/order")
-//    public String order() {
-//        return "order";
-//    }
+    private final ForecastService forecastService;
+
+    public OrderController(ForecastService forecastService) {
+        this.forecastService = forecastService;
+    }
+
+    @GetMapping("/orders/all")
+    public String getAllActiveForecast(Model model) {
+
+//        List<ForecastDTO> currentAdminForecasts = userService.getCurrentAdminForecasts();
+//        model.addAttribute("currentAdminForecasts", currentAdminForecasts);
+
+        List<ForecastDTO> allActiveForecast = forecastService.getActiveForecasts();
+        model.addAttribute("allActiveForecast", allActiveForecast);
+
+
+//        List<Forecast> currentUserForecasts = userService.getCurrentUserForecasts();
+//        model.addAttribute("currentUserForecasts", currentUserForecasts);
+
+//        List<Forecast> ownForecastsAdded = this.forecastService.getOwnForecastsAdded(currentUser.getId());
+//        model.addAttribute("ownForecastsAdded", ownForecastsAdded);
+//
+//        List<Forecast> allActiveForecasts = forecastService.getAllActiveForecasts(currentUser.getId());
+//        model.addAttribute("allActiveForecasts", allActiveForecasts);
+
+
+        return "order";
+    }
 
     @GetMapping("/orders/{id}")
     public String getOrderById(@PathVariable("id") Long id) {

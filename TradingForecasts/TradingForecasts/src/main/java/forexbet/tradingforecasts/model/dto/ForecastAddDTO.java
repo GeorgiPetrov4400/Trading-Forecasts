@@ -35,7 +35,6 @@ public class ForecastAddDTO {
     private ForecastTypeEnum type;
 
     public ForecastAddDTO() {
-        this.isActive = true;
     }
 
     public String getDescription() {

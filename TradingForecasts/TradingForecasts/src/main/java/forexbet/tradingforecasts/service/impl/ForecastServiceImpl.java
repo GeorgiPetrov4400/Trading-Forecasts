@@ -1,6 +1,7 @@
 package forexbet.tradingforecasts.service.impl;
 
 import forexbet.tradingforecasts.model.dto.ForecastAddDTO;
+import forexbet.tradingforecasts.model.dto.ForecastDTO;
 import forexbet.tradingforecasts.model.entity.Forecast;
 import forexbet.tradingforecasts.model.entity.User;
 import forexbet.tradingforecasts.repository.ForecastRepository;
@@ -46,7 +47,8 @@ public class ForecastServiceImpl implements ForecastService {
                     .setForecastType(forecastAddDTO.getType())
                     .setDescription(forecastAddDTO.getDescription())
                     .setPictureUrl(forecastAddDTO.getPictureUrl())
-                    .setPrice(forecastAddDTO.getPrice());
+                    .setPrice(forecastAddDTO.getPrice())
+                    .setActive(true);
 
             forecastRepository.save(forecast);
         }
@@ -73,6 +75,18 @@ public class ForecastServiceImpl implements ForecastService {
         return forecastRepository.findByAdmin_Id(id).stream()
                 .map(forecast -> modelMapper.map(forecast, Forecast.class)).collect(Collectors.toList());
     }
+
+    @Override
+    public List<ForecastDTO> getActiveForecasts() {
+        return forecastRepository.findAllByClosedIsNull();
+    }
+
+//    @Override
+//    public List<ForecastDTO> getAllForecast() {
+////       return forecastRepository.findAllByBuyer_IdIsNullAndAdmin_IdNot().stream()
+////               .map(forecast -> modelMapper.map(forecast, ForecastDTO.class));
+//        return null;
+//    }
 
     @Override
     public void buyForecast(Long id, Long currentUserId) {

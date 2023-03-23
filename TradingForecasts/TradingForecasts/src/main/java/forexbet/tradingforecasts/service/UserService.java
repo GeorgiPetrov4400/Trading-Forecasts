@@ -1,5 +1,6 @@
 package forexbet.tradingforecasts.service;
 
+import forexbet.tradingforecasts.model.dto.ForecastDTO;
 import forexbet.tradingforecasts.model.entity.Forecast;
 import forexbet.tradingforecasts.model.entity.User;
 import forexbet.tradingforecasts.model.service.UserServiceModel;
@@ -19,4 +20,5 @@ public interface UserService {
     User findById(Long id);
 
     List<Forecast> getCurrentUserForecasts();
+
 }

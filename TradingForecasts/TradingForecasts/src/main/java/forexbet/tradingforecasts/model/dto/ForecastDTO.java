@@ -8,6 +8,12 @@ import java.time.LocalDateTime;
 
 public class ForecastDTO {
 
+    private Long id;
+
+    private Category category;
+
+    private ForecastTypeEnum forecastType;
+
     private String description;
 
     private String pictureUrl;
@@ -18,13 +24,36 @@ public class ForecastDTO {
 
     private LocalDateTime closed;
 
-    private ForecastTypeEnum forecastType;
-
     private boolean isActive;
 
-    private Category category;
-
     public ForecastDTO() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public ForecastDTO setId(Long id) {
+        this.id = id;
+        return this;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public ForecastDTO setCategory(Category category) {
+        this.category = category;
+        return this;
+    }
+
+    public ForecastTypeEnum getForecastType() {
+        return forecastType;
+    }
+
+    public ForecastDTO setForecastType(ForecastTypeEnum forecastType) {
+        this.forecastType = forecastType;
+        return this;
     }
 
     public String getDescription() {
@@ -72,30 +101,12 @@ public class ForecastDTO {
         return this;
     }
 
-    public ForecastTypeEnum getForecastType() {
-        return forecastType;
-    }
-
-    public ForecastDTO setForecastType(ForecastTypeEnum forecastType) {
-        this.forecastType = forecastType;
-        return this;
-    }
-
     public boolean isActive() {
         return isActive;
     }
 
     public ForecastDTO setActive(boolean active) {
         isActive = active;
-        return this;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public ForecastDTO setCategory(Category category) {
-        this.category = category;
         return this;
     }
 }

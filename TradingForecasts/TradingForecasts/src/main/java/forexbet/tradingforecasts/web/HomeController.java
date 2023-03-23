@@ -31,19 +31,26 @@ public class HomeController {
     }
 
 //    @GetMapping("/orders/order")
-//    public String order(Model model) {
-////        if (currentUser.getId() == null) {
-////            return "redirect:/users/login";
-////        }
+//    public String order(Principal principal, Model model) {
 //
-//        List<Forecast> currentUserForecasts = userService.getCurrentUserForecasts();
-//        model.addAttribute("currentUserForecasts", currentUserForecasts);
+////        List<ForecastDTO> currentAdminForecasts = userService.getCurrentAdminForecasts();
+////        model.addAttribute("currentAdminForecasts", currentAdminForecasts);
+//
+//        List<ForecastDTO> allActiveForecast = forecastService.getActiveForecasts();
+//        model.addAttribute("allActiveForecast", allActiveForecast);
+//
+//
+//
+////        List<Forecast> currentUserForecasts = userService.getCurrentUserForecasts();
+////        model.addAttribute("currentUserForecasts", currentUserForecasts);
 //
 ////        List<Forecast> ownForecastsAdded = this.forecastService.getOwnForecastsAdded(currentUser.getId());
 ////        model.addAttribute("ownForecastsAdded", ownForecastsAdded);
 ////
 ////        List<Forecast> allActiveForecasts = forecastService.getAllActiveForecasts(currentUser.getId());
 ////        model.addAttribute("allActiveForecasts", allActiveForecasts);
+//
+//
 //
 //        return "order";
 //    }

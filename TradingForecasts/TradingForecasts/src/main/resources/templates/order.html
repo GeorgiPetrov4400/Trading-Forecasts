@@ -126,29 +126,30 @@
         </div>
     </div>
 
-    <div class="container bg-blur rounded mt-1 mb-4">
-        <h3>Active Forecasts: <span text="${allActiveForecasts.size()}">Total Offers</span></h3>
+    <div class="container bg-blur rounded mt-1 mb-4"  th:action="@{/orders/all}">
+        <h3>Active Forecasts: <span text="${allActiveForecast.size()}">Total Offers</span>
+        </h3>
         <!--        <h6 th:text="${activeForecast.size()}">totalOffers</h6>-->
 
         <div class="active-forecast" style="height: 30vh; overflow: auto">
-            <ul each="f : ${allActiveForecasts}">
+            <ul th:each="f : ${allActiveForecast}">
                 <li>
                     <table>
                         <tr>
                             <td style="width: 5%">
-                                <a text="*{f.getCategory().toString()}">Category</a>
+                                <a th:text="*{f.getCategory().toString()}">Category</a>
                             </td>
                             <td style="width: 5%">
-                                <a text="*{f.getForecastType()}">Type</a>
+                                <a th:text="*{f.getForecastType()}">Type</a>
                             </td>
                             <td style="width: 20%">
-                                <a text="*{f.getDescription()}">Description</a>
+                                <a th:text="*{f.getDescription()}">Description</a>
                             </td>
                             <td style="width: 60%">
-                                <a text="*{f.getPictureUrl()}">Picture</a>
+                                <a th:text="*{f.getPictureUrl()}">Picture</a>
                             </td>
                             <td style="width: 5%">
-                                <a text="*{f.getPrice() + ' €'}">Price</a>
+                                <a th:text="*{f.getPrice() + ' €'}">Price</a>
                             </td>
                             <td class="buy-button" style="width: 1%">
                                 <a href="@{/forecasts/order/buy/{id}(id=${f.id})}">BUY</a>

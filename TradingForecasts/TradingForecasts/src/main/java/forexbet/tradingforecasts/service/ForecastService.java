@@ -1,6 +1,7 @@
 package forexbet.tradingforecasts.service;
 
 import forexbet.tradingforecasts.model.dto.ForecastAddDTO;
+import forexbet.tradingforecasts.model.dto.ForecastDTO;
 import forexbet.tradingforecasts.model.entity.Forecast;
 
 import java.security.Principal;
@@ -17,4 +18,8 @@ public interface ForecastService {
     void expireForecastById(Long id);
 
     List<Forecast> getOwnForecastsAdded(long id);
+
+    List<ForecastDTO> getActiveForecasts();
+
+//    List<ForecastDTO> getAllForecast();
 }
