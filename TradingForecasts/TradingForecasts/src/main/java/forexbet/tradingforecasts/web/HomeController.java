@@ -25,13 +25,8 @@ public class HomeController {
         return "admin";
     }
 
-    @GetMapping("/orders/order")
-    public String orders() {
-        return "order";
-    }
-
 //    @GetMapping("/orders/order")
-//    public String order(Principal principal, Model model) {
+//    public String order(Model model) {
 //
 ////        List<ForecastDTO> currentAdminForecasts = userService.getCurrentAdminForecasts();
 ////        model.addAttribute("currentAdminForecasts", currentAdminForecasts);

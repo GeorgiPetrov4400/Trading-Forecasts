@@ -126,8 +126,8 @@
         </div>
     </div>
 
-    <div class="container bg-blur rounded mt-1 mb-4"  th:action="@{/orders/all}">
-        <h3>Active Forecasts: <span text="${allActiveForecast.size()}">Total Offers</span>
+    <div class="container bg-blur rounded mt-1 mb-4"  th:action="@{/orders/order}">
+        <h3>Active Forecasts: <span th:text="${allActiveForecast.size()}">Total Offers</span>
         </h3>
         <!--        <h6 th:text="${activeForecast.size()}">totalOffers</h6>-->
 

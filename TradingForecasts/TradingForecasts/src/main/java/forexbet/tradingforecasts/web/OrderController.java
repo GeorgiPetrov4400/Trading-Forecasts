@@ -23,7 +23,12 @@ public class OrderController {
         this.forecastService = forecastService;
     }
 
-    @GetMapping("/orders/all")
+//    @GetMapping("/orders/order")
+//    public String orders() {
+//        return "order";
+//    }
+
+    @GetMapping("/orders/order")
     public String getAllActiveForecast(Model model) {
 
 //        List<ForecastDTO> currentAdminForecasts = userService.getCurrentAdminForecasts();
@@ -31,6 +36,7 @@ public class OrderController {
 
         List<ForecastDTO> allActiveForecast = forecastService.getActiveForecasts();
         model.addAttribute("allActiveForecast", allActiveForecast);
+
 
 
 //        List<Forecast> currentUserForecasts = userService.getCurrentUserForecasts();
