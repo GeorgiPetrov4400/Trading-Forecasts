@@ -1,21 +1,18 @@
 package forexbet.tradingforecasts.web;
 
 import forexbet.tradingforecasts.model.dto.ForecastDTO;
-import forexbet.tradingforecasts.model.exception.OrderNotFoundException;
 import forexbet.tradingforecasts.service.ForecastService;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
 import java.util.List;
 
 @Controller
+@RequestMapping("/orders")
 public class OrderController {
 
     private final ForecastService forecastService;
@@ -29,7 +26,7 @@ public class OrderController {
 //        return "order";
 //    }
 
-    @GetMapping("/orders/order")
+    @GetMapping("/order")
     public String getAllActiveForecast(Principal principal, Model model) {
 
         List<ForecastDTO> userBoughtForecasts = forecastService.getUserBoughtForecasts(principal);
@@ -41,26 +38,30 @@ public class OrderController {
         List<ForecastDTO> allActiveForecasts = forecastService.getActiveForecasts();
         model.addAttribute("allActiveForecast", allActiveForecasts);
 
+        List<ForecastDTO> expiredForecasts = forecastService.getExpiredForecasts();
+        model.addAttribute("expiredForecasts", expiredForecasts);
+
         return "order";
     }
 
-    @GetMapping("/orders/{id}")
-    public String getOrderById(@PathVariable("id") Long id) {
-        throw new OrderNotFoundException(id);
+    @GetMapping("/order/buy/{id}")
+    public String buyForecast(@PathVariable Long id, Principal principal) {
+        forecastService.buyForecast(id, principal);
+
+        return "redirect:/orders/order";
     }
 
-    @GetMapping("/orders")
-    public String getOrders() {
-        throw new NullPointerException("Server Error");
+    @GetMapping("/order/expire/{id}")
+    public String expiredForecast(@PathVariable Long id) {
+        forecastService.expireForecastById(id);
+
+        return "redirect:/orders/order";
     }
 
-    @ResponseStatus(value = HttpStatus.NOT_FOUND)
-    @ExceptionHandler(OrderNotFoundException.class)
-    public ModelAndView onOrderNotFound(OrderNotFoundException onfe) {
-        ModelAndView modelAndView = new ModelAndView("order-not-found");
+    @GetMapping("/orders/remove/{id}")
+    public String removeForecast(@PathVariable Long id) {
+        forecastService.removeForecastById(id);
 
-        modelAndView.addObject("orderId", onfe.getOrderId());
-
-        return modelAndView;
+        return "redirect:/orders/order";
     }
 }

@@ -11,15 +11,19 @@ public interface ForecastService {
 
     void addForecast(Principal principal, ForecastAddDTO forecastAddDTO);
 
-//    List<Forecast> getAllActiveForecasts(long id);
-
-    void buyForecast(Long id, Long currentUserId);
-
-    void expireForecastById(Long id);
+//    void expireForecastById(Long id);
 
     List<ForecastDTO> getOwnForecastsAdded(Principal principal);
 
     List<ForecastDTO> getActiveForecasts();
 
     List<ForecastDTO> getUserBoughtForecasts(Principal principal);
+
+    void buyForecast(Long id, Principal principal);
+
+    void expireForecastById(Long id);
+
+    List<ForecastDTO> getExpiredForecasts();
+
+    void removeForecastById(Long id);
 }

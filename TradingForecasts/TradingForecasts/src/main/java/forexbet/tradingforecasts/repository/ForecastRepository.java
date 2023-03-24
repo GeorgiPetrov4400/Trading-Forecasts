@@ -14,8 +14,7 @@ public interface ForecastRepository extends JpaRepository<Forecast, Long> {
 
     List<Forecast> findByAdmin_Id(long ownerId);
 
-//    List<Forecast> findAllByClosedIsNotNull();
+    List<Forecast> findAllByClosedIsNullOrderByCreatedDesc();
 
-    List<Forecast> findAllByClosedIsNull();
-
+    List<Forecast> findAllByClosedIsNotNullOrderByClosedDesc();
 }
