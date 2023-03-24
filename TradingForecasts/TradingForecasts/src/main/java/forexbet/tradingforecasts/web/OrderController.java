@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -29,25 +30,16 @@ public class OrderController {
 //    }
 
     @GetMapping("/orders/order")
-    public String getAllActiveForecast(Model model) {
+    public String getAllActiveForecast(Principal principal, Model model) {
 
-//        List<ForecastDTO> currentAdminForecasts = userService.getCurrentAdminForecasts();
-//        model.addAttribute("currentAdminForecasts", currentAdminForecasts);
+        List<ForecastDTO> userBoughtForecasts = forecastService.getUserBoughtForecasts(principal);
+        model.addAttribute("userBoughtForecasts", userBoughtForecasts);
 
-        List<ForecastDTO> allActiveForecast = forecastService.getActiveForecasts();
-        model.addAttribute("allActiveForecast", allActiveForecast);
+        List<ForecastDTO> ownForecastsAdded = forecastService.getOwnForecastsAdded(principal);
+        model.addAttribute("ownForecastsAdded", ownForecastsAdded);
 
-
-
-//        List<Forecast> currentUserForecasts = userService.getCurrentUserForecasts();
-//        model.addAttribute("currentUserForecasts", currentUserForecasts);
-
-//        List<Forecast> ownForecastsAdded = this.forecastService.getOwnForecastsAdded(currentUser.getId());
-//        model.addAttribute("ownForecastsAdded", ownForecastsAdded);
-//
-//        List<Forecast> allActiveForecasts = forecastService.getAllActiveForecasts(currentUser.getId());
-//        model.addAttribute("allActiveForecasts", allActiveForecasts);
-
+        List<ForecastDTO> allActiveForecasts = forecastService.getActiveForecasts();
+        model.addAttribute("allActiveForecast", allActiveForecasts);
 
         return "order";
     }

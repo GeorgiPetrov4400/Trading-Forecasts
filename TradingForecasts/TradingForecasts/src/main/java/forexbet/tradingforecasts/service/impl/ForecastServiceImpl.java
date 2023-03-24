@@ -55,25 +55,37 @@ public class ForecastServiceImpl implements ForecastService {
     }
 
     @Override
-    public List<Forecast> getAllActiveForecasts(long id) {
-        return forecastRepository.findAllByBuyer_IdIsNullAndAdmin_IdNot(id);
+    public List<ForecastDTO> getUserBoughtForecasts(Principal principal) {
+        Optional<User> adminOptional = userRepository.findByUsername(principal.getName());
 
-//        List<Forecast> findAllForecast = forecastRepository.findAllByBuyer_IdIsNullAndAdmin_IdNot(id);
-//
-//        List<Forecast> activeForecasts = new ArrayList<>();
-//
-//        for (Forecast forecast : findAllForecast) {
-//            if (forecast.getClosed() != null) {
-//                activeForecasts.add(forecast);
-//            }
-//        }
-//        return activeForecasts;
+        return adminOptional.map(user -> forecastRepository.findAllByBuyer_IdIsNullAndAdmin_IdNot(user.getId())
+                .stream().map(forecast -> modelMapper.map(forecast, ForecastDTO.class))
+                .collect(Collectors.toList())).orElse(null);
     }
 
+//    @Override
+//    public List<Forecast> getAllActiveForecasts(long id) {
+//        return forecastRepository.findAllByBuyer_IdIsNullAndAdmin_IdNot(id);
+//
+////        List<Forecast> findAllForecast = forecastRepository.findAllByBuyer_IdIsNullAndAdmin_IdNot(id);
+////
+////        List<Forecast> activeForecasts = new ArrayList<>();
+////
+////        for (Forecast forecast : findAllForecast) {
+////            if (forecast.getClosed() != null) {
+////                activeForecasts.add(forecast);
+////            }
+////        }
+////        return activeForecasts;
+//    }
+
     @Override
-    public List<Forecast> getOwnForecastsAdded(long id) {
-        return forecastRepository.findByAdmin_Id(id).stream()
-                .map(forecast -> modelMapper.map(forecast, Forecast.class)).collect(Collectors.toList());
+    public List<ForecastDTO> getOwnForecastsAdded(Principal principal) {
+        Optional<User> adminOptional = userRepository.findByUsername(principal.getName());
+
+        return adminOptional.map(user -> forecastRepository.findByAdmin_Id(user.getId()).stream()
+                .map(forecast -> modelMapper.map(forecast, ForecastDTO.class))
+                .collect(Collectors.toList())).orElse(null);
     }
 
     @Override
@@ -81,13 +93,6 @@ public class ForecastServiceImpl implements ForecastService {
         return forecastRepository.findAllByClosedIsNull().stream()
                 .map(forecast -> modelMapper.map(forecast, ForecastDTO.class)).collect(Collectors.toList());
     }
-
-//    @Override
-//    public List<ForecastDTO> getAllForecast() {
-////       return forecastRepository.findAllByBuyer_IdIsNullAndAdmin_IdNot().stream()
-////               .map(forecast -> modelMapper.map(forecast, ForecastDTO.class));
-//        return null;
-//    }
 
     @Override
     public void buyForecast(Long id, Long currentUserId) {
