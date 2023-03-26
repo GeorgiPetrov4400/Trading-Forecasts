@@ -79,18 +79,4 @@ public class ForecastController {
         return "redirect:/";
 
     }
-
-//    @GetMapping("/order/buy/{id}")
-//    public String buyForecast(@PathVariable Long id) {
-////        this.forecastService.buyForecast(id, currentUser.getId());
-//
-//        return "redirect:/orders/order";
-//    }
-//
-//    @GetMapping("/order/expire/{id}")
-//    public String expiredForecast(@PathVariable Long id) {
-//        forecastService.expireForecastById(id);
-//
-//        return "redirect:/orders/order";
-//    }
 }

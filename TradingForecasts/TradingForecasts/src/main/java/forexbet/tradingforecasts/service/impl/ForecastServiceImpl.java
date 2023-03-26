@@ -58,7 +58,7 @@ public class ForecastServiceImpl implements ForecastService {
     public List<ForecastDTO> getUserBoughtForecasts(Principal principal) {
         Optional<User> buyerOptional = userRepository.findByUsername(principal.getName());
 
-        return buyerOptional.map(user -> forecastRepository.findAllByBuyer_IdIsNullAndAdmin_IdNot(user.getId())
+        return buyerOptional.map(user -> forecastRepository.findAllByBuyer_IdAndPriceNotNull(user.getId())
                 .stream().map(forecast -> modelMapper.map(forecast, ForecastDTO.class))
                 .collect(Collectors.toList())).orElse(null);
     }

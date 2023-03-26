@@ -10,7 +10,9 @@ import java.util.List;
 @Repository
 public interface ForecastRepository extends JpaRepository<Forecast, Long> {
 
-    List<Forecast> findAllByBuyer_IdIsNullAndAdmin_IdNot(Long id);
+//    List<Forecast> findAllByBuyer_IdIsNullAndAdmin_IdNot(Long id);
+
+    List<Forecast> findAllByBuyer_IdAndPriceNotNull(Long id);
 
     List<Forecast> findByAdmin_Id(long ownerId);
 
