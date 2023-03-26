@@ -45,7 +45,6 @@ public class Forecast extends BaseEntity {
     public Forecast() {
         this.created = LocalDateTime.now();
         this.closed = null;
-       // this.isActive = true;
         this.buyer = new ArrayList<>();
     }
 

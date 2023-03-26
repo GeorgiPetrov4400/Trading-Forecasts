@@ -11,6 +11,7 @@ import forexbet.tradingforecasts.service.ForecastService;
 import forexbet.tradingforecasts.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
@@ -58,7 +59,7 @@ public class ForecastServiceImpl implements ForecastService {
     public List<ForecastDTO> getUserBoughtForecasts(Principal principal) {
         Optional<User> buyerOptional = userRepository.findByUsername(principal.getName());
 
-        return buyerOptional.map(user -> forecastRepository.findAllByBuyer_IdIsNullAndAdmin_IdNot(user.getId())
+        return buyerOptional.map(user -> forecastRepository.findAllByBuyer_IdAndPriceNotNull(user.getId())
                 .stream().map(forecast -> modelMapper.map(forecast, ForecastDTO.class))
                 .collect(Collectors.toList())).orElse(null);
     }
@@ -85,6 +86,7 @@ public class ForecastServiceImpl implements ForecastService {
     }
 
     @Override
+    @Transactional
     public void buyForecast(Long id, Principal principal) {
         Forecast forecast = forecastRepository.findById(id).orElse(null);
 
@@ -93,10 +95,12 @@ public class ForecastServiceImpl implements ForecastService {
         if (buyerOptional.isPresent()) {
             User buyer = userRepository.findById(buyerOptional.get().getId()).orElse(null);
 
-            buyer.getForecasts().add(forecast);
-            forecast.setBuyer(List.of(buyer));
-            forecastRepository.saveAndFlush(forecast);
-            userRepository.save(buyer);
+            if (buyer != null && forecast != null) {
+                buyer.getForecasts().add(forecast);
+                forecast.getBuyer().add(buyer);
+                forecastRepository.saveAndFlush(forecast);
+                userRepository.save(buyer);
+            }
         }
     }
 

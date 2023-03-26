@@ -70,7 +70,7 @@
 </div>
 
 <main>
-    <div class="container bg-blur rounded mt-1 mb-4">
+    <div class="container bg-blur rounded mt-1 mb-4" sec:authorize="hasRole('User')">
         <h3>My Forecast: <span th:text="${userBoughtForecasts.size()}">Total Offers</span></h3>
         <div class="my-forecast" style="height: 30vh; overflow: auto">
             <ul th:each="f : ${userBoughtForecasts}">

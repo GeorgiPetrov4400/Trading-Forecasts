@@ -19,6 +19,6 @@ public interface UserService {
 
     User findById(Long id);
 
-    List<Forecast> getCurrentUserForecasts();
+//    List<Forecast> getCurrentUserForecasts();
 
 }

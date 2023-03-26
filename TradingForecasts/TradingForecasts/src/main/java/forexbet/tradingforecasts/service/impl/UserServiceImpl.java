@@ -1,6 +1,5 @@
 package forexbet.tradingforecasts.service.impl;
 
-import forexbet.tradingforecasts.model.entity.Forecast;
 import forexbet.tradingforecasts.model.entity.User;
 import forexbet.tradingforecasts.model.entity.enums.UserRoleEnum;
 import forexbet.tradingforecasts.model.service.UserServiceModel;
@@ -108,9 +107,9 @@ public class UserServiceImpl implements UserService {
         return userRepository.findById(id).orElse(null);
     }
 
-    @Override
-    public List<Forecast> getCurrentUserForecasts() {
-//        return userRepository.findByUsername(currentUser.getUsername()).get().getForecasts();
-        return null;
-    }
+//    @Override
+//    public List<Forecast> getCurrentUserForecasts() {
+////        return userRepository.findByUsername(currentUser.getUsername()).get().getForecasts();
+//        return null;
+//    }
 }
