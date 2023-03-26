@@ -21,27 +21,27 @@
         <h6>Total Offers</h6>
 
         <div class="active-forecast" style="height: 30vh; overflow: auto">
-            <ul>
+            <ul each="f : ${getAllFreeForecasts}">
                 <li>
                     <table>
                         <tr>
                             <td style="width: 10%">
-                                <a>Category</a>
+                                <a text="*{f.getCategory().toString()}">Category</a>
                             </td>
                             <td style="width: 10%">
-                                <a>Type</a>
+                                <a text="*{f.getForecastType()}">Type</a>
                             </td>
                             <td style="width: 10%">
-                                <a>Picture</a>
+                                <a text="*{f.getPictureUrl()}">Picture</a>
                             </td>
                             <td style="width: 10%">
-                                <a>Description</a>
+                                <a text="*{f.getDescription()}">Description</a>
                             </td>
-                            <td class="expired-button" style="width: 1%">
-                                <a href="#">Expired</a>
+                            <td class="expired-button" style="width: 1%" sec:authorize="hasRole('Admin')">
+                                <a href="@{/orders/order/expire/{id}(id=*{f.id})}">Expired</a>
                             </td>
-                            <td class="delete-button" style="width: 1%">
-                                <a href="#">Delete</a>
+                            <td class="delete-button" style="width: 1%" sec:authorize="hasRole('Admin')">
+                                <a href="@{orders/remove/{id}(id=*{f.id})}">Delete</a>
                             </td>
                         </tr>
                     </table>

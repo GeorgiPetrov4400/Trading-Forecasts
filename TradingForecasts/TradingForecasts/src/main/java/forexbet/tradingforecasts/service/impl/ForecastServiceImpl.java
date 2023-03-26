@@ -10,7 +10,6 @@ import forexbet.tradingforecasts.service.CategoryService;
 import forexbet.tradingforecasts.service.ForecastService;
 import forexbet.tradingforecasts.service.UserService;
 import org.modelmapper.ModelMapper;
-import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
@@ -89,19 +88,16 @@ public class ForecastServiceImpl implements ForecastService {
     public void buyForecast(Long id, Principal principal) {
         Forecast forecast = forecastRepository.findById(id).orElse(null);
 
-        if (forecast.getClosed() != null) {
-            throw new IllegalArgumentException("You cannot buy expired forecast");
-        }
-
         Optional<User> buyerOptional = userRepository.findByUsername(principal.getName());
 
-        User buyer = userRepository.findById(buyerOptional.get().getId()).orElse(null);
+        if (buyerOptional.isPresent()) {
+            User buyer = userRepository.findById(buyerOptional.get().getId()).orElse(null);
 
-        buyer.getForecasts().add(forecast);
-        forecast.setBuyer(List.of(buyer));
-        forecastRepository.saveAndFlush(forecast);
-        userRepository.save(buyer);
-
+            buyer.getForecasts().add(forecast);
+            forecast.setBuyer(List.of(buyer));
+            forecastRepository.saveAndFlush(forecast);
+            userRepository.save(buyer);
+        }
     }
 
     @Override
@@ -120,4 +116,9 @@ public class ForecastServiceImpl implements ForecastService {
         forecastRepository.deleteById(id);
     }
 
+    @Override
+    public List<ForecastDTO> getAllFreeForecasts() {
+        return forecastRepository.findAllByClosedIsNullAndPriceIsNull().stream()
+                .map(forecast -> modelMapper.map(forecast, ForecastDTO.class)).collect(Collectors.toList());
+    }
 }

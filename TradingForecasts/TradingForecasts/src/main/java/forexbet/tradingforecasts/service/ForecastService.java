@@ -26,4 +26,6 @@ public interface ForecastService {
     List<ForecastDTO> getExpiredForecasts();
 
     void removeForecastById(Long id);
+
+    List<ForecastDTO> getAllFreeForecasts();
 }
