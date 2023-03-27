@@ -24,9 +24,9 @@
             <input th:field="*{email}"
                    type="text" placeholder="Enter valid email" name="email" id="email">
 
-            <p th:if="${#fields.hasErrors('email')}"
+            <p th:each="error : ${#fields.errors('email')}" th:text="${error}"
                class="errors alert alert-danger">
-                Valid email is required.
+                Valid email is required
             </p>
         </div>
         <div>
@@ -34,21 +34,22 @@
             <input th:field="*{firstName}"
                    type="text" placeholder="First name must be between 2 and 20 characters" name="first-name"
                    id="first-name">
-<!--            required minlength="2" maxlength="20"-->
+            <!--            required minlength="2" maxlength="20"-->
 
-            <p th:if="${#fields.hasErrors('firstName')}"
+            <p th:each="error : ${#fields.errors('firstName')}" th:text="${error}"
                class="errors alert alert-danger">
                 First name is required.
             </p>
+            <!--            th:if="${#fields.hasErrors('firstName')}"-->
         </div>
         <div>
             <label th:for="last-name"><b>Last name</b></label>
             <input th:field="*{lastName}"
                    type="text" placeholder="Last name must be between 2 and 20 characters" name="last-name"
                    id="last-name">
-<!--            required minlength="2" maxlength="20"-->
+            <!--            required minlength="2" maxlength="20"-->
 
-            <p th:if="${#fields.hasErrors('lastName')}"
+            <p th:each="error : ${#fields.errors('lastName')}" th:text="${error}"
                class="errors alert alert-danger">
                 Last name is required.
             </p>
@@ -58,9 +59,9 @@
             <input th:field="*{username}"
                    type="text" placeholder="Username must be between 3 and 20 characters" name="username"
                    id="username">
-<!--            required minlength="3" maxlength="20"-->
+            <!--            required minlength="3" maxlength="20"-->
 
-            <p th:if="${#fields.hasErrors('username')}"
+            <p th:each="error : ${#fields.errors('username')}" th:text="${error}"
                class="errors alert alert-danger">
                 Username is required.
             </p>
@@ -70,9 +71,9 @@
             <input th:field="*{password}"
                    type="password" placeholder="Password must be between 5 and 20 characters" name="password"
                    id="password">
-<!--            required minlength="5" maxlength="20"-->
+            <!--            required minlength="5" maxlength="20"-->
 
-            <p th:if="${#fields.hasErrors('password')}"
+            <p th:each="error : ${#fields.errors('password')}" th:text="${error}"
                class="errors alert alert-danger">
                 Password is required.
             </p>
@@ -82,9 +83,9 @@
             <input th:field="*{confirmPassword}"
                    type="password" placeholder="Repeat your password"
                    name="password-repeat" id="password-repeat">
-<!--            required minlength="5" maxlength="20"-->
+            <!--            required minlength="5" maxlength="20"-->
 
-            <p th:if="${#fields.hasErrors('confirmPassword')}"
+            <p th:each="error : ${#fields.errors('confirmPassword')}" th:text="${error}"
                class="errors alert alert-danger">
                 Passwords does not match.
             </p>

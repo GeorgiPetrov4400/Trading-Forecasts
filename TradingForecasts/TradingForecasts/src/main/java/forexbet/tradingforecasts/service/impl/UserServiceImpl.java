@@ -1,6 +1,7 @@
 package forexbet.tradingforecasts.service.impl;
 
 import forexbet.tradingforecasts.model.entity.User;
+import forexbet.tradingforecasts.model.entity.UserRole;
 import forexbet.tradingforecasts.model.entity.enums.UserRoleEnum;
 import forexbet.tradingforecasts.model.service.UserServiceModel;
 import forexbet.tradingforecasts.repository.UserRepository;
@@ -84,9 +85,9 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("Username is already used");
         }
 
-        var normalUserRole = userRoleService.findUserRole(UserRoleEnum.User).orElseThrow();
+        UserRole normalUserRole = userRoleService.findUserRole(UserRoleEnum.User).orElseThrow();
 
-        var normalUser = new User()
+        User normalUser = new User()
                 .setEmail(userServiceModel.getEmail())
                 .setUsername(userServiceModel.getUsername())
                 .setPassword(passwordEncoder.encode(userServiceModel.getPassword()))
@@ -106,10 +107,4 @@ public class UserServiceImpl implements UserService {
     public User findById(Long id) {
         return userRepository.findById(id).orElse(null);
     }
-
-//    @Override
-//    public List<Forecast> getCurrentUserForecasts() {
-////        return userRepository.findByUsername(currentUser.getUsername()).get().getForecasts();
-//        return null;
-//    }
 }

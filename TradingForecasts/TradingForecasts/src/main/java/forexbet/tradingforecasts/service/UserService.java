@@ -18,7 +18,4 @@ public interface UserService {
     User getUserByUsername(String username);
 
     User findById(Long id);
-
-//    List<Forecast> getCurrentUserForecasts();
-
 }

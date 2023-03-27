@@ -3,8 +3,6 @@ package forexbet.tradingforecasts.web;
 import forexbet.tradingforecasts.model.dto.UserRegisterDTO;
 import forexbet.tradingforecasts.model.service.UserServiceModel;
 import forexbet.tradingforecasts.service.UserService;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
