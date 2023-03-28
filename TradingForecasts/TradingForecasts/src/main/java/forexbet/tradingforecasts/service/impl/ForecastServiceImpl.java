@@ -121,7 +121,7 @@ public class ForecastServiceImpl implements ForecastService {
     }
 
     @Override
-    public List<ForecastDTO> getAllFreeForecasts() {
+    public List<ForecastDTO> getAllActiveFreeForecasts() {
         return forecastRepository.findAllByClosedIsNullAndPriceIsNull().stream()
                 .map(forecast -> modelMapper.map(forecast, ForecastDTO.class)).collect(Collectors.toList());
     }

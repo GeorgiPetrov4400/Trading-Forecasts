@@ -28,6 +28,6 @@ public class HomeController {
 
     @GetMapping("/free-forecasts")
     public String freeForecasts() {
-        return "free-forecast";
+        return "free-forecasts";
     }
 }

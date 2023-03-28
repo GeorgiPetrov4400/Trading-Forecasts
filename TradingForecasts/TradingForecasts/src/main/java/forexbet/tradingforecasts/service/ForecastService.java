@@ -2,7 +2,6 @@ package forexbet.tradingforecasts.service;
 
 import forexbet.tradingforecasts.model.dto.ForecastAddDTO;
 import forexbet.tradingforecasts.model.dto.ForecastDTO;
-import forexbet.tradingforecasts.model.entity.Forecast;
 
 import java.security.Principal;
 import java.util.List;
@@ -27,5 +26,5 @@ public interface ForecastService {
 
     void removeForecastById(Long id);
 
-    List<ForecastDTO> getAllFreeForecasts();
+    List<ForecastDTO> getAllActiveFreeForecasts();
 }

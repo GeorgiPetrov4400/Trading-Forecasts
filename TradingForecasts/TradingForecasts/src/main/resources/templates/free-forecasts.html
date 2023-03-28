@@ -18,41 +18,40 @@
 <main>
     <div class="container bg-blur rounded mt-1 mb-4">
         <h3>Free Forecasts</h3>
-        <h6>Total Offers</h6>
+        <!--        <h6>Total Offers</h6>-->
 
-        <div class="active-forecast" style="height: 30vh; overflow: auto">
+        <div class="active-forecast" style="height: 30vh; overflow: auto" id="forecast-container">
             <ul each="f : ${getAllFreeForecasts}">
                 <li>
                     <table>
                         <tr>
-                            <td style="width: 10%">
+                            <td id="category" style="width: 10%">
                                 <a text="*{f.getCategory().toString()}">Category</a>
                             </td>
-                            <td style="width: 10%">
+                            <td id="type" style="width: 10%">
                                 <a text="*{f.getForecastType()}">Type</a>
                             </td>
-                            <td style="width: 10%">
+                            <td id="picture" style="width: 10%">
                                 <a text="*{f.getPictureUrl()}">Picture</a>
                             </td>
-                            <td style="width: 10%">
+                            <td id="description" style="width: 10%">
                                 <a text="*{f.getDescription()}">Description</a>
                             </td>
-                            <td class="expired-button" style="width: 1%" sec:authorize="hasRole('Admin')">
-                                <a href="@{/orders/order/expire/{id}(id=*{f.id})}">Expired</a>
-                            </td>
-                            <td class="delete-button" style="width: 1%" sec:authorize="hasRole('Admin')">
-                                <a href="@{orders/remove/{id}(id=*{f.id})}">Delete</a>
-                            </td>
+                            <!--                            <td class="expired-button" style="width: 1%" sec:authorize="hasRole('Admin')">-->
+                            <!--                                <a href="@{/orders/order/expire/{id}(id=*{f.id})}">Expired</a>-->
+                            <!--                            </td>-->
+                            <!--                            <td class="delete-button" style="width: 1%" sec:authorize="hasRole('Admin')">-->
+                            <!--                                <a href="@{orders/remove/{id}(id=*{f.id})}">Delete</a>-->
+                            <!--                            </td>-->
                         </tr>
                     </table>
                 </li>
             </ul>
         </div>
     </div>
-
 </main>
-
 <footer th:replace="~{fragments/commons::footer}"></footer>
 
+<script th:src="@{/js/free-forecasts.js}"></script>
 </body>
 </html>
