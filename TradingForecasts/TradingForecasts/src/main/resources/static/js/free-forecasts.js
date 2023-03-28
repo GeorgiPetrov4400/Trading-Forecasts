@@ -1,26 +1,33 @@
-let forecastContainer = document.getElementById('forecast-container')
-forecastContainer.innerHTML = ''
+let freeForecastBtn = document.getElementById("loadForecasts")
 
-fetch(`http://localhost:8080/api/free-forecasts`)
-    .then(response => response.json())
-    .then(json => json.forEach(forecast => {
+freeForecastBtn.addEventListener('click', reloadForecasts)
 
-        let row = document.createElement('tr')
+function reloadForecasts() {
 
-        let categoryCol = document.createElement('td')
-        let typeCol = document.createElement('td')
-        let pictureCol = document.createElement('td')
-        let descriptionCol = document.createElement('td')
+    let forecastContainer = document.getElementById('forecast-container')
+    forecastContainer.innerHTML = ''
 
-        categoryCol.textContent = forecast.category
-        typeCol.textContent = forecast.type
-        pictureCol.textContent = forecast.picture
-        descriptionCol.textContent = forecast.description
+    fetch(`http://localhost:8080/api/free-forecasts`)
+        .then(response => response.json())
+        .then(json => json.forEach(forecast => {
 
-        row.appendChild(categoryCol)
-        row.appendChild(typeCol)
-        row.appendChild(pictureCol)
-        row.appendChild(descriptionCol)
+            let row = document.createElement('tr')
 
-        forecastContainer.appendChild(row)
-    }))
+            let categoryCol = document.createElement('td')
+            let typeCol = document.createElement('td')
+            let pictureCol = document.createElement('td')
+            let descriptionCol = document.createElement('td')
+
+            categoryCol.textContent = forecast.category
+            typeCol.textContent = forecast.type
+            pictureCol.textContent = forecast.picture
+            descriptionCol.textContent = forecast.description
+
+            row.appendChild(categoryCol)
+            row.appendChild(typeCol)
+            row.appendChild(pictureCol)
+            row.appendChild(descriptionCol)
+
+            forecastContainer.appendChild(row)
+        }))
+}
