@@ -11,7 +11,7 @@ public class IpBlackListInterceptor implements HandlerInterceptor {
     private final List<String> blacklistedIpAddresses = new ArrayList<>();
 
     public IpBlackListInterceptor() {
-        blacklistedIpAddresses.add("0:0:0:0:0:0:0:1");
+        blacklistedIpAddresses.add("102.128.192.0");
     }
 
     @Override
