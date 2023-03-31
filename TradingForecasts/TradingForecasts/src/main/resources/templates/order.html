@@ -173,7 +173,7 @@
                             <td class="buy-button" style="width: 1%">
                                 <a th:href="@{/orders/order/buy/{id}(id=${f.id})}">BUY</a>
                             </td>
-                            <td class="expired-button" style="width: 1%">
+                            <td class="expired-button" style="width: 1%" sec:authorize="hasRole('Admin')">
                                 <a th:href="@{/orders/order/expire/{id}(id=*{f.id})}">Expired</a>
                             </td>
 <!--                            <td class="delete-button" style="width: 1%">-->

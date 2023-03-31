@@ -1,13 +1,17 @@
 package forexbet.tradingforecasts.web;
 
 import forexbet.tradingforecasts.model.dto.ForecastDTO;
+import forexbet.tradingforecasts.model.exception.OrderNotFoundException;
 import forexbet.tradingforecasts.service.ForecastService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/free-forecasts")
 public class FreeForecastController {
 
     private final ForecastService forecastService;
@@ -16,13 +20,13 @@ public class FreeForecastController {
         this.forecastService = forecastService;
     }
 
-    @GetMapping("/api/free-forecasts")
+    @GetMapping()
     public ResponseEntity<List<ForecastDTO>> getAllActiveFreeForecasts() {
         return ResponseEntity.ok(forecastService.getAllActiveFreeForecasts());
     }
 
-//    @GetMapping("/orders/order/{id}")
-//    public String getOrderById(@PathVariable("id") Long id) {
+//    @GetMapping("/{id}")
+//    public ResponseEntity<ForecastDTO> getOrderById(@PathVariable("id") Long id) {
 //        throw new OrderNotFoundException(id);
 //    }
 //
