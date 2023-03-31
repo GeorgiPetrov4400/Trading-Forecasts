@@ -21,11 +21,6 @@ public class OrderController {
         this.forecastService = forecastService;
     }
 
-//    @GetMapping("/orders/order")
-//    public String orders() {
-//        return "order";
-//    }
-
     @GetMapping("/order")
     public String getAllActiveForecast(Principal principal, Model model) {
 
@@ -65,7 +60,8 @@ public class OrderController {
         return "redirect:/orders/order";
     }
 
-//    @GetMapping("/orders/order/{id}")
+
+    //    @GetMapping("/orders/order/{id}")
 //    public String getOrderById(@PathVariable("id") Long id) {
 //        throw new OrderNotFoundException(id);
 //    }
@@ -73,15 +69,5 @@ public class OrderController {
 //    @GetMapping()
 //    public String getOrders() {
 //        throw new NullPointerException("Server Error");
-//    }
-//
-//    @ResponseStatus(value = HttpStatus.NOT_FOUND)
-//    @ExceptionHandler(OrderNotFoundException.class)
-//    public ModelAndView onOrderNotFound(OrderNotFoundException onfe) {
-//        ModelAndView modelAndView = new ModelAndView("order-not-found");
-//
-//        modelAndView.addObject("orderId", onfe.getOrderId());
-//
-//        return modelAndView;
 //    }
 }
