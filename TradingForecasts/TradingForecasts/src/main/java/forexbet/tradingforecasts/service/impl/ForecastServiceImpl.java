@@ -81,7 +81,7 @@ public class ForecastServiceImpl implements ForecastService {
 
     @Override
     public List<ForecastDTO> getExpiredForecasts() {
-        return forecastRepository.findAllByClosedIsNotNullOrderByClosedDesc().stream()
+        return forecastRepository.findAllByClosedIsNotNullOrderByClosedAsc().stream()
                 .map(forecast -> modelMapper.map(forecast, ForecastDTO.class)).collect(Collectors.toList());
     }
 
