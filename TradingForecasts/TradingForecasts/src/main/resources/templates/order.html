@@ -164,8 +164,8 @@
                             <td style="width: 20%">
                                 <a th:text="*{f.getDescription()}">Description</a>
                             </td>
-                            <td style="width: 60%">
-                                <a th:text="*{f.getPictureUrl()}">Picture</a>
+                            <td style="width: 60%" th:each="picture : ${allPictures}">
+                                <a href=""><img th:src="*{picture.url}" alt="Image"></a>
                             </td>
                             <td style="width: 5%">
                                 <a th:text="*{f.getPrice() + ' €'}">Price</a>

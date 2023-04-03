@@ -1,6 +1,8 @@
 package forexbet.tradingforecasts.web;
 
 import forexbet.tradingforecasts.model.dto.ForecastDTO;
+import forexbet.tradingforecasts.model.entity.Picture;
+import forexbet.tradingforecasts.repository.PictureRepository;
 import forexbet.tradingforecasts.service.ForecastService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,16 +11,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/orders")
 public class OrderController {
 
     private final ForecastService forecastService;
+    private final PictureRepository pictureRepository;
 
-    public OrderController(ForecastService forecastService) {
+    public OrderController(ForecastService forecastService, PictureRepository pictureRepository) {
         this.forecastService = forecastService;
+        this.pictureRepository = pictureRepository;
     }
 
     @GetMapping("/order")
@@ -31,6 +37,15 @@ public class OrderController {
         model.addAttribute("ownForecastsAdded", ownForecastsAdded);
 
         List<ForecastDTO> allActiveForecasts = forecastService.getActiveForecasts();
+        List<Picture> pictures = new ArrayList<>();
+
+        for (ForecastDTO activeForecast : allActiveForecasts) {
+            Optional<Picture> byForecastId = pictureRepository.findByForecastId(activeForecast.getId());
+            Picture picture = byForecastId.get();
+            pictures.add(picture);
+        }
+
+        model.addAttribute("allPictures", pictures);
         model.addAttribute("allActiveForecast", allActiveForecasts);
 
         List<ForecastDTO> expiredForecasts = forecastService.getExpiredForecasts();
@@ -60,8 +75,7 @@ public class OrderController {
         return "redirect:/orders/order";
     }
 
-
-    //    @GetMapping("/orders/order/{id}")
+//    @GetMapping("/orders/order/{id}")
 //    public String getOrderById(@PathVariable("id") Long id) {
 //        throw new OrderNotFoundException(id);
 //    }
@@ -69,5 +83,15 @@ public class OrderController {
 //    @GetMapping()
 //    public String getOrders() {
 //        throw new NullPointerException("Server Error");
+//    }
+//
+//    @ResponseStatus(value = HttpStatus.NOT_FOUND)
+//    @ExceptionHandler(OrderNotFoundException.class)
+//    public ModelAndView onOrderNotFound(OrderNotFoundException onfe) {
+//        ModelAndView modelAndView = new ModelAndView("order-not-found");
+//
+//        modelAndView.addObject("orderId", onfe.getOrderId());
+//
+//        return modelAndView;
 //    }
 }

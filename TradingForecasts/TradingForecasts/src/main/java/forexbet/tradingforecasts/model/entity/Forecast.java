@@ -6,7 +6,9 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "forecasts")
@@ -15,8 +17,8 @@ public class Forecast extends BaseEntity {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
 
-    @Column(name = "picture_url", nullable = false)
-    private String pictureUrl;
+//    @Column(name = "picture_url", nullable = false)
+//    private String pictureUrl;
 
     private BigDecimal price;
 
@@ -33,6 +35,9 @@ public class Forecast extends BaseEntity {
     @Column(name = "is_active", nullable = false)
     private boolean isActive;
 
+    @OneToMany(mappedBy = "forecast", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<Picture> picturesUrl;
+
     @ManyToOne
     private Category category;
 
@@ -46,6 +51,7 @@ public class Forecast extends BaseEntity {
         this.created = LocalDateTime.now();
         this.closed = null;
         this.buyer = new ArrayList<>();
+        this.picturesUrl = new HashSet<>();
     }
 
     public String getDescription() {
@@ -57,14 +63,14 @@ public class Forecast extends BaseEntity {
         return this;
     }
 
-    public String getPictureUrl() {
-        return pictureUrl;
-    }
-
-    public Forecast setPictureUrl(String pictureUrl) {
-        this.pictureUrl = pictureUrl;
-        return this;
-    }
+//    public String getPictureUrl() {
+//        return pictureUrl;
+//    }
+//
+//    public Forecast setPictureUrl(String pictureUrl) {
+//        this.pictureUrl = pictureUrl;
+//        return this;
+//    }
 
     public BigDecimal getPrice() {
         return price;
@@ -135,6 +141,15 @@ public class Forecast extends BaseEntity {
 
     public Forecast setBuyer(List<User> buyer) {
         this.buyer = buyer;
+        return this;
+    }
+
+    public Set<Picture> getPicturesUrl() {
+        return picturesUrl;
+    }
+
+    public Forecast setPicturesUrl(Set<Picture> picturesUrl) {
+        this.picturesUrl = picturesUrl;
         return this;
     }
 }

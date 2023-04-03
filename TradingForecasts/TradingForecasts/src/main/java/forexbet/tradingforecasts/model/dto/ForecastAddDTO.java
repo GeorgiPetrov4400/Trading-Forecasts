@@ -8,6 +8,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.math.BigDecimal;
 
@@ -17,8 +18,8 @@ public class ForecastAddDTO {
     @Size(min = 5, max = 100)
     private String description;
 
-    @NotBlank
-    private String pictureUrl;
+    @NotNull
+    private MultipartFile pictureUrl;
 
     @Positive
     private BigDecimal price;
@@ -46,11 +47,11 @@ public class ForecastAddDTO {
         return this;
     }
 
-    public String getPictureUrl() {
+    public MultipartFile getPictureUrl() {
         return pictureUrl;
     }
 
-    public ForecastAddDTO setPictureUrl(String pictureUrl) {
+    public ForecastAddDTO setPictureUrl(MultipartFile pictureUrl) {
         this.pictureUrl = pictureUrl;
         return this;
     }
@@ -61,6 +62,15 @@ public class ForecastAddDTO {
 
     public ForecastAddDTO setPrice(BigDecimal price) {
         this.price = price;
+        return this;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public ForecastAddDTO setActive(boolean active) {
+        isActive = active;
         return this;
     }
 
@@ -79,15 +89,6 @@ public class ForecastAddDTO {
 
     public ForecastAddDTO setType(ForecastTypeEnum type) {
         this.type = type;
-        return this;
-    }
-
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public ForecastAddDTO setActive(boolean active) {
-        isActive = active;
         return this;
     }
 }

@@ -1,8 +1,5 @@
 package forexbet.tradingforecasts.model.service;
 
-import forexbet.tradingforecasts.model.entity.UserRole;
-import forexbet.tradingforecasts.model.entity.enums.UserRoleEnum;
-
 public class UserServiceModel {
 
     private Long id;
@@ -19,7 +16,7 @@ public class UserServiceModel {
 
     private String lastName;
 
-    private UserRole userRole;
+    private String userRole;
 
     public UserServiceModel() {
     }
@@ -87,11 +84,11 @@ public class UserServiceModel {
         return this;
     }
 
-    public UserRole getUserRole() {
+    public String getUserRole() {
         return userRole;
     }
 
-    public UserServiceModel setUserRole(UserRole userRole) {
+    public UserServiceModel setUserRole(String userRole) {
         this.userRole = userRole;
         return this;
     }

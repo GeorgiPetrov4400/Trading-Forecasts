@@ -2,6 +2,8 @@ package forexbet.tradingforecasts.service;
 
 import forexbet.tradingforecasts.model.dto.ForecastAddDTO;
 import forexbet.tradingforecasts.model.dto.ForecastDTO;
+import forexbet.tradingforecasts.model.entity.Forecast;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.security.Principal;
 import java.util.List;
@@ -9,6 +11,8 @@ import java.util.List;
 public interface ForecastService {
 
     void addForecast(Principal principal, ForecastAddDTO forecastAddDTO);
+
+    void createForecast(ForecastAddDTO forecastAddDTO,Principal principal, MultipartFile imageFile);
 
 //    void expireForecastById(Long id);
 

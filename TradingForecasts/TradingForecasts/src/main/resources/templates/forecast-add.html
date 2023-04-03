@@ -16,7 +16,7 @@
 <body>
 <nav th:replace="~{fragments/commons::nav}"></nav>
 <main>
-    <form th:action="@{/forecasts/add}" th:method="post" th:object="${forecastAddDTO}"
+    <form th:action="@{/forecasts/add}" th:method="post" th:object="${forecastAddDTO}" enctype="multipart/form-data"
           class="mx-auto w-25 bg-blur rounded">
 
         <div class="form-group">
@@ -33,14 +33,19 @@
         </div>
 
         <div class="form-group">
-            <div class="picture">
-                <label th:for="picture" class="picture">Picture Url</label>
+            <div class="pictureUrl" id="pictureUrl">
+                <label for="pictureUrl">Picture</label>
             </div>
-            <div>
-                    <textarea th:field="*{pictureUrl}"
-                              type="text" class="form-control"
-                              id="picture" name="picture"></textarea>
+<!--            <div>-->
+<!--                    <textarea th:field="*{pictureUrl}"-->
+<!--                              type="text" class="form-control"-->
+<!--                              id="picture" name="picture"></textarea>-->
+<!--            </div>-->
+
+            <div class="form-group">
+                <input type="file" name="pictureUrl" class="form-control-file" aria-describedby="pictureUrl">
             </div>
+
             <small class="errors alert alert-danger" th:if="${#fields.hasErrors('pictureUrl')}">Picture url must be
                 available</small>
         </div>

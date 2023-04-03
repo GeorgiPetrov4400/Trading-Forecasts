@@ -1,9 +1,6 @@
 package forexbet.tradingforecasts.model.entity;
 
-import forexbet.tradingforecasts.model.entity.enums.CategoryNameEnum;
 import jakarta.persistence.*;
-
-import java.math.BigDecimal;
 
 @Entity
 @Table(name = "pictures")
@@ -15,10 +12,10 @@ public class Picture extends BaseEntity {
     @Column(nullable = false)
     private String url;
 
-    @Column(nullable = false)
+    @Column
     private String publicId;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Forecast forecast;
 
     public Picture() {
