@@ -18,7 +18,6 @@ public class ForecastAddController {
 
     private final ForecastService forecastService;
 
-
     public ForecastAddController(ForecastService forecastService) {
         this.forecastService = forecastService;
     }

@@ -8,16 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/forecasts")
 public class ForecastController {
 
-//    private final ForecastService forecastService;
-//
-//    public ForecastController(ForecastService forecastService) {
-//        this.forecastService = forecastService;
-//    }
-
-//    @ModelAttribute
-//    public ForecastAddDTO forecastAddDTO() {
-//        return new ForecastAddDTO();
-//    }
+    //TODO - under construction
 
     @GetMapping("/eur-usd-forecast")
     public String forecastEurUsd() {
@@ -49,27 +40,5 @@ public class ForecastController {
         return "nasdaq-forecast";
     }
 
-//    @GetMapping("/add")
-//    public String add() {
-//        return "forecast-add";
-//    }
-//
-//    @PostMapping("/add")
-//    public String addForecast(@Valid ForecastAddDTO forecastAddDTO,
-//                              BindingResult bindingResult,
-//                              RedirectAttributes redirectAttributes,
-//                              Principal principal) {
-//
-//        if (bindingResult.hasErrors()) {
-//            redirectAttributes.addFlashAttribute("forecastAddDTO", forecastAddDTO)
-//                    .addFlashAttribute("org.springframework.validation.BindingResult.forecastAddDTO",
-//                            bindingResult);
-//
-//            return "redirect:add";
-//        }
-//
-//        forecastService.addForecast(principal, forecastAddDTO);
-//
-//        return "redirect:/";
-//    }
+
 }

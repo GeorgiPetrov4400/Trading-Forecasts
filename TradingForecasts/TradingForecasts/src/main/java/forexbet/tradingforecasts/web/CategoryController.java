@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/categories")
 public class CategoryController {
 
+    //TODO - under construction
+
     @GetMapping("/eur-usd")
     public String categoryEurUsd() {
         return "eur-usd";

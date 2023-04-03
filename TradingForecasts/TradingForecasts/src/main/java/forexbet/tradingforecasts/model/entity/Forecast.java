@@ -17,9 +17,6 @@ public class Forecast extends BaseEntity {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
 
-//    @Column(name = "picture_url", nullable = false)
-//    private String pictureUrl;
-
     private BigDecimal price;
 
     @Column(nullable = false)
@@ -62,15 +59,6 @@ public class Forecast extends BaseEntity {
         this.description = description;
         return this;
     }
-
-//    public String getPictureUrl() {
-//        return pictureUrl;
-//    }
-//
-//    public Forecast setPictureUrl(String pictureUrl) {
-//        this.pictureUrl = pictureUrl;
-//        return this;
-//    }
 
     public BigDecimal getPrice() {
         return price;
