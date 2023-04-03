@@ -28,8 +28,8 @@ public class FreeForecastController {
         throw new OrderNotFoundException(id);
     }
 
-//    @GetMapping()
-//    public String getOrders() {
-//        throw new NullPointerException("Server Error");
-//    }
+    @GetMapping("/all")
+    public String getOrders() {
+        throw new NullPointerException("Server Error");
+    }
 }
