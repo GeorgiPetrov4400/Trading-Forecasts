@@ -6,6 +6,11 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
+//import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
 @SpringBootTest
 @AutoConfigureMockMvc
 public class UserControllerIT {
@@ -14,7 +19,16 @@ public class UserControllerIT {
     private MockMvc mockMvc;
 
     @Test
-    void testRegistration() {
-
+    void testRegistration() throws Exception {
+        mockMvc.perform(post("/users/register")
+                        .param("email", "gosho@example.com")
+                        .param("username", "Gosho")
+                        .param("password", "12345")
+                        .param("confirmPassword", "12345")
+                        .param("firstName", "Gosho")
+                        .param("lastName", "Goshev")
+                        .with(csrf()))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/users/login"));
     }
 }

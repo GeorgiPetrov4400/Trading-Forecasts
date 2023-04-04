@@ -53,20 +53,26 @@ public class UserServiceImplTest {
 
     @Test
     void testInitAdmin() {
-        User mockAdminUser = new User()
+        UserRegisterDTO mockAdminUser = new UserRegisterDTO()
                 .setEmail("test@example.com")
                 .setUsername("Test")
                 .setPassword("12345")
-//                .setConfirmPassword("12345")
+                .setConfirmPassword("12345")
                 .setFirstName("Test")
-                .setLastName("Testov")
-                .setRoles(mockUserRoleService.findAll());
-
-
+                .setLastName("Testov");
     }
 
-//    @Test
-//    void testUserRegister() {
+    @Test
+    void testUserRegister() {
+
+        UserRegisterDTO testUserRegisterDTO = new UserRegisterDTO()
+                .setEmail("test@example.com")
+                .setUsername("Test")
+                .setPassword("12345")
+                .setConfirmPassword("12345")
+                .setFirstName("Test")
+                .setLastName("Testov");
+
 //        UserServiceModel testUserServiceModel = new UserServiceModel()
 //                .setEmail("test@example.com")
 //                .setUsername("Test")
@@ -75,12 +81,11 @@ public class UserServiceImplTest {
 //                .setFirstName("Tester")
 //                .setLastName("Testov")
 //                .setUserRole("User");
-//
-//        toTest.registerUser(mockModelMapper.map(mockUserRepository.save(testUserRegisterDTO), testUserServiceModel));
-//
-//
-//        Mockito.verify(mockUserRepository).save(any());
-//    }
+
+        toTest.registerUser(mockModelMapper.map(mockUserRepository.save(testUserRegisterDTO), UserServiceModel.class));
+
+        Mockito.verify(mockUserRepository).save(any());
+    }
 
     @Test
     void testUserRegister2() {
@@ -98,10 +103,10 @@ public class UserServiceImplTest {
 
         mockModelMapper.map(mockUserRepository.save(testUserServiceModel), UserServiceModel.class);
 
-//        Mockito.verify(mockUserRepository).save(userArgumentCaptor.capture());
-//
-//        User actualSavedUser = userArgumentCaptor.getValue();
-//        Assertions.assertEquals(testUserServiceModel.getEmail(), actualSavedUser.getEmail());
-//        Assertions.assertEquals(encodedPassword, actualSavedUser.getPassword());
+        Mockito.verify(mockUserRepository).save(userArgumentCaptor.capture());
+
+        User actualSavedUser = userArgumentCaptor.getValue();
+        Assertions.assertEquals(testUserServiceModel.getEmail(), actualSavedUser.getEmail());
+        Assertions.assertEquals(encodedPassword, actualSavedUser.getPassword());
     }
 }
