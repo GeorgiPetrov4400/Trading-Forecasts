@@ -30,4 +30,6 @@ public class UserControllerIT {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("login"));
     }
+
+
 }
