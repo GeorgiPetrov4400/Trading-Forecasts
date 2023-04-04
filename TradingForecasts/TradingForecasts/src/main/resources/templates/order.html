@@ -70,7 +70,7 @@
 </div>
 
 <main>
-    <div class="container bg-blur rounded mt-1 mb-4" sec:authorize="hasRole('User')">
+    <div class="container bg-blur rounded mt-1 mb-4">
         <h3>My Forecast: <span th:text="${userBoughtForecasts.size()}">Total Offers</span></h3>
         <div class="my-forecast" style="height: 30vh; overflow: auto">
             <ul th:each="f : ${userBoughtForecasts}">
@@ -150,7 +150,7 @@
         </h3>
         <!--        <h6 th:text="${activeForecast.size()}">totalOffers</h6>-->
 
-        <div class="active-forecast" style="height: 30vh; overflow: auto">
+        <div class="active-forecast" style="height: 40vh; overflow: auto">
             <ul th:each="f : ${allActiveForecast}">
                 <li>
                     <table>
@@ -170,10 +170,10 @@
                             <td style="width: 5%">
                                 <a th:text="*{f.getPrice() + ' €'}">Price</a>
                             </td>
-                            <td class="buy-button" style="width: 1%">
+                            <td class="buy-button" style="width: 2%">
                                 <a th:href="@{/orders/order/buy/{id}(id=${f.id})}">BUY</a>
                             </td>
-                            <td class="expired-button" style="width: 1%" sec:authorize="hasRole('Admin')">
+                            <td class="expired-button" style="width: 2%" sec:authorize="hasRole('Admin')">
                                 <a th:href="@{/orders/order/expire/{id}(id=*{f.id})}">Expired</a>
                             </td>
 <!--                            <td class="delete-button" style="width: 1%">-->

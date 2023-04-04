@@ -23,16 +23,16 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final UserRoleService userRoleService;
     private final PasswordEncoder passwordEncoder;
-    private final UserDetailsService userDetailsService;
-    private final SecurityContextRepository securityContextRepository;
+//    private final UserDetailsService userDetailsService;
+//    private final SecurityContextRepository securityContextRepository;
     private final ModelMapper modelMapper;
 
-    public UserServiceImpl(UserRepository userRepository, UserRoleService userRoleService, PasswordEncoder passwordEncoder, UserDetailsService userDetailsService, SecurityContextRepository securityContextRepository, ModelMapper modelMapper) {
+    public UserServiceImpl(UserRepository userRepository, UserRoleService userRoleService, PasswordEncoder passwordEncoder, ModelMapper modelMapper) {
         this.userRepository = userRepository;
         this.userRoleService = userRoleService;
         this.passwordEncoder = passwordEncoder;
-        this.userDetailsService = userDetailsService;
-        this.securityContextRepository = securityContextRepository;
+//        this.userDetailsService = userDetailsService;
+//        this.securityContextRepository = securityContextRepository;
         this.modelMapper = modelMapper;
     }
 
