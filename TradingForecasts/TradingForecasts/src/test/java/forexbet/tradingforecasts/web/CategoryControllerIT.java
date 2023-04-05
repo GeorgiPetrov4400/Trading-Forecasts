@@ -20,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class HomeControllerIT {
+public class CategoryControllerIT {
 
     @Autowired
     private MockMvc mockMvc;
@@ -50,43 +50,57 @@ public class HomeControllerIT {
     }
 
     @Test
-    void testGetHomePage() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/")
-                        .with(csrf())).andExpect(status().isOk())
-                .andExpect(view().name("index"));
+    @WithMockUser(username = "Admin", roles = "Admin")
+    void testGetEurUsd() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/categories/eur-usd")
+                        .with(csrf()))
+                .andExpect(status().isOk())
+                .andExpect(view().name("eur-usd"));
     }
 
     @Test
     @WithMockUser(username = "Admin", roles = "Admin")
-    void testGetAdminPage() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/admin")
+    void testGetEurGbp() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/categories/eur-gbp")
                         .with(csrf()))
                 .andExpect(status().isOk())
-                .andExpect(view().name("admin"));
+                .andExpect(view().name("eur-gbp"));
     }
 
     @Test
-    @WithMockUser
-    void testGetContactUs() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/contact")
+    @WithMockUser(username = "Admin", roles = "Admin")
+    void testGetGold() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/categories/gold")
                         .with(csrf()))
                 .andExpect(status().isOk())
-                .andExpect(view().name("contact"));
+                .andExpect(view().name("gold"));
     }
 
     @Test
-    void testGetAboutUs() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/about")
+    @WithMockUser(username = "Admin", roles = "Admin")
+    void testGetDax() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/categories/dax")
                         .with(csrf()))
                 .andExpect(status().isOk())
-                .andExpect(view().name("about"));
+                .andExpect(view().name("dax"));
     }
 
     @Test
-    void testGetFreeForecasts() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/free-forecasts")
+    @WithMockUser(username = "Admin", roles = "Admin")
+    void testGetDowJones() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/categories/dow-jones")
                         .with(csrf()))
                 .andExpect(status().isOk())
-                .andExpect(view().name("free-forecasts"));
+                .andExpect(view().name("dow-jones"));
     }
+
+    @Test
+    @WithMockUser(username = "Admin", roles = "Admin")
+    void testGetNasdaq() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/categories/nasdaq")
+                        .with(csrf()))
+                .andExpect(status().isOk())
+                .andExpect(view().name("nasdaq"));
+    }
+
 }

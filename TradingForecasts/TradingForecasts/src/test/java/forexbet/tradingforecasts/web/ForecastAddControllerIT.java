@@ -3,7 +3,6 @@ package forexbet.tradingforecasts.web;
 import forexbet.tradingforecasts.model.entity.User;
 import forexbet.tradingforecasts.model.entity.UserRole;
 import forexbet.tradingforecasts.model.entity.enums.UserRoleEnum;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +22,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public class ForecastAddControllerIT {
 
+//    private CategoryRepository categoryRepository;
+
     @Autowired
     private MockMvc mockMvc;
 
     private User testAdmin;
+
+//    private Forecast testForecast;
 
     @BeforeEach
     void setUp() {
@@ -49,6 +52,19 @@ public class ForecastAddControllerIT {
 
         return testAdminUser;
     }
+
+//    private Forecast createTestForecast(String description, MultipartFile pictureUrl, BigDecimal price,
+//                                        boolean isActive, CategoryNameEnum category, ForecastTypeEnum type) {
+//
+//        Forecast testForecast = new Forecast()
+//                .setDescription(description)
+//                .setPrice(price)
+//                .setActive(isActive)
+//                .setCategory(new Category())
+//                .setForecastType(type);
+//
+//        return testForecast;
+//    }
 
     @Test
     @WithMockUser(username = "Admin", roles = "Admin")
