@@ -26,7 +26,7 @@ public class UserControllerIT {
     }
 
     @Test
-    void testRegistration() throws Exception {
+    void testRegistration_Success() throws Exception {
         mockMvc.perform(post("/users/register")
                         .param("email", "gosho@example.com")
                         .param("username", "Gosho")
@@ -39,5 +39,35 @@ public class UserControllerIT {
                 .andExpect(redirectedUrl("login"));
     }
 
+    @Test
+    void testRegistration_Failed() throws Exception {
+        mockMvc.perform(post("/users/register")
+                        .param("email", "example.com")
+                        .param("username", "Go")
+                        .param("password", "123")
+                        .param("confirmPassword", "123")
+                        .param("firstName", "G")
+                        .param("lastName", "G")
+                        .with(csrf()))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("register"));
+    }
+
+    @Test
+    void testGetLogin() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/users/login")
+                        .with(csrf())).andExpect(status().isOk())
+                .andExpect(view().name("login"));
+    }
+
+    @Test
+    void testLoginWithEmptyParams_Failed() throws Exception {
+        mockMvc.perform(post("/users/login-error")
+                        .param("Username", "")
+                        .param("Password", "")
+                        .with(csrf()))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("login"));
+    }
 
 }

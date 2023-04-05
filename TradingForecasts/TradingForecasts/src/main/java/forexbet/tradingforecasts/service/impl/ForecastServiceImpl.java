@@ -56,10 +56,8 @@ public class ForecastServiceImpl implements ForecastService {
                     .setCategory(categoryService.findByCategoryNameEnum(forecastAddDTO.getCategory()))
                     .setForecastType(forecastAddDTO.getType())
                     .setDescription(forecastAddDTO.getDescription())
-                    //   .setPictureUrl(forecastAddDTO.getPictureUrl())
                     .setPrice(forecastAddDTO.getPrice())
                     .setActive(true);
-            // .getPictures().stream().map(Picture::getUrl).collect(Collectors.toList());
 
 //        forecastService.createForecast(forecast, forecastAddDTO.getPicture());
             forecastRepository.save(forecast);
@@ -91,22 +89,6 @@ public class ForecastServiceImpl implements ForecastService {
             forecastRepository.save(forecast);
         }
     }
-
-
-//    @Override
-//    public Forecast createForecast(Forecast forecast, MultipartFile imageFile) {
-//        String pictureUrl = pictureCloudService.savePicture(imageFile);
-//
-//        Picture picture = new Picture();
-//        picture.setForecast(forecast);
-//        picture.setTitle(imageFile.getOriginalFilename());
-//        picture.setUrl(pictureUrl);
-//
-//        forecast.setPictures(Collections.singleton(picture));
-//        forecastRepository.save(forecast);
-//
-//        return forecast;
-//    }
 
     @Override
     public List<ForecastDTO> getUserBoughtForecasts(Principal principal) {
