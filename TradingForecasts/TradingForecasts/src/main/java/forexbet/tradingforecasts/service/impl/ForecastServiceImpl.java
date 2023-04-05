@@ -90,6 +90,22 @@ public class ForecastServiceImpl implements ForecastService {
         }
     }
 
+
+//    @Override
+//    public Forecast createForecast(Forecast forecast, MultipartFile imageFile) {
+//        String pictureUrl = pictureCloudService.savePicture(imageFile);
+//
+//        Picture picture = new Picture();
+//        picture.setForecast(forecast);
+//        picture.setTitle(imageFile.getOriginalFilename());
+//        picture.setUrl(pictureUrl);
+//
+//        forecast.setPictures(Collections.singleton(picture));
+//        forecastRepository.save(forecast);
+//
+//        return forecast;
+//    }
+
     @Override
     public List<ForecastDTO> getUserBoughtForecasts(Principal principal) {
         Optional<User> buyerOptional = userRepository.findByUsername(principal.getName());
