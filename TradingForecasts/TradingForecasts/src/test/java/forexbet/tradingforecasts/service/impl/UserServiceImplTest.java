@@ -19,12 +19,11 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import static org.mockito.internal.verification.VerificationModeFactory.times;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class UserServiceImplTest {
@@ -53,13 +52,19 @@ public class UserServiceImplTest {
 
     @Test
     void testInitAdmin() {
-        UserRegisterDTO mockAdminUser = new UserRegisterDTO()
-                .setEmail("test@example.com")
-                .setUsername("Test")
-                .setPassword("12345")
-                .setConfirmPassword("12345")
-                .setFirstName("Test")
-                .setLastName("Testov");
+        String testPassword = "12345";
+
+        when(mockUserRoleService.findAll()).thenReturn(List.of(new UserRole()));
+
+        User testAdminUser = new User()
+                .setEmail("admin@example.com")
+                .setUsername("Admin")
+                .setPassword(testPassword)
+                .setFirstName("Admin")
+                .setLastName("Adminov")
+                .setRoles(mockUserRoleService.findAll());
+
+        mockUserRepository.save(testAdminUser);
     }
 
     @Test
@@ -81,26 +86,31 @@ public class UserServiceImplTest {
         Mockito.verify(mockUserRepository).save(any());
     }
 
-//    @Test
-//    void testUserRegister2() {
-////        String testPassword = "12345";
-//        String encodedPassword = "encoded_password";
-//
-//        User testUserServiceModel = new User()
-//                .setEmail("test@example.com")
-//                .setUsername("Test")
-//                .setPassword(encodedPassword)
-//                .setFirstName("Tester")
-//                .setLastName("Testov");
-//
-//        when(mockPasswordEncoder.encode(testUserServiceModel.getPassword())).thenReturn(encodedPassword);
-//
-//        mockModelMapper.map(mockUserRepository.save(testUserServiceModel), UserServiceModel.class);
-//
-//        Mockito.verify(mockUserRepository).save(userArgumentCaptor.capture());
-//
-//        User actualSavedUser = userArgumentCaptor.getValue();
-//        Assertions.assertEquals(testUserServiceModel.getEmail(), actualSavedUser.getEmail());
-//        Assertions.assertEquals(encodedPassword, actualSavedUser.getPassword());
-//    }
+    @Test
+    void testUserRegisterWithArgumentCaptor() {
+        String testPassword = "12345";
+        String encodedPassword = "encoded_password";
+
+        when(mockUserRoleService.findUserRole(UserRoleEnum.User))
+                .thenReturn(Optional.of(new UserRole().setRole(UserRoleEnum.User)));
+
+        UserServiceModel testUserServiceModel = new UserServiceModel()
+                .setEmail("test@example.com")
+                .setUsername("Test")
+                .setPassword(testPassword)
+                .setConfirmPassword(testPassword)
+                .setFirstName("Tester")
+                .setLastName("Testov")
+                .setUserRole("User");
+
+        when(mockPasswordEncoder.encode(testUserServiceModel.getPassword())).thenReturn(encodedPassword);
+
+        toTest.registerUser(testUserServiceModel);
+
+        Mockito.verify(mockUserRepository).save(userArgumentCaptor.capture());
+
+        User actualSavedUser = userArgumentCaptor.getValue();
+        Assertions.assertEquals(testUserServiceModel.getEmail(), actualSavedUser.getEmail());
+        Assertions.assertEquals(encodedPassword, actualSavedUser.getPassword());
+    }
 }

@@ -64,7 +64,6 @@ public class UserServiceImpl implements UserService {
                 .setRoles(List.of(moderatorRole));
 
         userRepository.save(moderatorUser);
-
     }
 
     @Override
