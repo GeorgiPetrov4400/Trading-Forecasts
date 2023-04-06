@@ -75,6 +75,7 @@ public class ForecastServiceImpl implements ForecastService {
                     .setForecastType(forecastAddDTO.getType())
                     .setDescription(forecastAddDTO.getDescription())
                     .setPrice(forecastAddDTO.getPrice())
+                    .setCreated(LocalDateTime.now())
                     .setActive(true);
 
             String pictureUrl = pictureCloudService.savePicture(imageFile);
