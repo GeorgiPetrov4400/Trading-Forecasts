@@ -1,36 +1,42 @@
 spring:
-  datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/trading_forecasts?useSSL=false&createDatabaseIfNotExist=true
-    username: root
-    password: '12345'
   jpa:
-    database-platform: org.hibernate.dialect.MySQLDialect
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: 'TRUE'
     hibernate:
       ddl-auto: update
-    defer-datasource-initialization: true
+    open-in-view: 'false'
   mvc:
     hiddenmethod:
       filter:
-        enabled: true
-  sql:
-    init:
-      mode: never
-  management:
-    endpoints:
-      web:
-        exposure:
-          include: "*"
+        enabled: 'true'
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    password: '12345'
+    username: root
+    url: jdbc:mysql://localhost:3306/trading_forecasts_cloudinary?useSSL=false&createDatabaseIfNotExist=true
+logging:
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor: TRACE
+        SQL: DEBUG
+      nodeValue: WARN
+    blog: WARN
 
-servlet:
-  multipart:
-    max-request-size: 1MB
-    max-file-size: 1MB
+  #servlet:
+  #  multipart:
+  #    max-request-size: 1MB
+  #    max-file-size: 1MB
+  #
+  #cloudinary:
+  #  api-key: '915884395922571'
+  #  api-secret: ${Cloudinary_api_secret}
+  #  cloud-name: dtg97g3ym
 
-cloudinary:
-  api-key: '915884395922571'
-  api-secret: ${Cloudinary_api_secret}
-  cloud-name: dtg97g3ym
+
 
   ##Data Source Properties
   #spring.datasource.driverClassName=com.mysql.cj.jdbc.Driver

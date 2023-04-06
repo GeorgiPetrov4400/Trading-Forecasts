@@ -12,7 +12,6 @@ public class Picture extends BaseEntity {
     @Column(nullable = false)
     private String url;
 
-    @Column
     private String publicId;
 
     @ManyToOne(cascade = CascadeType.ALL)

@@ -91,4 +91,6 @@ public class ForecastAddDTO {
         this.type = type;
         return this;
     }
+
+
 }
