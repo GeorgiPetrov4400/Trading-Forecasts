@@ -1,8 +1,8 @@
 package forexbet.tradingforecasts.web;
 
-import forexbet.tradingforecasts.model.entity.*;
-import forexbet.tradingforecasts.model.entity.enums.CategoryNameEnum;
-import forexbet.tradingforecasts.model.entity.enums.ForecastTypeEnum;
+import forexbet.tradingforecasts.model.entity.Forecast;
+import forexbet.tradingforecasts.model.entity.User;
+import forexbet.tradingforecasts.model.entity.UserRole;
 import forexbet.tradingforecasts.model.entity.enums.UserRoleEnum;
 import forexbet.tradingforecasts.service.cloudinary.PictureCloudService;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,14 +13,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.math.BigDecimal;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
@@ -50,39 +47,41 @@ public class ForecastAddControllerIT {
         UserRole moderatorRole = new UserRole().setRole(UserRoleEnum.Moderator);
         UserRole userRole = new UserRole().setRole(UserRoleEnum.User);
 
+        List<UserRole> allRoles = Arrays.asList(adminRole, moderatorRole, userRole);
+
         User testAdminUser = new User()
                 .setEmail(email)
                 .setUsername(username)
                 .setPassword("12345")
                 .setFirstName("Admin")
                 .setLastName("Adminov")
-                .setRoles(List.of(adminRole, moderatorRole, userRole));
+                .setRoles(allRoles);
 
         return testAdminUser;
     }
 
-    private Forecast createTestForecast
-            (String description, MultipartFile imageFile, BigDecimal price, String category, String type, boolean isActive) {
-
-        Category categoryEnum = new Category().setCategory(CategoryNameEnum.EurUsd);
-
-        testForecast = new Forecast()
-                .setDescription(description)
-                .setPrice(price)
-                .setCategory(categoryEnum)
-                .setForecastType(ForecastTypeEnum.valueOf(type))
-                .setActive(true);
-
-        String pictureUrl = mockPictureCloudService.savePicture(imageFile);
-
-        Picture testPicture = new Picture();
-        testPicture.setForecast(testForecast);
-        testPicture.setTitle(imageFile.getOriginalFilename());
-        testPicture.setUrl(pictureUrl);
-        testForecast.setPicturesUrl(Collections.singleton(testPicture));
-
-        return testForecast;
-    }
+//    private Forecast createTestForecast
+//            (String description, MultipartFile imageFile, BigDecimal price, String category, String type, boolean isActive) {
+//
+//        Category categoryEnum = new Category().setCategory(CategoryNameEnum.EurUsd);
+//
+//        testForecast = new Forecast()
+//                .setDescription(description)
+//                .setPrice(price)
+//                .setCategory(categoryEnum)
+//                .setForecastType(ForecastTypeEnum.valueOf(type))
+//                .setActive(true);
+//
+//        String pictureUrl = mockPictureCloudService.savePicture(imageFile);
+//
+//        Picture testPicture = new Picture();
+//        testPicture.setForecast(testForecast);
+//        testPicture.setTitle(imageFile.getOriginalFilename());
+//        testPicture.setUrl(pictureUrl);
+//        testForecast.setPicturesUrl(Collections.singleton(testPicture));
+//
+//        return testForecast;
+//    }
 
     @Test
     @WithMockUser(username = "Admin", roles = "Admin")
@@ -95,7 +94,7 @@ public class ForecastAddControllerIT {
     @Test
     @WithMockUser(username = "Admin", roles = "Admin")
     void testAddForecast_Failed() throws Exception {
-        mockMvc.perform(post("/forecasts/add")
+        mockMvc.perform(MockMvcRequestBuilders.post("/forecasts/add")
                         .param("description", "test")
                         .param("pictureUrl", "1")
                         .param("price", "8.88")
@@ -110,7 +109,7 @@ public class ForecastAddControllerIT {
     @Test
     @WithMockUser(username = "Admin", roles = "Admin")
     void testAddForecast_Success() throws Exception {
-        mockMvc.perform(post("/forecasts/add")
+        mockMvc.perform(MockMvcRequestBuilders.post("/forecasts/add")
                         .param("description", "test eur")
                         .param("pictureUrl", "https://res.cloudinary.com/dtg97g3ym/image/upload/v1680710447/e3ab41e6-2295-455b-a0c7-0419068ccc92.png")
                         .param("price", "1")
@@ -119,6 +118,6 @@ public class ForecastAddControllerIT {
                         .param("type", "Short")
                         .with(csrf()))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/"));
+                .andExpect(redirectedUrl("add"));
     }
 }

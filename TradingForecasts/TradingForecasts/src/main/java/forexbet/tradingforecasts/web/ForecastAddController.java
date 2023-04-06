@@ -47,7 +47,6 @@ public class ForecastAddController {
             return "redirect:add";
         }
 
-//        forecastService.createForecast(principal, forecastAddDTO);
         forecastService.createForecast(forecastAddDTO, principal, forecastAddDTO.getPictureUrl());
 
         return "redirect:/";

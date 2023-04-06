@@ -46,23 +46,23 @@ public class ForecastServiceImpl implements ForecastService {
         this.pictureCloudService = pictureCloudService;
     }
 
-    @Override
-    public void addForecast(Principal principal, ForecastAddDTO forecastAddDTO) {
-        Optional<User> adminOptional = userRepository.findByUsername(principal.getName());
-
-        if (adminOptional.isPresent()) {
-            Forecast forecast = modelMapper.map(forecastAddDTO, Forecast.class);
-            forecast.setAdmin(userService.findById(adminOptional.get().getId()))
-                    .setCategory(categoryService.findByCategoryNameEnum(forecastAddDTO.getCategory()))
-                    .setForecastType(forecastAddDTO.getType())
-                    .setDescription(forecastAddDTO.getDescription())
-                    .setPrice(forecastAddDTO.getPrice())
-                    .setActive(true);
-
-//        forecastService.createForecast(forecast, forecastAddDTO.getPicture());
-            forecastRepository.save(forecast);
-        }
-    }
+//    @Override
+//    public void addForecast(Principal principal, ForecastAddDTO forecastAddDTO) {
+//        Optional<User> adminOptional = userRepository.findByUsername(principal.getName());
+//
+//        if (adminOptional.isPresent()) {
+//            Forecast forecast = modelMapper.map(forecastAddDTO, Forecast.class);
+//            forecast.setAdmin(userService.findById(adminOptional.get().getId()))
+//                    .setCategory(categoryService.findByCategoryNameEnum(forecastAddDTO.getCategory()))
+//                    .setForecastType(forecastAddDTO.getType())
+//                    .setDescription(forecastAddDTO.getDescription())
+//                    .setPrice(forecastAddDTO.getPrice())
+//                    .setActive(true);
+//
+////        forecastService.createForecast(forecast, forecastAddDTO.getPicture());
+//            forecastRepository.save(forecast);
+//        }
+//    }
 
     @Override
     public void createForecast(ForecastAddDTO forecastAddDTO, Principal principal, MultipartFile imageFile) {
@@ -89,22 +89,6 @@ public class ForecastServiceImpl implements ForecastService {
             forecastRepository.save(forecast);
         }
     }
-
-
-//    @Override
-//    public Forecast createForecast(Forecast forecast, MultipartFile imageFile) {
-//        String pictureUrl = pictureCloudService.savePicture(imageFile);
-//
-//        Picture picture = new Picture();
-//        picture.setForecast(forecast);
-//        picture.setTitle(imageFile.getOriginalFilename());
-//        picture.setUrl(pictureUrl);
-//
-//        forecast.setPictures(Collections.singleton(picture));
-//        forecastRepository.save(forecast);
-//
-//        return forecast;
-//    }
 
     @Override
     public List<ForecastDTO> getUserBoughtForecasts(Principal principal) {

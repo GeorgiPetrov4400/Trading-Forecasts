@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface ForecastService {
 
-    void addForecast(Principal principal, ForecastAddDTO forecastAddDTO);
+//    void addForecast(Principal principal, ForecastAddDTO forecastAddDTO);
 
     void createForecast(ForecastAddDTO forecastAddDTO,Principal principal, MultipartFile imageFile);
 
