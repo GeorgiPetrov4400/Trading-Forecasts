@@ -40,6 +40,10 @@ public class UserServiceImplTest {
     @Mock
     private ModelMapper mockModelMapper;
 
+    private String defaultAdminPass;
+
+    private String defaultModeratorPass;
+
     @Captor
     private ArgumentCaptor<User> userArgumentCaptor;
 
@@ -47,7 +51,7 @@ public class UserServiceImplTest {
 
     @BeforeEach
     void setUp() {
-        toTest = new UserServiceImpl(mockUserRepository, mockUserRoleService, mockPasswordEncoder, mockModelMapper);
+        toTest = new UserServiceImpl(mockUserRepository, mockUserRoleService, mockPasswordEncoder, defaultAdminPass, defaultModeratorPass, mockModelMapper);
     }
 
     @Test

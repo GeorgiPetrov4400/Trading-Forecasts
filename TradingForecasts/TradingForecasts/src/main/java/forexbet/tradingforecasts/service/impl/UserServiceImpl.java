@@ -8,6 +8,7 @@ import forexbet.tradingforecasts.repository.UserRepository;
 import forexbet.tradingforecasts.service.UserRoleService;
 import forexbet.tradingforecasts.service.UserService;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,12 +25,20 @@ public class UserServiceImpl implements UserService {
     private final UserRoleService userRoleService;
     private final PasswordEncoder passwordEncoder;
     private final ModelMapper modelMapper;
+    private final String defaultAdminPass;
+    private final String defaultModeratorPass;
 
-    public UserServiceImpl(UserRepository userRepository, UserRoleService userRoleService, PasswordEncoder passwordEncoder, ModelMapper modelMapper) {
+    public UserServiceImpl(UserRepository userRepository, UserRoleService userRoleService,
+                           PasswordEncoder passwordEncoder,
+                           @Value("${TradingForecasts.Admin.defaultPass}") String defaultAdminPass,
+                           @Value("${TradingForecasts.Moderator.defaultPass}") String defaultModeratorPass,
+                           ModelMapper modelMapper) {
         this.userRepository = userRepository;
         this.userRoleService = userRoleService;
         this.passwordEncoder = passwordEncoder;
         this.modelMapper = modelMapper;
+        this.defaultAdminPass = defaultAdminPass;
+        this.defaultModeratorPass = defaultModeratorPass;
     }
 
     @Override
@@ -39,7 +48,7 @@ public class UserServiceImpl implements UserService {
         var adminUser = new User()
                 .setEmail("admin@example.com")
                 .setUsername("Admin")
-                .setPassword(passwordEncoder.encode("12345"))
+                .setPassword(passwordEncoder.encode(defaultAdminPass))
                 .setFirstName("Admin")
                 .setLastName("Adminov")
                 .setRoles(userRoleService.findAll());
@@ -54,7 +63,7 @@ public class UserServiceImpl implements UserService {
         var moderatorUser = new User()
                 .setEmail("moderator@example.com")
                 .setUsername("Moderator")
-                .setPassword(passwordEncoder.encode("12345"))
+                .setPassword(passwordEncoder.encode(defaultModeratorPass))
                 .setFirstName("Moder")
                 .setLastName("Moderatorov")
                 .setRoles(List.of(moderatorRole));
