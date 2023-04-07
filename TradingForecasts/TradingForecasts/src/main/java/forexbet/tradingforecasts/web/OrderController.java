@@ -42,7 +42,8 @@ public class OrderController {
         for (ForecastDTO activeForecast : allActiveForecasts) {
             Optional<Picture> byForecastId = pictureRepository.findByForecastId(activeForecast.getId());
             Picture picture = byForecastId.get();
-            pictures.add(picture);
+           // pictures.add(picture);
+            activeForecast.setPictureUrl(picture.getUrl());
         }
 
         model.addAttribute("allPictures", pictures);

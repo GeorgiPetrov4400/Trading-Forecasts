@@ -155,25 +155,28 @@
                 <li>
                     <table>
                         <tr>
-                            <td style="width: 5%">
+                            <td style="width: 8%">
                                 <a th:text="*{f.getCategory().toString()}">Category</a>
                             </td>
-                            <td style="width: 5%">
+                            <td style="width: 8%">
                                 <a th:text="*{f.getForecastType()}">Type</a>
                             </td>
-                            <td style="width: 20%">
+                            <td style="width: 30%">
                                 <a th:text="*{f.getDescription()}">Description</a>
                             </td>
-                            <td style="width: 60%" th:each="picture : ${allPictures}">
-                                <a href=""><img th:src="*{picture.url}" alt="Image"></a>
+                            <td style="width: 30%" each="picture : ${allPictures}">
+                                <a href=""><img th:src="*{f.pictureUrl}" alt="Image"></a>
                             </td>
-                            <td style="width: 5%">
+<!--                            <td style="width: 60%" th:each="picture : ${allPictures}">-->
+<!--                                <a href=""><img th:src="*{picture.url}" alt="Image"></a>-->
+<!--                            </td>-->
+                            <td style="width: 8%">
                                 <a th:text="*{f.getPrice() + ' €'}">Price</a>
                             </td>
-                            <td class="buy-button" style="width: 2%">
+                            <td class="buy-button" style="width: 5%">
                                 <a th:href="@{/orders/order/buy/{id}(id=${f.id})}">BUY</a>
                             </td>
-                            <td class="expired-button" style="width: 2%" sec:authorize="hasRole('Admin')">
+                            <td class="expired-button" style="width: 5%" sec:authorize="hasRole('Admin')">
                                 <a th:href="@{/orders/order/expire/{id}(id=*{f.id})}">Expired</a>
                             </td>
 <!--                            <td class="delete-button" style="width: 1%">-->
