@@ -31,13 +31,28 @@ public class OrderController {
     public String getAllActiveForecast(Principal principal, Model model) {
 
         List<ForecastDTO> userBoughtForecasts = forecastService.getUserBoughtForecasts(principal);
+
+        for (ForecastDTO userBoughtForecast : userBoughtForecasts) {
+            Optional<Picture> byForecastId = pictureRepository.findByForecastId(userBoughtForecast.getId());
+            Picture picture = byForecastId.get();
+            userBoughtForecast.setPictureUrl(picture.getUrl());
+        }
+
         model.addAttribute("userBoughtForecasts", userBoughtForecasts);
 
+
         List<ForecastDTO> ownForecastsAdded = forecastService.getOwnForecastsAdded(principal);
+
+        for (ForecastDTO ownForecast : ownForecastsAdded) {
+            Optional<Picture> byForecastId = pictureRepository.findByForecastId(ownForecast.getId());
+            Picture picture = byForecastId.get();
+            ownForecast.setPictureUrl(picture.getUrl());
+        }
         model.addAttribute("ownForecastsAdded", ownForecastsAdded);
 
+
         List<ForecastDTO> allActiveForecasts = forecastService.getActiveForecasts();
-        List<Picture> pictures = new ArrayList<>();
+   //     List<Picture> pictures = new ArrayList<>();
 
         for (ForecastDTO activeForecast : allActiveForecasts) {
             Optional<Picture> byForecastId = pictureRepository.findByForecastId(activeForecast.getId());
@@ -46,10 +61,16 @@ public class OrderController {
             activeForecast.setPictureUrl(picture.getUrl());
         }
 
-        model.addAttribute("allPictures", pictures);
+   //     model.addAttribute("allPictures", pictures);
         model.addAttribute("allActiveForecast", allActiveForecasts);
 
         List<ForecastDTO> expiredForecasts = forecastService.getExpiredForecasts();
+
+        for (ForecastDTO expiredForecast : expiredForecasts) {
+            Optional<Picture> byForecastId = pictureRepository.findByForecastId(expiredForecast.getId());
+            Picture picture = byForecastId.get();
+            expiredForecast.setPictureUrl(picture.getUrl());
+        }
         model.addAttribute("expiredForecasts", expiredForecasts);
 
         return "order";
