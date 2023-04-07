@@ -49,6 +49,10 @@ public class ForecastAddControllerIT {
     @BeforeEach
     void setUp() {
         testAdmin = createTestAdmin("admin@example.com", "Admin");
+        testForecast = createTestForecast(testForecastAddDTO, testAdmin, testForecastAddDTO.getPictureUrl());
+//        testForecastAddDTO = createForecastAddDTO("test eur",
+//                "https://res.cloudinary.com/dtg97g3ym/image/upload/v1680710447/e3ab41e6-2295-455b-a0c7-0419068ccc92.png",
+//                BigDecimal.ONE, true, CategoryNameEnum.EurUsd, ForecastTypeEnum.Short);
     }
 
     private User createTestAdmin(String email, String username) {
@@ -97,6 +101,21 @@ public class ForecastAddControllerIT {
         return mockForecastRepository.save(testForecast);
     }
 
+    private ForecastAddDTO createForecastAddDTO(String description, MultipartFile pictureUrl, BigDecimal price,
+                                                boolean isActive, CategoryNameEnum category, ForecastTypeEnum type) {
+
+        testForecastAddDTO.setDescription(description)
+                .setPictureUrl(pictureUrl)
+                .setPrice(price)
+                .setActive(true)
+                .setCategory(CategoryNameEnum.EurUsd)
+                .setType(ForecastTypeEnum.Short);
+
+
+        return testForecastAddDTO;
+    }
+
+
     @Test
     @WithMockUser(username = "Admin", roles = "Admin")
     void testGetAddForecast() throws Exception {
@@ -124,12 +143,13 @@ public class ForecastAddControllerIT {
     @WithMockUser(username = "Admin", roles = "Admin")
     void testAddForecast_Success() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/forecasts/add")
-                        .param("description", "test eur")
-                        .param("pictureUrl", "https://res.cloudinary.com/dtg97g3ym/image/upload/v1680710447/e3ab41e6-2295-455b-a0c7-0419068ccc92.png")
-                        .param("price", "1")
-                        .param("isActive", "true")
                         .param("category", "EurUsd")
                         .param("type", "Short")
+                        .param("description", "test eur")
+                        .param("price", "1")
+//                        .param("created", "2023-04-07 14:20:31.125970")
+                        .param("isActive", "true")
+                        .param("pictureUrl", "https://res.cloudinary.com/dtg97g3ym/image/upload/v1680710447/e3ab41e6-2295-455b-a0c7-0419068ccc92.png")
                         .with(csrf()))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/orders/order"));
