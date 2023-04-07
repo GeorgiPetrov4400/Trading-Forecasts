@@ -13,9 +13,9 @@ spring:
         enabled: 'true'
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    password: '12345'
-    username: root
-    url: jdbc:mysql://localhost:3306/trading_forecasts_cloudinary?useSSL=false&createDatabaseIfNotExist=true
+    password: ${DB_Password}
+    username: ${DB_Username}
+    url: jdbc:mysql://localhost:3306/trading_forecasts?useSSL=false&createDatabaseIfNotExist=true
 logging:
   level:
     org:
