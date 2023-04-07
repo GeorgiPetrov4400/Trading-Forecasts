@@ -130,7 +130,6 @@
     <div class="container bg-blur rounded mt-1 mb-4"  th:action="@{/orders/order}">
         <h3>Active Forecasts: <span th:text="${allActiveForecast.size()}">Total Offers</span>
         </h3>
-        <!--        <h6 th:text="${activeForecast.size()}">totalOffers</h6>-->
 
         <div class="active-forecast" style="height: 40vh; overflow: auto">
             <ul th:each="f : ${allActiveForecast}">

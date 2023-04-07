@@ -113,4 +113,19 @@ public class UserServiceImplTest {
         Assertions.assertEquals(testUserServiceModel.getEmail(), actualSavedUser.getEmail());
         Assertions.assertEquals(encodedPassword, actualSavedUser.getPassword());
     }
+
+    @Test
+    void testGetUserByUsername() {
+        String testUsername = "Admin";
+        User testUser = new User().setUsername(testUsername).setFirstName("Admin").setLastName("Adminov");
+
+        Mockito.when(mockUserRepository.findByUsername(testUsername)).thenReturn(Optional.of(testUser));
+
+        User actualUser = mockUserRepository.findByUsername(testUser.getUsername()).orElseThrow();
+
+        Assertions.assertEquals(testUser, actualUser);
+        Assertions.assertEquals(testUser.getUsername(), actualUser.getUsername());
+        Assertions.assertEquals(testUser.getFirstName(), actualUser.getFirstName());
+        Assertions.assertEquals(testUser.getLastName(), actualUser.getLastName());
+    }
 }
