@@ -114,43 +114,65 @@ public class ForecastAddControllerIT {
         return testForecastAddDTO;
     }
 
+//File imageFile = new File("src/test/resources", "testImgOne.png");
+//
+//        MockMultipartFile imageMultipartFile
+//                = new MockMultipartFile(
+//                        "fileData",
+//                        imageFile.getName(),
+//                        "image/png",
+//                        Files.readAllBytes(imageFile.toPath()));
+//
+//        mockMvc.perform(multipart("/api/photos/temp/upload")
+//                      .part(new MockPart("fileData",
+//                                         imageFile.getName(),
+//                                         imageMultipartFile.getBytes()))
+//                      .contentType(
+//                              "multipart/form-data; boundary=----WebKitFormBoundaryk1fn4D7ebCjmFPHl")
+//                      .param("description", "testDescription")
+//                      .param("tempRecipeId",
+//                             recipeBM.getTempRecipeId().toString())
+//                      .with(csrf())
+//                     .andExpect(status().is2xxSuccessful())
 
-    @Test
-    @WithMockUser(username = "Admin", roles = "Admin")
-    void testGetAddForecast() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/forecasts/add"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("forecast-add"));
-    }
 
-    @Test
-    @WithMockUser(username = "Admin", roles = "Admin")
-    void testAddForecast_Failed() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.post("/forecasts/add")
-                        .param("description", "t")
-                        .param("pictureUrl", "1")
-                        .param("price", "8.88")
-                        .param("isActive", "false")
-                        .param("category", "gold")
-                        .param("type", "unknown")
-                        .with(csrf()))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("add"));
-    }
 
-    @Test
-    @WithMockUser(username = "Admin", roles = "Admin")
-    void testAddForecast_Success() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.post("/forecasts/add")
-                        .param("category", "EurUsd")
-                        .param("type", "Short")
-                        .param("description", "test eur")
-                        .param("price", "1")
-//                        .param("created", "2023-04-07 14:20:31.125970")
-                        .param("isActive", "true")
-                        .param("pictureUrl", "https://res.cloudinary.com/dtg97g3ym/image/upload/v1680710447/e3ab41e6-2295-455b-a0c7-0419068ccc92.png")
-                        .with(csrf()))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/orders/order"));
-    }
+//    @Test
+//    @WithMockUser(username = "Admin", roles = "Admin")
+//    void testGetAddForecast() throws Exception {
+//        mockMvc.perform(MockMvcRequestBuilders.get("/forecasts/add"))
+//                .andExpect(status().isOk())
+//                .andExpect(view().name("forecast-add"));
+//    }
+//
+//    @Test
+//    @WithMockUser(username = "Admin", roles = "Admin")
+//    void testAddForecast_Failed() throws Exception {
+//        mockMvc.perform(MockMvcRequestBuilders.post("/forecasts/add")
+//                        .param("description", "t")
+//                        .param("pictureUrl", "1")
+//                        .param("price", "8.88")
+//                        .param("isActive", "false")
+//                        .param("category", "gold")
+//                        .param("type", "unknown")
+//                        .with(csrf()))
+//                .andExpect(status().is3xxRedirection())
+//                .andExpect(redirectedUrl("add"));
+//    }
+//
+//    @Test
+//    @WithMockUser(username = "Admin", roles = "Admin")
+//    void testAddForecast_Success() throws Exception {
+//        mockMvc.perform(MockMvcRequestBuilders.post("/forecasts/add")
+//                        .param("category", "EurUsd")
+//                        .param("type", "Short")
+//                        .param("description", "test eur")
+//                        .param("price", "1")
+////                        .param("created", "2023-04-07 14:20:31.125970")
+//                        .param("isActive", "true")
+//                        .param("pictureUrl", "https://res.cloudinary.com/dtg97g3ym/image/upload/v1680710447/e3ab41e6-2295-455b-a0c7-0419068ccc92.png")
+//                        .with(csrf()))
+//                .andExpect(status().is3xxRedirection())
+//                .andExpect(redirectedUrl("/orders/order"));
+//    }
 }

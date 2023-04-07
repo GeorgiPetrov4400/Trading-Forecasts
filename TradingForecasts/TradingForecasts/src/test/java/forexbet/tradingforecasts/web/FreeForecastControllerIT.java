@@ -19,14 +19,6 @@ public class FreeForecastControllerIT {
     @Autowired
     private MockMvc mockMvc;
 
-//    @Test
-//    void testGetAllActiveFreeForecasts() throws Exception {
-//        mockMvc.perform(MockMvcRequestBuilders.get("/api/free-forecasts")
-//                        .with(csrf()))
-//                .andExpect(status().isOk())
-//                .andExpect(view().name("free-forecasts"));
-//    }
-
     @Test
     @WithMockUser
     void testGetOrderByID_ThrowException() throws Exception {

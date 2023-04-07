@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,16 +51,13 @@ public class OrderController {
 
 
         List<ForecastDTO> allActiveForecasts = forecastService.getActiveForecasts();
-   //     List<Picture> pictures = new ArrayList<>();
 
         for (ForecastDTO activeForecast : allActiveForecasts) {
             Optional<Picture> byForecastId = pictureRepository.findByForecastId(activeForecast.getId());
             Picture picture = byForecastId.get();
-           // pictures.add(picture);
             activeForecast.setPictureUrl(picture.getUrl());
         }
 
-   //     model.addAttribute("allPictures", pictures);
         model.addAttribute("allActiveForecast", allActiveForecasts);
 
         List<ForecastDTO> expiredForecasts = forecastService.getExpiredForecasts();
