@@ -1,6 +1,5 @@
 package forexbet.tradingforecasts.service.impl;
 
-import forexbet.tradingforecasts.model.dto.UserRegisterDTO;
 import forexbet.tradingforecasts.model.entity.User;
 import forexbet.tradingforecasts.model.entity.UserRole;
 import forexbet.tradingforecasts.model.entity.enums.UserRoleEnum;
@@ -23,7 +22,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class UserServiceImplTest {
@@ -40,10 +39,6 @@ public class UserServiceImplTest {
     @Mock
     private ModelMapper mockModelMapper;
 
-    private String defaultAdminPass;
-
-    private String defaultModeratorPass;
-
     @Captor
     private ArgumentCaptor<User> userArgumentCaptor;
 
@@ -51,7 +46,7 @@ public class UserServiceImplTest {
 
     @BeforeEach
     void setUp() {
-        toTest = new UserServiceImpl(mockUserRepository, mockUserRoleService, mockPasswordEncoder, defaultAdminPass, defaultModeratorPass, mockModelMapper);
+        toTest = new UserServiceImpl(mockUserRepository, mockUserRoleService, mockPasswordEncoder, mockModelMapper);
     }
 
     @Test

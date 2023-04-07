@@ -25,20 +25,20 @@ public class UserServiceImpl implements UserService {
     private final UserRoleService userRoleService;
     private final PasswordEncoder passwordEncoder;
     private final ModelMapper modelMapper;
-    private final String defaultAdminPass;
-    private final String defaultModeratorPass;
+  //  private final String defaultAdminPass;
+  //  private final String defaultModeratorPass;
 
     public UserServiceImpl(UserRepository userRepository, UserRoleService userRoleService,
                            PasswordEncoder passwordEncoder,
-                           @Value("${TradingForecasts.Admin.defaultPass}") String defaultAdminPass,
-                           @Value("${TradingForecasts.Moderator.defaultPass}") String defaultModeratorPass,
+                         //  @Value("${TradingForecasts.Admin.defaultPass}") String defaultAdminPass,
+                       //    @Value("${TradingForecasts.Moderator.defaultPass}") String defaultModeratorPass,
                            ModelMapper modelMapper) {
         this.userRepository = userRepository;
         this.userRoleService = userRoleService;
         this.passwordEncoder = passwordEncoder;
         this.modelMapper = modelMapper;
-        this.defaultAdminPass = defaultAdminPass;
-        this.defaultModeratorPass = defaultModeratorPass;
+     //   this.defaultAdminPass = defaultAdminPass;
+    //    this.defaultModeratorPass = defaultModeratorPass;
     }
 
     @Override
@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
         var adminUser = new User()
                 .setEmail("admin@example.com")
                 .setUsername("Admin")
-                .setPassword(passwordEncoder.encode(defaultAdminPass))
+                .setPassword(passwordEncoder.encode("12345"))
                 .setFirstName("Admin")
                 .setLastName("Adminov")
                 .setRoles(userRoleService.findAll());
@@ -63,7 +63,7 @@ public class UserServiceImpl implements UserService {
         var moderatorUser = new User()
                 .setEmail("moderator@example.com")
                 .setUsername("Moderator")
-                .setPassword(passwordEncoder.encode(defaultModeratorPass))
+                .setPassword(passwordEncoder.encode("12345"))
                 .setFirstName("Moder")
                 .setLastName("Moderatorov")
                 .setRoles(List.of(moderatorRole));

@@ -111,7 +111,6 @@ public class ForecastAddControllerIT {
                 .setCategory(CategoryNameEnum.EurUsd)
                 .setType(ForecastTypeEnum.Short);
 
-
         return testForecastAddDTO;
     }
 

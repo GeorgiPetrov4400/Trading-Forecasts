@@ -25,6 +25,8 @@ public class CategoryControllerIT {
     @Autowired
     private MockMvc mockMvc;
 
+//    private String defaultAdminPass;
+
     private User testAdmin;
 
     @BeforeEach

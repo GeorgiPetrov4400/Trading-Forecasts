@@ -26,11 +26,11 @@ logging:
       nodeValue: WARN
     blog: WARN
 
-TradingForecasts:
-  Admin:
-    defaultPass: ${DEFAULT_PASS_ADMIN}
-  Moderator:
-    defaultPass: ${DEFAULT_PASS_MODERATOR}
+#TradingForecasts:
+#  Admin:
+#    defaultPass: ${DEFAULT_PASS_ADMIN}
+#  Moderator:
+#    defaultPass: ${DEFAULT_PASS_MODERATOR}
   servlet:
     multipart:
       max-request-size: 1MB
