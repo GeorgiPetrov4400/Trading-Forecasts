@@ -16,9 +16,6 @@
 <div>
     <form th:action="@{/users/login}" th:method="post">
 
-        <!--        <div th:each="error: ${#fields.errors()}" th:text="${error}" class="text-danger">Error messages</div>-->
-        <!--        <div th:if="${bad_credentials}" class="text-danger">Invalid username or password!</div>-->
-
         <div class="container">
             <div th:if="${param.error}" class="alert alert-danger">
                 <strong>Wrong username or password!</strong>
@@ -52,9 +49,6 @@
                 <button type="submit">Login</button>
             </div>
         </div>
-        <!--        <div class="errors alert alert-danger" th:if="${bad_credentials}">-->
-        <!--            Invalid username or password.-->
-        <!--        </div>-->
     </form>
 </div>
 

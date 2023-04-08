@@ -3,7 +3,6 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    /*background-position: center;*/
     width: auto;
     height: auto;
 }
@@ -82,12 +81,6 @@ main div :hover {
     background-image: none;
     background-color: none;
 }
-
-/*main div p :hover {*/
-/*    background-image: none;*/
-/*    background-color: none;*/
-/*    color: lime;*/
-/*}*/
 
 p {
     color: whitesmoke;
