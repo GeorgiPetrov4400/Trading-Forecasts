@@ -1,16 +1,22 @@
 package forexbet.tradingforecasts.config;
 
 import forexbet.tradingforecasts.interceptors.IpBlackListInterceptor;
-import forexbet.tradingforecasts.interceptors.LoggingInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class InterceptorConfiguration implements WebMvcConfigurer {
+
+    private final IpBlackListInterceptor ipBlackListInterceptor;
+
+    public InterceptorConfiguration(IpBlackListInterceptor blackListInterceptor) {
+        this.ipBlackListInterceptor = blackListInterceptor;
+    }
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LoggingInterceptor());
-        registry.addInterceptor(new IpBlackListInterceptor());
+        registry.addInterceptor(ipBlackListInterceptor);
+        WebMvcConfigurer.super.addInterceptors(registry);
     }
 }
