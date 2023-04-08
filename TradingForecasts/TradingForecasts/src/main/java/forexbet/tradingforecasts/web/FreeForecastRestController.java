@@ -28,4 +28,9 @@ public class FreeForecastRestController {
     public ResponseEntity<ForecastDTO> getOrderById(@PathVariable("id") Long id) {
         throw new OrderNotFoundException(id);
     }
+
+    @GetMapping("/all")
+    public String getOrders() {
+        throw new NullPointerException("Server Error");
+    }
 }
