@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Size;
 public class UserRegisterDTO {
 
     @NotBlank(message = "Email cannot be empty!")
-    @Email(message = "Please enter valid email!")
+    @Email(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "Please enter valid email!")
     private String email;
 
     @NotBlank(message = "Username cannot be empty!")
