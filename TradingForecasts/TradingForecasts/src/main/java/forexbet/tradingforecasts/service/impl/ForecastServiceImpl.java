@@ -46,24 +46,6 @@ public class ForecastServiceImpl implements ForecastService {
         this.pictureCloudService = pictureCloudService;
     }
 
-//    @Override
-//    public void addForecast(Principal principal, ForecastAddDTO forecastAddDTO) {
-//        Optional<User> adminOptional = userRepository.findByUsername(principal.getName());
-//
-//        if (adminOptional.isPresent()) {
-//            Forecast forecast = modelMapper.map(forecastAddDTO, Forecast.class);
-//            forecast.setAdmin(userService.findById(adminOptional.get().getId()))
-//                    .setCategory(categoryService.findByCategoryNameEnum(forecastAddDTO.getCategory()))
-//                    .setForecastType(forecastAddDTO.getType())
-//                    .setDescription(forecastAddDTO.getDescription())
-//                    .setPrice(forecastAddDTO.getPrice())
-//                    .setActive(true);
-//
-////        forecastService.createForecast(forecast, forecastAddDTO.getPicture());
-//            forecastRepository.save(forecast);
-//        }
-//    }
-
     @Override
     public void createForecast(ForecastAddDTO forecastAddDTO, Principal principal, MultipartFile imageFile) {
         Optional<User> adminOptional = userRepository.findByUsername(principal.getName());
@@ -161,8 +143,16 @@ public class ForecastServiceImpl implements ForecastService {
 
     @Override
     public List<ForecastDTO> getAllActiveFreeForecasts() {
-        return forecastRepository.findAllByClosedIsNullAndPriceIsNull().stream()
-                .map(forecast -> modelMapper.map(forecast, ForecastDTO.class)).collect(Collectors.toList());
+        List<ForecastDTO> freeForecasts = forecastRepository.findAllByClosedIsNullAndPriceIsNull().stream()
+                .map(forecast -> modelMapper.map(forecast, ForecastDTO.class)).toList();
+
+        for (ForecastDTO freeForecast : freeForecasts) {
+            Optional<Picture> byForecastId = pictureRepository.findByForecastId(freeForecast.getId());
+            Picture picture = byForecastId.get();
+            freeForecast.setPictureUrl(picture.getUrl());
+        }
+
+        return freeForecasts;
     }
 
 }

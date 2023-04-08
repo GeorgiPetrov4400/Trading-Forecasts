@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/forecasts")
 public class ForecastController {
 
+    @GetMapping("/ui")
+    public String freeForecasts() {
+        return "free-forecasts";
+    }
+
     //TODO - under construction
 
     @GetMapping("/eur-usd-forecast")

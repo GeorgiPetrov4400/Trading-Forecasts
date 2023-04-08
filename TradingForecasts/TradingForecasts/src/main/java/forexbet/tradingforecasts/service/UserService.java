@@ -15,7 +15,7 @@ public interface UserService {
 
     User findById(Long id);
 
-    boolean foundUserByEmail(String email);
-
-    boolean foundUserByUsername(String username);
+//    boolean foundUserByEmail(String email);
+//
+//    boolean foundUserByUsername(String username);
 }

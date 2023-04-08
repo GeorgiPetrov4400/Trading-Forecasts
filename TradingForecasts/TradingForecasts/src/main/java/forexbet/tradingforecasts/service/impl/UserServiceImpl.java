@@ -8,11 +8,8 @@ import forexbet.tradingforecasts.repository.UserRepository;
 import forexbet.tradingforecasts.service.UserRoleService;
 import forexbet.tradingforecasts.service.UserService;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -102,15 +99,15 @@ public class UserServiceImpl implements UserService {
         modelMapper.map(userRepository.save(normalUser), UserServiceModel.class);
     }
 
-    @Override
-    public boolean foundUserByEmail(String email) {
-        return this.userRepository.findByEmail(email).isPresent();
-    }
-
-    @Override
-    public boolean foundUserByUsername(String username) {
-        return this.userRepository.findByUsername(username).isPresent();
-    }
+//    @Override
+//    public boolean foundUserByEmail(String email) {
+//        return this.userRepository.findByEmail(email).isPresent();
+//    }
+//
+//    @Override
+//    public boolean foundUserByUsername(String username) {
+//        return this.userRepository.findByUsername(username).isPresent();
+//    }
 
 
     public User getUserByUsername(String username) {

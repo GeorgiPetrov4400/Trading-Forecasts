@@ -8,6 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -40,23 +41,25 @@ public class UserController {
 
         if (bindingResult.hasErrors() ||
                 !userRegisterDTO.getPassword().equals(userRegisterDTO.getConfirmPassword())) {
-            redirectAttributes.addFlashAttribute("userRegisterDTO", userRegisterDTO)
-                    .addFlashAttribute("org.springframework.validation.BindingResult.userRegisterDTO",
-                            bindingResult);
-
-            if (userService.foundUserByEmail(userRegisterDTO.getEmail())) {
-                redirectAttributes.addFlashAttribute("foundByEmail", true);
-            }
-
-            if (userService.foundUserByUsername(userRegisterDTO.getUsername())) {
-                redirectAttributes.addFlashAttribute("foundByUsername", true);
-            }
+            redirectAttributes
+                    .addFlashAttribute("userRegisterDTO", userRegisterDTO)
+                    .addFlashAttribute("org.springframework.validation.BindingResult.userRegisterDTO", bindingResult);
 
             return "redirect:register";
 
         }
+        try {
+            userService.registerUser(modelMapper.map(userRegisterDTO, UserServiceModel.class));
+        } catch (Exception e) {
+            ObjectError error = new ObjectError("globalError", e.getMessage());
+            bindingResult.addError(error);
 
-        userService.registerUser(modelMapper.map(userRegisterDTO, UserServiceModel.class));
+            redirectAttributes
+                    .addFlashAttribute("userRegisterDTO", userRegisterDTO)
+                    .addFlashAttribute("org.springframework.validation.BindingResult.userRegisterDTO", bindingResult);
+
+            return "redirect:register";
+        }
 
         return "redirect:login";
     }

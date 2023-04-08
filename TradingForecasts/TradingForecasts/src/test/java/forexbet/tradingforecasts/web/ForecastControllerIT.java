@@ -20,6 +20,14 @@ public class ForecastControllerIT {
     private MockMvc mockMvc;
 
     @Test
+    void testGetFreeForecastsUI() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/forecasts/ui")
+                        .with(csrf()))
+                .andExpect(status().isOk())
+                .andExpect(view().name("free-forecasts"));
+    }
+
+    @Test
     @WithMockUser
     void testGetEurUsdForecasts() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/forecasts/eur-usd-forecast")

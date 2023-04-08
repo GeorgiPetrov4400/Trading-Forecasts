@@ -11,47 +11,22 @@
     <link rel="icon" type="image/png" sizes="32x32" th:href="@{/images/favicon.png}">
     <link rel="stylesheet" th:href="@{/css/free-forecast.css}">
 </head>
-<body>
+
+<script th:src="@{/js/free-forecasts.js}"></script>
+
+<body onload="reloadForecasts()">
 
 <nav th:replace="~{fragments/commons::nav}"></nav>
 
 <main>
     <div class="container bg-blur rounded mt-1 mb-4">
         <h3>Free Forecasts</h3>
-        <button id="loadForecasts">LOAD FREE FORECASTS</button>
-
         <div class="active-forecast" style="height: 30vh; overflow: auto" id="forecast-container">
-            <ul each="f : ${getAllFreeForecasts}">
-                <li>
-                    <table>
-                        <tr>
-                            <td id="category" style="width: 10%">
-                                <a text="*{f.getCategory().toString()}">Category</a>
-                            </td>
-                            <td id="type" style="width: 10%">
-                                <a text="*{f.getForecastType()}">Type</a>
-                            </td>
-                            <td id="picture" style="width: 10%">
-                                <a text="*{f.getPictureUrl()}">Picture</a>
-                            </td>
-                            <td id="description" style="width: 10%">
-                                <a text="*{f.getDescription()}">Description</a>
-                            </td>
-                            <!--                            <td class="expired-button" style="width: 1%" sec:authorize="hasRole('Admin')">-->
-                            <!--                                <a href="@{/orders/order/expire/{id}(id=*{f.id})}">Expired</a>-->
-                            <!--                            </td>-->
-                            <!--                            <td class="delete-button" style="width: 1%" sec:authorize="hasRole('Admin')">-->
-                            <!--                                <a href="@{orders/remove/{id}(id=*{f.id})}">Delete</a>-->
-                            <!--                            </td>-->
-                        </tr>
-                    </table>
-                </li>
-            </ul>
+
         </div>
     </div>
 </main>
 <footer th:replace="~{fragments/commons::footer}"></footer>
 
-<script th:src="@{/js/free-forecasts.js}"></script>
 </body>
 </html>
