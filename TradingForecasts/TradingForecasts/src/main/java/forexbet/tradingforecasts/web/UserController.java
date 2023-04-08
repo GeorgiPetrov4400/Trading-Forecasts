@@ -44,6 +44,14 @@ public class UserController {
                     .addFlashAttribute("org.springframework.validation.BindingResult.userRegisterDTO",
                             bindingResult);
 
+            if (userService.foundUserByEmail(userRegisterDTO.getEmail())) {
+                redirectAttributes.addFlashAttribute("foundByEmail", true);
+            }
+
+            if (userService.foundUserByUsername(userRegisterDTO.getUsername())) {
+                redirectAttributes.addFlashAttribute("foundByUsername", true);
+            }
+
             return "redirect:register";
 
         }

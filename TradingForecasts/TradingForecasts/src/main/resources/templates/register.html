@@ -28,6 +28,8 @@
                class="errors alert alert-danger">
                 Valid email is required
             </p>
+
+            <small th:if="${foundByEmail}" class="text-danger"><b>User with this email already exist!</b></small>
         </div>
         <div>
             <label th:for="first-name"><b>First name</b></label>
@@ -65,6 +67,8 @@
                class="errors alert alert-danger">
                 Username is required.
             </p>
+
+            <small th:if="${foundByUsername}" class="text-danger"><b>Username already exist!</b></small>
         </div>
         <div>
             <label for="password"><b>Password</b></label>

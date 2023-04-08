@@ -73,6 +73,13 @@ a {
     margin-top: 3px;
 }
 
+small {
+    color: red;
+    background-color: whitesmoke;
+    font-size: 18px;
+    margin-left: 20px;
+}
+
 .signin {
     text-align: center;
     font-size: 20px;

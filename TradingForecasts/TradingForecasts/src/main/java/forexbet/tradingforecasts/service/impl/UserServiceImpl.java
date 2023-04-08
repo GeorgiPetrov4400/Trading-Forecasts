@@ -25,20 +25,20 @@ public class UserServiceImpl implements UserService {
     private final UserRoleService userRoleService;
     private final PasswordEncoder passwordEncoder;
     private final ModelMapper modelMapper;
-  //  private final String defaultAdminPass;
-  //  private final String defaultModeratorPass;
+    //  private final String defaultAdminPass;
+    //  private final String defaultModeratorPass;
 
     public UserServiceImpl(UserRepository userRepository, UserRoleService userRoleService,
                            PasswordEncoder passwordEncoder,
-                         //  @Value("${TradingForecasts.Admin.defaultPass}") String defaultAdminPass,
-                       //    @Value("${TradingForecasts.Moderator.defaultPass}") String defaultModeratorPass,
+                           //  @Value("${TradingForecasts.Admin.defaultPass}") String defaultAdminPass,
+                           //    @Value("${TradingForecasts.Moderator.defaultPass}") String defaultModeratorPass,
                            ModelMapper modelMapper) {
         this.userRepository = userRepository;
         this.userRoleService = userRoleService;
         this.passwordEncoder = passwordEncoder;
         this.modelMapper = modelMapper;
-     //   this.defaultAdminPass = defaultAdminPass;
-    //    this.defaultModeratorPass = defaultModeratorPass;
+        //   this.defaultAdminPass = defaultAdminPass;
+        //    this.defaultModeratorPass = defaultModeratorPass;
     }
 
     @Override
@@ -101,6 +101,17 @@ public class UserServiceImpl implements UserService {
 
         modelMapper.map(userRepository.save(normalUser), UserServiceModel.class);
     }
+
+    @Override
+    public boolean foundUserByEmail(String email) {
+        return this.userRepository.findByEmail(email).isPresent();
+    }
+
+    @Override
+    public boolean foundUserByUsername(String username) {
+        return this.userRepository.findByUsername(username).isPresent();
+    }
+
 
     public User getUserByUsername(String username) {
         return userRepository.findByUsername(username)
