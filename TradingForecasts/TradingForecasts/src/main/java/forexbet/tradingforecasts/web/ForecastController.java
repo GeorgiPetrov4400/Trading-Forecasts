@@ -13,10 +13,10 @@ public class ForecastController {
         return "free-forecasts";
     }
 
-    @GetMapping("/ui/all")
-    public String getOrders() {
-        throw new NullPointerException("Server Error");
-    }
+//    @GetMapping("/ui/all")
+//    public String getOrders() {
+//        throw new NullPointerException("Server Error");
+//    }
 
     //TODO - under construction
 
