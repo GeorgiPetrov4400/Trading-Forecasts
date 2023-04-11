@@ -40,10 +40,8 @@ public class DeleteExpiredForecastScheduler {
 //
 //        for (ForecastDTO expiredForecast : expiredForecasts) {
 //            LocalDateTime currentDateAndTime = LocalDateTime.now();
-//            //      LocalDateTime currentDateAndTimeMinus3Months = currentDateAndTime.minusMonths(3);
 //
 //            LocalDateTime dateExpired = expiredForecast.getClosed();
-//            //      LocalDateTime dateExpiredMinus3Months = dateExpired.minusMonths(3);
 //
 //            long minutes = ChronoUnit.MINUTES.between(dateExpired, currentDateAndTime);
 //            if (minutes > 10) {
