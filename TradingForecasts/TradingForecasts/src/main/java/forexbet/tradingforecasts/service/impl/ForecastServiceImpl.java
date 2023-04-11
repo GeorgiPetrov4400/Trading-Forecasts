@@ -5,6 +5,7 @@ import forexbet.tradingforecasts.model.dto.ForecastDTO;
 import forexbet.tradingforecasts.model.entity.Forecast;
 import forexbet.tradingforecasts.model.entity.Picture;
 import forexbet.tradingforecasts.model.entity.User;
+import forexbet.tradingforecasts.model.entity.UserRole;
 import forexbet.tradingforecasts.repository.ForecastRepository;
 import forexbet.tradingforecasts.repository.PictureRepository;
 import forexbet.tradingforecasts.repository.UserRepository;
@@ -113,7 +114,7 @@ public class ForecastServiceImpl implements ForecastService {
         if (buyerOptional.isPresent()) {
             User buyer = userRepository.findById(buyerOptional.get().getId()).orElse(null);
 
-            if (buyer != null && forecast != null && forecast.getPrice() != null) {
+            if (buyer != null && buyer.getRoles().size() == 1 && forecast != null && forecast.getPrice() != null) {
                 if (buyer.getForecasts().contains(forecast)) {
                     return;
                 }

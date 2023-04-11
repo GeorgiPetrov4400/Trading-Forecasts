@@ -38,6 +38,7 @@ public class SecurityConfiguration {
                 .requestMatchers("/orders/order", "/orders/order/expire/{id}").hasRole(UserRoleEnum.Moderator.name())
                 .requestMatchers("/admin", "/forecasts/add", "/orders/order", "/orders/order/expire/{id}")
                 .hasRole(UserRoleEnum.Admin.name())
+                .requestMatchers("/orders/order/buy/{id}").hasRole(UserRoleEnum.User.name())
                 .anyRequest()
                 .authenticated()
                 .and()
