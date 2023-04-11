@@ -12,31 +12,31 @@ public class CategoryController {
 
     @GetMapping("/eur-usd")
     public String categoryEurUsd() {
-        return "eur-usd";
+        return "redirect:https://www.investing.com/currencies/eur-usd-historical-data";
     }
 
     @GetMapping("/eur-gbp")
     public String categoryEurGbp() {
-        return "eur-gbp";
+        return "redirect:https://www.investing.com/currencies/eur-gbp-historical-data";
     }
 
     @GetMapping("/gold")
     public String categoryGold() {
-        return "gold";
+        return "redirect:https://www.dailyfx.com/gold-price";
     }
 
     @GetMapping("/dax")
     public String categoryDax() {
-        return "dax";
+        return "redirect:https://www.fxcm.com/markets/quotes/indices/ger30/";
     }
 
     @GetMapping("/dow-jones")
     public String categoryDowJones() {
-        return "dow-jones";
+        return "redirect:https://www.fxcm.com/markets/quotes/indices/us30/";
     }
 
     @GetMapping("/nasdaq")
     public String categoryNasdaq() {
-        return "nasdaq";
+        return "redirect:https://www.fxcm.com/markets/quotes/indices/nas100/";
     }
 }

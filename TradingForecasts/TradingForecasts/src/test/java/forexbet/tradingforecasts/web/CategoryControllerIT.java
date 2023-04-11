@@ -56,8 +56,8 @@ public class CategoryControllerIT {
     void testGetEurUsd() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/categories/eur-usd")
                         .with(csrf()))
-                .andExpect(status().isOk())
-                .andExpect(view().name("eur-usd"));
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:https://www.investing.com/currencies/eur-usd-historical-data"));
     }
 
     @Test
@@ -65,8 +65,8 @@ public class CategoryControllerIT {
     void testGetEurGbp() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/categories/eur-gbp")
                         .with(csrf()))
-                .andExpect(status().isOk())
-                .andExpect(view().name("eur-gbp"));
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:https://www.investing.com/currencies/eur-gbp-historical-data"));
     }
 
     @Test
@@ -74,8 +74,8 @@ public class CategoryControllerIT {
     void testGetGold() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/categories/gold")
                         .with(csrf()))
-                .andExpect(status().isOk())
-                .andExpect(view().name("gold"));
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:https://www.dailyfx.com/gold-price"));
     }
 
     @Test
@@ -83,8 +83,8 @@ public class CategoryControllerIT {
     void testGetDax() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/categories/dax")
                         .with(csrf()))
-                .andExpect(status().isOk())
-                .andExpect(view().name("dax"));
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:https://www.fxcm.com/markets/quotes/indices/ger30/"));
     }
 
     @Test
@@ -92,8 +92,8 @@ public class CategoryControllerIT {
     void testGetDowJones() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/categories/dow-jones")
                         .with(csrf()))
-                .andExpect(status().isOk())
-                .andExpect(view().name("dow-jones"));
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:https://www.fxcm.com/markets/quotes/indices/us30/"));
     }
 
     @Test
@@ -101,8 +101,8 @@ public class CategoryControllerIT {
     void testGetNasdaq() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/categories/nasdaq")
                         .with(csrf()))
-                .andExpect(status().isOk())
-                .andExpect(view().name("nasdaq"));
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:https://www.fxcm.com/markets/quotes/indices/nas100/"));
     }
 
 }
