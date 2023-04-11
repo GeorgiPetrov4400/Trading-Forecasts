@@ -77,7 +77,7 @@ public class ForecastServiceImpl implements ForecastService {
     public List<ForecastDTO> getUserBoughtForecasts(Principal principal) {
         Optional<User> buyerOptional = userRepository.findByUsername(principal.getName());
 
-        return buyerOptional.map(user -> forecastRepository.findAllByBuyer_IdAndPriceNotNull(user.getId())
+        return buyerOptional.map(user -> forecastRepository.findAllByBuyer_IdAndPriceNotNullOrderByIdDesc(user.getId())
                 .stream().map(forecast -> modelMapper.map(forecast, ForecastDTO.class))
                 .collect(Collectors.toList())).orElse(null);
     }
@@ -86,14 +86,14 @@ public class ForecastServiceImpl implements ForecastService {
     public List<ForecastDTO> getOwnForecastsAdded(Principal principal) {
         Optional<User> adminOptional = userRepository.findByUsername(principal.getName());
 
-        return adminOptional.map(user -> forecastRepository.findByAdmin_Id(user.getId()).stream()
+        return adminOptional.map(user -> forecastRepository.findByAdmin_IdAndClosedIsNull(user.getId()).stream()
                 .map(forecast -> modelMapper.map(forecast, ForecastDTO.class))
                 .collect(Collectors.toList())).orElse(null);
     }
 
     @Override
     public List<ForecastDTO> getActiveForecasts() {
-        return forecastRepository.findAllByClosedIsNullOrderByCreatedDesc().stream()
+        return forecastRepository.findAllByClosedIsNullAndPriceIsNotNullOrderByCreatedDesc().stream()
                 .map(forecast -> modelMapper.map(forecast, ForecastDTO.class)).collect(Collectors.toList());
     }
 

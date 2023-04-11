@@ -1,15 +1,25 @@
 package forexbet.tradingforecasts.service.impl;
 
+import forexbet.tradingforecasts.model.dto.PictureDTO;
 import forexbet.tradingforecasts.repository.PictureRepository;
 import forexbet.tradingforecasts.service.PictureService;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PictureServiceImpl implements PictureService {
 
     private final PictureRepository pictureRepository;
+    private final ModelMapper modelMapper;
 
-    public PictureServiceImpl(PictureRepository pictureRepository) {
+    public PictureServiceImpl(PictureRepository pictureRepository, ModelMapper modelMapper) {
         this.pictureRepository = pictureRepository;
+        this.modelMapper = modelMapper;
+    }
+
+    @Override
+    public PictureDTO findByForecastId(Long id) {
+        return pictureRepository.findByForecastId(id)
+                .map(picture -> modelMapper.map(picture, PictureDTO.class)).orElse(null);
     }
 }

@@ -1,14 +1,13 @@
 package forexbet.tradingforecasts.web;
 
-import forexbet.tradingforecasts.repository.PictureRepository;
 import forexbet.tradingforecasts.service.ForecastService;
+import forexbet.tradingforecasts.service.PictureService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.ui.Model;
 
 import java.security.Principal;
 
@@ -24,14 +23,14 @@ class OrderControllerTest {
     private ForecastService forecastService;
 
     @Mock
-    private PictureRepository pictureRepository;
+    private PictureService pictureService;
 
     @Mock
     private Principal principal;
 
     @BeforeEach
     void setUp() {
-        orderController = new OrderController(forecastService, pictureRepository);
+        orderController = new OrderController(forecastService, pictureService);
     }
 
     @Test

@@ -1,9 +1,9 @@
 package forexbet.tradingforecasts.web;
 
 import forexbet.tradingforecasts.model.dto.ForecastDTO;
-import forexbet.tradingforecasts.model.entity.Picture;
-import forexbet.tradingforecasts.repository.PictureRepository;
+import forexbet.tradingforecasts.model.dto.PictureDTO;
 import forexbet.tradingforecasts.service.ForecastService;
+import forexbet.tradingforecasts.service.PictureService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,18 +12,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/orders")
 public class OrderController {
 
     private final ForecastService forecastService;
-    private final PictureRepository pictureRepository;
+    private final PictureService pictureService;
 
-    public OrderController(ForecastService forecastService, PictureRepository pictureRepository) {
+    public OrderController(ForecastService forecastService, PictureService pictureService) {
         this.forecastService = forecastService;
-        this.pictureRepository = pictureRepository;
+        this.pictureService = pictureService;
     }
 
     @GetMapping("/order")
@@ -32,9 +31,8 @@ public class OrderController {
         List<ForecastDTO> userBoughtForecasts = forecastService.getUserBoughtForecasts(principal);
 
         for (ForecastDTO userBoughtForecast : userBoughtForecasts) {
-            Optional<Picture> byForecastId = pictureRepository.findByForecastId(userBoughtForecast.getId());
-            Picture picture = byForecastId.get();
-            userBoughtForecast.setPictureUrl(picture.getUrl());
+            PictureDTO forecastId = pictureService.findByForecastId(userBoughtForecast.getId());
+            userBoughtForecast.setPictureUrl(forecastId.getUrl());
         }
 
         model.addAttribute("userBoughtForecasts", userBoughtForecasts);
@@ -43,9 +41,8 @@ public class OrderController {
         List<ForecastDTO> ownForecastsAdded = forecastService.getOwnForecastsAdded(principal);
 
         for (ForecastDTO ownForecast : ownForecastsAdded) {
-            Optional<Picture> byForecastId = pictureRepository.findByForecastId(ownForecast.getId());
-            Picture picture = byForecastId.get();
-            ownForecast.setPictureUrl(picture.getUrl());
+            PictureDTO forecastId = pictureService.findByForecastId(ownForecast.getId());
+            ownForecast.setPictureUrl(forecastId.getUrl());
         }
         model.addAttribute("ownForecastsAdded", ownForecastsAdded);
 
@@ -53,9 +50,8 @@ public class OrderController {
         List<ForecastDTO> allActiveForecasts = forecastService.getActiveForecasts();
 
         for (ForecastDTO activeForecast : allActiveForecasts) {
-            Optional<Picture> byForecastId = pictureRepository.findByForecastId(activeForecast.getId());
-            Picture picture = byForecastId.get();
-            activeForecast.setPictureUrl(picture.getUrl());
+            PictureDTO forecastId = pictureService.findByForecastId(activeForecast.getId());
+            activeForecast.setPictureUrl(forecastId.getUrl());
         }
 
         model.addAttribute("allActiveForecast", allActiveForecasts);
@@ -63,9 +59,8 @@ public class OrderController {
         List<ForecastDTO> expiredForecasts = forecastService.getExpiredForecasts();
 
         for (ForecastDTO expiredForecast : expiredForecasts) {
-            Optional<Picture> byForecastId = pictureRepository.findByForecastId(expiredForecast.getId());
-            Picture picture = byForecastId.get();
-            expiredForecast.setPictureUrl(picture.getUrl());
+            PictureDTO forecastId = pictureService.findByForecastId(expiredForecast.getId());
+            expiredForecast.setPictureUrl(forecastId.getUrl());
         }
         model.addAttribute("expiredForecasts", expiredForecasts);
 

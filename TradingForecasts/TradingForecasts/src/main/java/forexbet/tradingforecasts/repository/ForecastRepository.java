@@ -9,11 +9,13 @@ import java.util.List;
 @Repository
 public interface ForecastRepository extends JpaRepository<Forecast, Long> {
 
-    List<Forecast> findAllByBuyer_IdAndPriceNotNull(Long id);
+    List<Forecast> findAllByBuyer_IdAndPriceNotNullOrderByIdDesc(Long id);
 
-    List<Forecast> findByAdmin_Id(long ownerId);
+    List<Forecast> findByAdmin_IdAndClosedIsNull(long ownerId);
 
-    List<Forecast> findAllByClosedIsNullOrderByCreatedDesc();
+//    List<Forecast> findAllByClosedIsNullOrderByCreatedDesc();
+
+    List<Forecast> findAllByClosedIsNullAndPriceIsNotNullOrderByCreatedDesc();
 
     List<Forecast> findAllByClosedIsNotNullOrderByClosedDesc();
 
