@@ -29,42 +29,29 @@ public class OrderController {
     public String getAllActiveForecast(Principal principal, Model model) {
 
         List<ForecastDTO> userBoughtForecasts = forecastService.getUserBoughtForecasts(principal);
-
-        for (ForecastDTO userBoughtForecast : userBoughtForecasts) {
-            PictureDTO forecastId = pictureService.findByForecastId(userBoughtForecast.getId());
-            userBoughtForecast.setPictureUrl(forecastId.getUrl());
-        }
-
+        addForecastPicture(userBoughtForecasts);
         model.addAttribute("userBoughtForecasts", userBoughtForecasts);
 
-
         List<ForecastDTO> ownForecastsAdded = forecastService.getOwnForecastsAdded(principal);
-
-        for (ForecastDTO ownForecast : ownForecastsAdded) {
-            PictureDTO forecastId = pictureService.findByForecastId(ownForecast.getId());
-            ownForecast.setPictureUrl(forecastId.getUrl());
-        }
+        addForecastPicture(ownForecastsAdded);
         model.addAttribute("ownForecastsAdded", ownForecastsAdded);
 
-
         List<ForecastDTO> allActiveForecasts = forecastService.getActiveForecasts();
+        addForecastPicture(allActiveForecasts);
+        model.addAttribute("allActiveForecast", allActiveForecasts);
 
+        List<ForecastDTO> expiredForecasts = forecastService.getExpiredForecasts();
+        addForecastPicture(expiredForecasts);
+        model.addAttribute("expiredForecasts", expiredForecasts);
+
+        return "order";
+    }
+
+    private void addForecastPicture(List<ForecastDTO> allActiveForecasts) {
         for (ForecastDTO activeForecast : allActiveForecasts) {
             PictureDTO forecastId = pictureService.findByForecastId(activeForecast.getId());
             activeForecast.setPictureUrl(forecastId.getUrl());
         }
-
-        model.addAttribute("allActiveForecast", allActiveForecasts);
-
-        List<ForecastDTO> expiredForecasts = forecastService.getExpiredForecasts();
-
-        for (ForecastDTO expiredForecast : expiredForecasts) {
-            PictureDTO forecastId = pictureService.findByForecastId(expiredForecast.getId());
-            expiredForecast.setPictureUrl(forecastId.getUrl());
-        }
-        model.addAttribute("expiredForecasts", expiredForecasts);
-
-        return "order";
     }
 
     @GetMapping("/order/buy/{id}")
