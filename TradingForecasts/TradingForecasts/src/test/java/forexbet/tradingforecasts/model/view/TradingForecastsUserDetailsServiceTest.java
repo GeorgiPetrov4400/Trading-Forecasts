@@ -1,4 +1,4 @@
-package forexbet.tradingforecasts.model.service;
+package forexbet.tradingforecasts.model.view;
 
 import forexbet.tradingforecasts.model.entity.User;
 import forexbet.tradingforecasts.model.entity.UserRole;

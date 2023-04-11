@@ -4,6 +4,39 @@
     background-color: #ccc;
 }
 
+nav {
+    margin-top: 30px;
+    list-style: none;
+    font-size: 19px;
+}
+
+nav li {
+    list-style: none;
+    color: black;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+    padding-right: 22px;
+}
+
+.nav li {
+    display: inline-block;
+}
+
+nav li :hover {
+    color: #0cbb0c;
+}
+
+form .button {
+    background-color: white;
+    border: none;
+    color: black;
+    font-size: medium;
+    cursor: pointer;
+}
+
 h1 {
     color: royalblue;
     font-size: 35px;

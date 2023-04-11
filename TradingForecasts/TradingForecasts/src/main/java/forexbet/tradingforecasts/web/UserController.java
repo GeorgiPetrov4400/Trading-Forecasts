@@ -1,7 +1,7 @@
 package forexbet.tradingforecasts.web;
 
 import forexbet.tradingforecasts.model.dto.UserRegisterDTO;
-import forexbet.tradingforecasts.model.service.UserServiceModel;
+import forexbet.tradingforecasts.model.view.UserServiceModel;
 import forexbet.tradingforecasts.service.UserService;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;

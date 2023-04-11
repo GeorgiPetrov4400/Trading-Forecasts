@@ -21,6 +21,31 @@ body {
     align-items: center;
 }
 
+nav {
+    margin-top: 30px;
+    list-style: none;
+    font-size: 19px;
+}
+
+nav li {
+    list-style: none;
+    color: white;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    padding-right: 22px;
+}
+
+.nav li {
+    display: inline-block;
+}
+
+nav li :hover {
+    color: limegreen;
+}
+
 input[type=text],
 input[type=password] {
     width: 100%;

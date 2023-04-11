@@ -3,7 +3,7 @@ package forexbet.tradingforecasts.service.impl;
 import forexbet.tradingforecasts.model.entity.User;
 import forexbet.tradingforecasts.model.entity.UserRole;
 import forexbet.tradingforecasts.model.entity.enums.UserRoleEnum;
-import forexbet.tradingforecasts.model.service.UserServiceModel;
+import forexbet.tradingforecasts.model.view.UserServiceModel;
 import forexbet.tradingforecasts.repository.UserRepository;
 import forexbet.tradingforecasts.service.UserRoleService;
 import forexbet.tradingforecasts.service.UserService;

@@ -1,7 +1,7 @@
 package forexbet.tradingforecasts.service;
 
 import forexbet.tradingforecasts.model.entity.User;
-import forexbet.tradingforecasts.model.service.UserServiceModel;
+import forexbet.tradingforecasts.model.view.UserServiceModel;
 
 public interface UserService {
 

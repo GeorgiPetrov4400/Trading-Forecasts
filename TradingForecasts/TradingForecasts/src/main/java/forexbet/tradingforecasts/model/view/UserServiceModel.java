@@ -1,4 +1,4 @@
-package forexbet.tradingforecasts.model.service;
+package forexbet.tradingforecasts.model.view;
 
 public class UserServiceModel {
 
