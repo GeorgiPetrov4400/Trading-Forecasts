@@ -1,56 +1,39 @@
 body {
     background-image: url(/images/dowBackground.jpg);
     background-repeat: no-repeat;
+    background-position: center;
     background-attachment: fixed;
     background-size: cover;
-    background-position: center;
     width: auto;
     height: auto;
 }
 
-div {
-    width: 600px;
-    display: inline-block;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    padding-left: 5px;
-    margin-top: 30px;
-    margin-left: 45px;
-    background-color: #10548b;
-    color: #fff;
-    border-radius: 25px;
+.bg-blur {
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    z-index: 2;
+    width: auto;
+    margin-top: 3%;
+    padding: 10px;
     text-align: center;
-    font-size: 27px;
 }
 
-div h3 {
-    cursor: pointer;
-}
-
-.active :hover {
-    color: limegreen;
-}
-
-.expired :hover {
-    color: gold;
-}
-
-div h3 a {
-    color: #fff;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-div p a {
-    color: #fff;
-    text-decoration: none;
-    cursor: pointer;
+h2 {
+    margin-left: 20px;
+    color: white;
 }
 
 nav {
     margin-top: 30px;
     list-style: none;
     font-size: 19px;
+}
+
+.nav li {
+    display: inline-block;
 }
 
 nav li {
@@ -64,8 +47,8 @@ nav a {
     padding-right: 22px;
 }
 
-.nav li {
-    display: inline-block;
+nav li :hover {
+    color: limegreen;
 }
 
 form .button {
@@ -76,74 +59,70 @@ form .button {
     cursor: pointer;
 }
 
-nav li :hover {
-    color: limegreen;
+table {
+    width: 100%;
 }
 
-@media only screen and (max-width:700px) {
-
-    /* For mobile phones: */
-    .menu,
-    .main,
-    .right {
-        width: 100%;
-    }
-
-    div {
-        width: 400px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-right: 10px;
-        padding-left: 20px;
-        margin-top: 80px;
-        margin-left: 80px;
-        background-color: #10548b;
-        color: #fff;
-        border-radius: 15px;
-        font-size: 19px;
-        text-align: center;
-    }
-
-    p {
-        color: darkblue;
-        margin-top: 80px;
-        margin-left: 50px;
-        margin-right: 50px;
-        font-size: 19px;
-        text-align: justify;
-    }
+table,
+th,
+td {
+    background-color: rgb(36, 32, 32);
+    border: 3px solid whitesmoke;
+    color: white;
+    text-align: center;
 }
 
-@media only screen and (max-width:540px) {
+table, tr, td {
+    height: 6vh;
+}
 
-    /* For mobile phones: */
-    .menu,
-    .main,
-    .right {
-        width: 100%;
-    }
+a {
+    color: white;
+    text-decoration: none;
+}
 
-    div {
-        width: 300px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-right: 10px;
-        padding-left: 20px;
-        margin-top: 80px;
-        margin-left: 80px;
-        background-color: #10548b;
-        color: #fff;
-        border-radius: 15px;
-        font-size: 19px;
-        text-align: center;
-    }
+ul li {
+    list-style: none;
+}
 
-    p {
-        color: darkblue;
-        margin-top: 80px;
-        margin-left: 50px;
-        margin-right: 50px;
-        font-size: 19px;
-        text-align: justify;
-    }
+.active-forecast {
+    margin-left: -40px;
+}
+
+.buy-button {
+    background-color: green;
+    text-decoration: none;
+    list-style: none;
+}
+
+.buy-button :hover {
+    color: black;
+}
+
+.expired-button {
+    background-color: darkgoldenrod;
+}
+
+.expired-button :hover {
+    color: black;
+}
+
+.delete-button {
+    background-color: red;
+}
+
+.delete-button :hover {
+    color: black;
+}
+
+textarea {
+    resize: vertical;
+}
+
+footer {
+    position: relative;
+    left: 20px;
+    height: 30px;
+    width: 100%;
+    color: #fff;
 }

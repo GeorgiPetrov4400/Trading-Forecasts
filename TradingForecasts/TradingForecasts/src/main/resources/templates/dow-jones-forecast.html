@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,16 +15,73 @@
 <body>
 <nav th:replace="~{fragments/commons::nav}"></nav>
 
-<div class="active">
-    <h3>
-        <a href="#">Active forecasts</a>
+<div class="container bg-blur rounded mt-1 mb-4"  th:action="@{/forecasts/dow-jones-forecast}">
+    <h3>Active Forecasts: <span th:text="${allActiveDowJonesForecasts.size()}">Total Offers</span>
     </h3>
+
+    <div class="active-forecast" style="height: 40vh; overflow: auto">
+        <ul th:each="f : ${allActiveDowJonesForecasts}">
+            <li>
+                <table>
+                    <tr>
+                        <td style="width: 8%">
+                            <a th:text="*{f.getCategory().toString()}">Category</a>
+                        </td>
+                        <td style="width: 8%">
+                            <a th:text="*{f.getForecastType()}">Type</a>
+                        </td>
+                        <td style="width: 30%">
+                            <a th:text="*{f.getDescription()}">Description</a>
+                        </td>
+                        <td style="width: 30%" each="picture : ${allPictures}">
+                            <a href=""><img th:src="*{f.pictureUrl}" alt="Image"></a>
+                        </td>
+                        <td style="width: 8%">
+                            <a th:text="*{f.getPrice() + ' €'}">Price</a>
+                        </td>
+                        <td class="buy-button" style="width: 5%">
+                            <a th:href="@{/orders/order/buy/{id}(id=${f.id})}">BUY</a>
+                        </td>
+                        <td class="expired-button" style="width: 5%" sec:authorize="hasRole('Admin')">
+                            <a th:href="@{/orders/order/expire/{id}(id=*{f.id})}">Expired</a>
+                        </td>
+                    </tr>
+                </table>
+            </li>
+        </ul>
+    </div>
 </div>
-<div class="expired">
-    <h3>
-        <a href="#">Expired forecasts</a>
-    </h3>
+
+<div class="container bg-blur rounded mt-1 mb-4">
+    <h3>Expired Forecasts: <span th:text="${allExpiredDowJonesForecast.size()}">Total Offers</span></h3>
+
+    <div class="active-forecast" style="height: 30vh; overflow: auto">
+        <ul th:each="f : ${allExpiredDowJonesForecast}">
+            <li>
+                <table>
+                    <tr>
+                        <td style="width: 8%">
+                            <a th:text="*{f.getCategory().toString()}">Category</a>
+                        </td>
+                        <td style="width: 8%">
+                            <a th:text="*{f.getForecastType()}">Type</a>
+                        </td>
+                        <td style="width: 30%">
+                            <a th:text="*{f.getDescription()}">Description</a>
+                        </td>
+                        <td style="width: 30%">
+                            <a href=""><img th:src="*{f.pictureUrl}" alt="Image"></a>
+                        </td>
+                        <td style="width: 8%">
+                            <a th:text="*{f.getPrice() + ' €'}">Price</a>
+                        </td>
+                    </tr>
+                </table>
+            </li>
+        </ul>
+    </div>
 </div>
-<!--<footer th:replace="~{fragments/commons::footer}"></footer>-->
+
+<footer th:replace="~{fragments/commons::footer}"></footer>
 </body>
 </html>

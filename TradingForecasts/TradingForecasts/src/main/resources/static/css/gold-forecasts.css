@@ -1,55 +1,39 @@
 body {
-    background-image: url(/images/trading-gold-forex-market.jpg);
+    background-image: url(/images/goldTrading.jpg);
     background-repeat: no-repeat;
+    background-position: center;
     background-attachment: fixed;
     background-size: cover;
-    background-position: center;
     width: auto;
     height: auto;
 }
 
-div {
-    width: 400px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    padding-left: 5px;
-    margin-top: 60px;
-    margin-left: 850px;
-    background-color: #10548b;
-    color: #fff;
-    border-radius: 25px;
+.bg-blur {
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    z-index: 2;
+    width: auto;
+    margin-top: 3%;
+    padding: 10px;
     text-align: center;
-    font-size: 33px;
 }
 
-div h3 {
-    cursor: pointer;
-}
-
-.active :hover {
-    color: limegreen;
-}
-
-.expired :hover {
-    color: gold;
-}
-
-div h3 a {
-    color: #fff;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-div p a {
-    color: #fff;
-    text-decoration: none;
-    cursor: pointer;
+h2 {
+    margin-left: 20px;
+    color: white;
 }
 
 nav {
     margin-top: 30px;
     list-style: none;
     font-size: 19px;
+}
+
+.nav li {
+    display: inline-block;
 }
 
 nav li {
@@ -63,8 +47,8 @@ nav a {
     padding-right: 22px;
 }
 
-.nav li {
-    display: inline-block;
+nav li :hover {
+    color: limegreen;
 }
 
 form .button {
@@ -75,112 +59,70 @@ form .button {
     cursor: pointer;
 }
 
-nav li :hover {
-    color: limegreen;
+table {
+    width: 100%;
 }
 
-@media only screen and (max-width:1280px) {
-
-    .menu,
-    .main,
-    .right {
-        width: 100%;
-    }
-
-    div {
-        width: 400px;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        padding-left: 8px;
-        margin-top: 50px;
-        margin-left: 50px;
-        background-color: #10548b;
-        color: #fff;
-        border-radius: 25px;
-        text-align: center;
-        font-size: 25px;
-    }
-
-    div h3 a {
-        color: #fff;
-        text-decoration: none;
-        cursor: pointer;
-    }
-    
-    div p a {
-        color: #fff;
-        text-decoration: none;
-        cursor: pointer;
-    }
+table,
+th,
+td {
+    background-color: rgb(36, 32, 32);
+    border: 3px solid whitesmoke;
+    color: white;
+    text-align: center;
 }
 
-
-@media only screen and (max-width:700px) {
-
-    .menu,
-    .main,
-    .right {
-        width: 100%;
-    }
-
-    div {
-        width: 400px;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        padding-left: 8px;
-        margin-top: 50px;
-        margin-left: 40px;
-        background-color: #10548b;
-        color: #fff;
-        border-radius: 25px;
-        text-align: center;
-        font-size: 25px;
-    }
-
-    div h3 a {
-        color: #fff;
-        text-decoration: none;
-        cursor: pointer;
-    }
-    
-    div p a {
-        color: #fff;
-        text-decoration: none;
-        cursor: pointer;
-    }
+table, tr, td {
+    height: 6vh;
 }
 
-@media only screen and (max-width:500px) {
+a {
+    color: white;
+    text-decoration: none;
+}
 
-    .menu,
-    .main,
-    .right {
-        width: 100%;
-    }
+ul li {
+    list-style: none;
+}
 
-    div {
-        width: 400px;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        padding-left: 8px;
-        margin-top: 50px;
-        margin-left: 40px;
-        background-color: #10548b;
-        color: #fff;
-        border-radius: 25px;
-        text-align: center;
-        font-size: 25px;
-    }
+.active-forecast {
+    margin-left: -40px;
+}
 
-    div h3 a {
-        color: #fff;
-        text-decoration: none;
-        cursor: pointer;
-    }
-    
-    div p a {
-        color: #fff;
-        text-decoration: none;
-        cursor: pointer;
-    }
+.buy-button {
+    background-color: green;
+    text-decoration: none;
+    list-style: none;
+}
+
+.buy-button :hover {
+    color: black;
+}
+
+.expired-button {
+    background-color: darkgoldenrod;
+}
+
+.expired-button :hover {
+    color: black;
+}
+
+.delete-button {
+    background-color: red;
+}
+
+.delete-button :hover {
+    color: black;
+}
+
+textarea {
+    resize: vertical;
+}
+
+footer {
+    position: relative;
+    left: 20px;
+    height: 30px;
+    width: 100%;
+    color: #fff;
 }

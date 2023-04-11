@@ -2,6 +2,7 @@ package forexbet.tradingforecasts.service;
 
 import forexbet.tradingforecasts.model.dto.ForecastAddDTO;
 import forexbet.tradingforecasts.model.dto.ForecastDTO;
+import forexbet.tradingforecasts.model.entity.Category;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.security.Principal;
@@ -26,4 +27,10 @@ public interface ForecastService {
     void removeForecastById(Long id);
 
     List<ForecastDTO> getAllActiveFreeForecasts();
+
+    List<ForecastDTO> getActiveForecastsByCategory(Category category);
+
+    List<ForecastDTO> getAllExpiredForecastsByCategory(Category category);
+
+
 }

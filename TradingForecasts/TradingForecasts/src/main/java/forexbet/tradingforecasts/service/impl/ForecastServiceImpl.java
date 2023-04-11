@@ -2,10 +2,8 @@ package forexbet.tradingforecasts.service.impl;
 
 import forexbet.tradingforecasts.model.dto.ForecastAddDTO;
 import forexbet.tradingforecasts.model.dto.ForecastDTO;
-import forexbet.tradingforecasts.model.entity.Forecast;
-import forexbet.tradingforecasts.model.entity.Picture;
-import forexbet.tradingforecasts.model.entity.User;
-import forexbet.tradingforecasts.model.entity.UserRole;
+import forexbet.tradingforecasts.model.entity.*;
+import forexbet.tradingforecasts.model.entity.enums.CategoryNameEnum;
 import forexbet.tradingforecasts.repository.ForecastRepository;
 import forexbet.tradingforecasts.repository.PictureRepository;
 import forexbet.tradingforecasts.repository.UserRepository;
@@ -87,9 +85,11 @@ public class ForecastServiceImpl implements ForecastService {
     public List<ForecastDTO> getOwnForecastsAdded(Principal principal) {
         Optional<User> adminOptional = userRepository.findByUsername(principal.getName());
 
-        return adminOptional.map(user -> forecastRepository.findByAdmin_IdAndClosedIsNull(user.getId()).stream()
-                .map(forecast -> modelMapper.map(forecast, ForecastDTO.class))
-                .collect(Collectors.toList())).orElse(null);
+        return adminOptional.map(user ->
+                forecastRepository.findByAdmin_IdAndClosedIsNullOrderByCreatedDesc(user.getId())
+                        .stream()
+                        .map(forecast -> modelMapper.map(forecast, ForecastDTO.class))
+                        .collect(Collectors.toList())).orElse(null);
     }
 
     @Override
@@ -154,6 +154,20 @@ public class ForecastServiceImpl implements ForecastService {
         }
 
         return freeForecasts;
+    }
+
+    @Override
+    public List<ForecastDTO> getActiveForecastsByCategory(Category category) {
+        return forecastRepository.findAllByClosedIsNullAndPriceIsNotNullAndCategoryIsOrderByCreatedDesc(category)
+                .stream().map(forecast -> modelMapper.map(forecast, ForecastDTO.class)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ForecastDTO> getAllExpiredForecastsByCategory(Category category) {
+        return forecastRepository
+                .findAllByClosedIsNotNullAndPriceIsNotNullAndCategoryIsOrderByClosedDesc(category)
+                .stream()
+                .map(forecast -> modelMapper.map(forecast, ForecastDTO.class)).collect(Collectors.toList());
     }
 
 }
