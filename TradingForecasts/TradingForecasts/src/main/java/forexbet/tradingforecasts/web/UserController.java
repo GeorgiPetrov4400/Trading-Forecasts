@@ -1,7 +1,7 @@
 package forexbet.tradingforecasts.web;
 
 import forexbet.tradingforecasts.model.dto.UserRegisterDTO;
-import forexbet.tradingforecasts.model.view.UserServiceModel;
+import forexbet.tradingforecasts.model.view.UserViewModel;
 import forexbet.tradingforecasts.service.UserService;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
@@ -49,7 +49,7 @@ public class UserController {
 
         }
         try {
-            userService.registerUser(modelMapper.map(userRegisterDTO, UserServiceModel.class));
+            userService.registerUser(modelMapper.map(userRegisterDTO, UserViewModel.class));
         } catch (Exception e) {
             ObjectError error = new ObjectError("globalError", e.getMessage());
             bindingResult.addError(error);

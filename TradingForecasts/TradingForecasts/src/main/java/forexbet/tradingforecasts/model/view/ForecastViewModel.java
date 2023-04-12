@@ -1,4 +1,4 @@
-package forexbet.tradingforecasts.model.dto;
+package forexbet.tradingforecasts.model.view;
 
 import forexbet.tradingforecasts.model.entity.Category;
 import forexbet.tradingforecasts.model.entity.enums.ForecastTypeEnum;
@@ -6,7 +6,7 @@ import forexbet.tradingforecasts.model.entity.enums.ForecastTypeEnum;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class ForecastDTO {
+public class ForecastViewModel {
 
     private Long id;
 
@@ -26,14 +26,14 @@ public class ForecastDTO {
 
     private boolean isActive;
 
-    public ForecastDTO() {
+    public ForecastViewModel() {
     }
 
     public Long getId() {
         return id;
     }
 
-    public ForecastDTO setId(Long id) {
+    public ForecastViewModel setId(Long id) {
         this.id = id;
         return this;
     }
@@ -42,7 +42,7 @@ public class ForecastDTO {
         return category;
     }
 
-    public ForecastDTO setCategory(Category category) {
+    public ForecastViewModel setCategory(Category category) {
         this.category = category;
         return this;
     }
@@ -51,7 +51,7 @@ public class ForecastDTO {
         return forecastType;
     }
 
-    public ForecastDTO setForecastType(ForecastTypeEnum forecastType) {
+    public ForecastViewModel setForecastType(ForecastTypeEnum forecastType) {
         this.forecastType = forecastType;
         return this;
     }
@@ -60,7 +60,7 @@ public class ForecastDTO {
         return description;
     }
 
-    public ForecastDTO setDescription(String description) {
+    public ForecastViewModel setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -69,7 +69,7 @@ public class ForecastDTO {
         return pictureUrl;
     }
 
-    public ForecastDTO setPictureUrl(String pictureUrl) {
+    public ForecastViewModel setPictureUrl(String pictureUrl) {
         this.pictureUrl = pictureUrl;
         return this;
     }
@@ -78,7 +78,7 @@ public class ForecastDTO {
         return price;
     }
 
-    public ForecastDTO setPrice(BigDecimal price) {
+    public ForecastViewModel setPrice(BigDecimal price) {
         this.price = price;
         return this;
     }
@@ -87,7 +87,7 @@ public class ForecastDTO {
         return created;
     }
 
-    public ForecastDTO setCreated(LocalDateTime created) {
+    public ForecastViewModel setCreated(LocalDateTime created) {
         this.created = created;
         return this;
     }
@@ -96,7 +96,7 @@ public class ForecastDTO {
         return closed;
     }
 
-    public ForecastDTO setClosed(LocalDateTime closed) {
+    public ForecastViewModel setClosed(LocalDateTime closed) {
         this.closed = closed;
         return this;
     }
@@ -105,7 +105,7 @@ public class ForecastDTO {
         return isActive;
     }
 
-    public ForecastDTO setActive(boolean active) {
+    public ForecastViewModel setActive(boolean active) {
         isActive = active;
         return this;
     }

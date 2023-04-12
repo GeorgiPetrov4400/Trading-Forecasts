@@ -3,7 +3,7 @@ package forexbet.tradingforecasts.service.impl;
 import forexbet.tradingforecasts.model.entity.User;
 import forexbet.tradingforecasts.model.entity.UserRole;
 import forexbet.tradingforecasts.model.entity.enums.UserRoleEnum;
-import forexbet.tradingforecasts.model.view.UserServiceModel;
+import forexbet.tradingforecasts.model.view.UserViewModel;
 import forexbet.tradingforecasts.repository.UserRepository;
 import forexbet.tradingforecasts.service.UserRoleService;
 import forexbet.tradingforecasts.service.UserService;
@@ -69,18 +69,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void registerUser(UserServiceModel userServiceModel) {
-        if (!userServiceModel.getPassword().equals(userServiceModel.getConfirmPassword())) {
+    public void registerUser(UserViewModel userViewModel) {
+        if (!userViewModel.getPassword().equals(userViewModel.getConfirmPassword())) {
             throw new RuntimeException("Passwords should match");
         }
 
-        Optional<User> findByEmail = userRepository.findByEmail(userServiceModel.getEmail());
+        Optional<User> findByEmail = userRepository.findByEmail(userViewModel.getEmail());
 
         if (findByEmail.isPresent()) {
             throw new RuntimeException("Email is already used");
         }
 
-        Optional<User> findByUsername = userRepository.findByUsername(userServiceModel.getUsername());
+        Optional<User> findByUsername = userRepository.findByUsername(userViewModel.getUsername());
 
         if (findByUsername.isPresent()) {
             throw new RuntimeException("Username is already used");
@@ -89,14 +89,14 @@ public class UserServiceImpl implements UserService {
         UserRole normalUserRole = userRoleService.findUserRole(UserRoleEnum.User).orElseThrow();
 
         User normalUser = new User()
-                .setEmail(userServiceModel.getEmail())
-                .setUsername(userServiceModel.getUsername())
-                .setPassword(passwordEncoder.encode(userServiceModel.getPassword()))
-                .setFirstName(userServiceModel.getFirstName())
-                .setLastName(userServiceModel.getLastName())
+                .setEmail(userViewModel.getEmail())
+                .setUsername(userViewModel.getUsername())
+                .setPassword(passwordEncoder.encode(userViewModel.getPassword()))
+                .setFirstName(userViewModel.getFirstName())
+                .setLastName(userViewModel.getLastName())
                 .setRoles(List.of(normalUserRole));
 
-        modelMapper.map(userRepository.save(normalUser), UserServiceModel.class);
+        modelMapper.map(userRepository.save(normalUser), UserViewModel.class);
     }
 
 //    @Override

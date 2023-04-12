@@ -1,9 +1,8 @@
 package forexbet.tradingforecasts.service.impl;
 
 import forexbet.tradingforecasts.model.dto.ForecastAddDTO;
-import forexbet.tradingforecasts.model.dto.ForecastDTO;
+import forexbet.tradingforecasts.model.view.ForecastViewModel;
 import forexbet.tradingforecasts.model.entity.*;
-import forexbet.tradingforecasts.model.entity.enums.CategoryNameEnum;
 import forexbet.tradingforecasts.repository.ForecastRepository;
 import forexbet.tradingforecasts.repository.PictureRepository;
 import forexbet.tradingforecasts.repository.UserRepository;
@@ -73,35 +72,35 @@ public class ForecastServiceImpl implements ForecastService {
     }
 
     @Override
-    public List<ForecastDTO> getUserBoughtForecasts(Principal principal) {
+    public List<ForecastViewModel> getUserBoughtForecasts(Principal principal) {
         Optional<User> buyerOptional = userRepository.findByUsername(principal.getName());
 
         return buyerOptional.map(user -> forecastRepository.findAllByBuyer_IdAndPriceNotNullOrderByIdDesc(user.getId())
-                .stream().map(forecast -> modelMapper.map(forecast, ForecastDTO.class))
+                .stream().map(forecast -> modelMapper.map(forecast, ForecastViewModel.class))
                 .collect(Collectors.toList())).orElse(null);
     }
 
     @Override
-    public List<ForecastDTO> getOwnForecastsAdded(Principal principal) {
+    public List<ForecastViewModel> getOwnForecastsAdded(Principal principal) {
         Optional<User> adminOptional = userRepository.findByUsername(principal.getName());
 
         return adminOptional.map(user ->
                 forecastRepository.findByAdmin_IdAndClosedIsNullOrderByCreatedDesc(user.getId())
                         .stream()
-                        .map(forecast -> modelMapper.map(forecast, ForecastDTO.class))
+                        .map(forecast -> modelMapper.map(forecast, ForecastViewModel.class))
                         .collect(Collectors.toList())).orElse(null);
     }
 
     @Override
-    public List<ForecastDTO> getActiveForecasts() {
+    public List<ForecastViewModel> getActiveForecasts() {
         return forecastRepository.findAllByClosedIsNullAndPriceIsNotNullOrderByCreatedDesc().stream()
-                .map(forecast -> modelMapper.map(forecast, ForecastDTO.class)).collect(Collectors.toList());
+                .map(forecast -> modelMapper.map(forecast, ForecastViewModel.class)).collect(Collectors.toList());
     }
 
     @Override
-    public List<ForecastDTO> getExpiredForecasts() {
+    public List<ForecastViewModel> getExpiredForecasts() {
         return forecastRepository.findAllByClosedIsNotNullOrderByClosedDesc().stream()
-                .map(forecast -> modelMapper.map(forecast, ForecastDTO.class)).collect(Collectors.toList());
+                .map(forecast -> modelMapper.map(forecast, ForecastViewModel.class)).collect(Collectors.toList());
     }
 
     @Override
@@ -143,11 +142,11 @@ public class ForecastServiceImpl implements ForecastService {
     }
 
     @Override
-    public List<ForecastDTO> getAllActiveFreeForecasts() {
-        List<ForecastDTO> freeForecasts = forecastRepository.findAllByClosedIsNullAndPriceIsNull().stream()
-                .map(forecast -> modelMapper.map(forecast, ForecastDTO.class)).toList();
+    public List<ForecastViewModel> getAllActiveFreeForecasts() {
+        List<ForecastViewModel> freeForecasts = forecastRepository.findAllByClosedIsNullAndPriceIsNull().stream()
+                .map(forecast -> modelMapper.map(forecast, ForecastViewModel.class)).toList();
 
-        for (ForecastDTO freeForecast : freeForecasts) {
+        for (ForecastViewModel freeForecast : freeForecasts) {
             Optional<Picture> byForecastId = pictureRepository.findByForecastId(freeForecast.getId());
             Picture picture = byForecastId.get();
             freeForecast.setPictureUrl(picture.getUrl());
@@ -157,17 +156,17 @@ public class ForecastServiceImpl implements ForecastService {
     }
 
     @Override
-    public List<ForecastDTO> getActiveForecastsByCategory(Category category) {
+    public List<ForecastViewModel> getActiveForecastsByCategory(Category category) {
         return forecastRepository.findAllByClosedIsNullAndPriceIsNotNullAndCategoryIsOrderByCreatedDesc(category)
-                .stream().map(forecast -> modelMapper.map(forecast, ForecastDTO.class)).collect(Collectors.toList());
+                .stream().map(forecast -> modelMapper.map(forecast, ForecastViewModel.class)).collect(Collectors.toList());
     }
 
     @Override
-    public List<ForecastDTO> getAllExpiredForecastsByCategory(Category category) {
+    public List<ForecastViewModel> getAllExpiredForecastsByCategory(Category category) {
         return forecastRepository
                 .findAllByClosedIsNotNullAndPriceIsNotNullAndCategoryIsOrderByClosedDesc(category)
                 .stream()
-                .map(forecast -> modelMapper.map(forecast, ForecastDTO.class)).collect(Collectors.toList());
+                .map(forecast -> modelMapper.map(forecast, ForecastViewModel.class)).collect(Collectors.toList());
     }
 
 }

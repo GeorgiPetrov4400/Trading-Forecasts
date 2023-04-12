@@ -1,7 +1,7 @@
 package forexbet.tradingforecasts.service;
 
 import forexbet.tradingforecasts.model.dto.ForecastAddDTO;
-import forexbet.tradingforecasts.model.dto.ForecastDTO;
+import forexbet.tradingforecasts.model.view.ForecastViewModel;
 import forexbet.tradingforecasts.model.entity.Category;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -12,25 +12,25 @@ public interface ForecastService {
 
     void createForecast(ForecastAddDTO forecastAddDTO,Principal principal, MultipartFile imageFile);
 
-    List<ForecastDTO> getOwnForecastsAdded(Principal principal);
+    List<ForecastViewModel> getOwnForecastsAdded(Principal principal);
 
-    List<ForecastDTO> getActiveForecasts();
+    List<ForecastViewModel> getActiveForecasts();
 
-    List<ForecastDTO> getUserBoughtForecasts(Principal principal);
+    List<ForecastViewModel> getUserBoughtForecasts(Principal principal);
 
     void buyForecast(Long id, Principal principal);
 
     void expireForecastById(Long id);
 
-    List<ForecastDTO> getExpiredForecasts();
+    List<ForecastViewModel> getExpiredForecasts();
 
     void removeForecastById(Long id);
 
-    List<ForecastDTO> getAllActiveFreeForecasts();
+    List<ForecastViewModel> getAllActiveFreeForecasts();
 
-    List<ForecastDTO> getActiveForecastsByCategory(Category category);
+    List<ForecastViewModel> getActiveForecastsByCategory(Category category);
 
-    List<ForecastDTO> getAllExpiredForecastsByCategory(Category category);
+    List<ForecastViewModel> getAllExpiredForecastsByCategory(Category category);
 
 
 }

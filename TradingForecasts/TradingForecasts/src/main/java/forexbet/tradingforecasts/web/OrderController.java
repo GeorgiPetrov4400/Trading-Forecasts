@@ -1,7 +1,7 @@
 package forexbet.tradingforecasts.web;
 
-import forexbet.tradingforecasts.model.dto.ForecastDTO;
-import forexbet.tradingforecasts.model.dto.PictureDTO;
+import forexbet.tradingforecasts.model.view.ForecastViewModel;
+import forexbet.tradingforecasts.model.view.PictureViewModel;
 import forexbet.tradingforecasts.service.ForecastService;
 import forexbet.tradingforecasts.service.PictureService;
 import org.springframework.stereotype.Controller;
@@ -28,28 +28,28 @@ public class OrderController {
     @GetMapping("/order")
     public String getAllActiveForecast(Principal principal, Model model) {
 
-        List<ForecastDTO> userBoughtForecasts = forecastService.getUserBoughtForecasts(principal);
+        List<ForecastViewModel> userBoughtForecasts = forecastService.getUserBoughtForecasts(principal);
         addForecastPicture(userBoughtForecasts);
         model.addAttribute("userBoughtForecasts", userBoughtForecasts);
 
-        List<ForecastDTO> ownForecastsAdded = forecastService.getOwnForecastsAdded(principal);
+        List<ForecastViewModel> ownForecastsAdded = forecastService.getOwnForecastsAdded(principal);
         addForecastPicture(ownForecastsAdded);
         model.addAttribute("ownForecastsAdded", ownForecastsAdded);
 
-        List<ForecastDTO> allActiveForecasts = forecastService.getActiveForecasts();
+        List<ForecastViewModel> allActiveForecasts = forecastService.getActiveForecasts();
         addForecastPicture(allActiveForecasts);
         model.addAttribute("allActiveForecast", allActiveForecasts);
 
-        List<ForecastDTO> expiredForecasts = forecastService.getExpiredForecasts();
+        List<ForecastViewModel> expiredForecasts = forecastService.getExpiredForecasts();
         addForecastPicture(expiredForecasts);
         model.addAttribute("expiredForecasts", expiredForecasts);
 
         return "order";
     }
 
-    private void addForecastPicture(List<ForecastDTO> allActiveForecasts) {
-        for (ForecastDTO activeForecast : allActiveForecasts) {
-            PictureDTO forecastId = pictureService.findByForecastId(activeForecast.getId());
+    private void addForecastPicture(List<ForecastViewModel> allActiveForecasts) {
+        for (ForecastViewModel activeForecast : allActiveForecasts) {
+            PictureViewModel forecastId = pictureService.findByForecastId(activeForecast.getId());
             activeForecast.setPictureUrl(forecastId.getUrl());
         }
     }

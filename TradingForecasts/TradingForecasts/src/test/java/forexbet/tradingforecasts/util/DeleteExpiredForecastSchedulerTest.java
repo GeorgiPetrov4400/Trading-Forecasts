@@ -1,6 +1,6 @@
 package forexbet.tradingforecasts.util;
 
-import forexbet.tradingforecasts.model.dto.ForecastDTO;
+import forexbet.tradingforecasts.model.view.ForecastViewModel;
 import forexbet.tradingforecasts.service.ForecastService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,14 +19,14 @@ public class DeleteExpiredForecastSchedulerTest {
     public void testDeleteExpiredForecasts() {
         ForecastService forecastService = mock(ForecastService.class);
 
-        List<ForecastDTO> expiredForecasts = new ArrayList<>();
+        List<ForecastViewModel> expiredForecasts = new ArrayList<>();
         LocalDateTime currentDateAndTime = LocalDateTime.now();
         LocalDateTime dateExpired = currentDateAndTime.minusMonths(3);
-        ForecastDTO forecast1 = new ForecastDTO();
+        ForecastViewModel forecast1 = new ForecastViewModel();
         forecast1.setId(1L);
         forecast1.setClosed(dateExpired);
         expiredForecasts.add(forecast1);
-        ForecastDTO forecast2 = new ForecastDTO();
+        ForecastViewModel forecast2 = new ForecastViewModel();
         forecast2.setId(2L);
         forecast2.setClosed(dateExpired);
         expiredForecasts.add(forecast2);

@@ -1,8 +1,8 @@
 package forexbet.tradingforecasts.service;
 
-import forexbet.tradingforecasts.model.dto.PictureDTO;
+import forexbet.tradingforecasts.model.view.PictureViewModel;
 
 public interface PictureService {
 
-    PictureDTO findByForecastId(Long id);
+    PictureViewModel findByForecastId(Long id);
 }

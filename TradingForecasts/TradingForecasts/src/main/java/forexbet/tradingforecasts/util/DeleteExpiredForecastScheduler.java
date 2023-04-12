@@ -1,6 +1,6 @@
 package forexbet.tradingforecasts.util;
 
-import forexbet.tradingforecasts.model.dto.ForecastDTO;
+import forexbet.tradingforecasts.model.view.ForecastViewModel;
 import forexbet.tradingforecasts.service.ForecastService;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -20,9 +20,9 @@ public class DeleteExpiredForecastScheduler {
 
     @Scheduled(cron = "0 2 0 * * *")
     public void deleteForecastsExpireDateIsMoreThanTwoMonths() {
-        List<ForecastDTO> expiredForecasts = forecastService.getExpiredForecasts();
+        List<ForecastViewModel> expiredForecasts = forecastService.getExpiredForecasts();
 
-        for (ForecastDTO expiredForecast : expiredForecasts) {
+        for (ForecastViewModel expiredForecast : expiredForecasts) {
             LocalDateTime currentDateAndTime = LocalDateTime.now();
 
             LocalDateTime dateExpired = expiredForecast.getClosed();

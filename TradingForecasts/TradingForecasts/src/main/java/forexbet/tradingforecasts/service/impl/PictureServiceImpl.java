@@ -1,6 +1,6 @@
 package forexbet.tradingforecasts.service.impl;
 
-import forexbet.tradingforecasts.model.dto.PictureDTO;
+import forexbet.tradingforecasts.model.view.PictureViewModel;
 import forexbet.tradingforecasts.repository.PictureRepository;
 import forexbet.tradingforecasts.service.PictureService;
 import org.modelmapper.ModelMapper;
@@ -18,8 +18,8 @@ public class PictureServiceImpl implements PictureService {
     }
 
     @Override
-    public PictureDTO findByForecastId(Long id) {
+    public PictureViewModel findByForecastId(Long id) {
         return pictureRepository.findByForecastId(id)
-                .map(picture -> modelMapper.map(picture, PictureDTO.class)).orElse(null);
+                .map(picture -> modelMapper.map(picture, PictureViewModel.class)).orElse(null);
     }
 }

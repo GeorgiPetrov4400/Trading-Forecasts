@@ -1,6 +1,8 @@
-package forexbet.tradingforecasts.model.dto;
+package forexbet.tradingforecasts.model.view;
 
-public class PictureDTO {
+public class PictureViewModel {
+
+    private Long id;
 
     private String title;
 
@@ -12,8 +14,17 @@ public class PictureDTO {
         return title;
     }
 
-    public PictureDTO setTitle(String title) {
+    public PictureViewModel setTitle(String title) {
         this.title = title;
+        return this;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public PictureViewModel setId(Long id) {
+        this.id = id;
         return this;
     }
 
@@ -21,7 +32,7 @@ public class PictureDTO {
         return url;
     }
 
-    public PictureDTO setUrl(String url) {
+    public PictureViewModel setUrl(String url) {
         this.url = url;
         return this;
     }
@@ -30,7 +41,7 @@ public class PictureDTO {
         return publicId;
     }
 
-    public PictureDTO setPublicId(String publicId) {
+    public PictureViewModel setPublicId(String publicId) {
         this.publicId = publicId;
         return this;
     }

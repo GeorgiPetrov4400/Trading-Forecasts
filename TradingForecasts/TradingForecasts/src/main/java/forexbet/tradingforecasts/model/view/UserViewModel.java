@@ -1,6 +1,6 @@
 package forexbet.tradingforecasts.model.view;
 
-public class UserServiceModel {
+public class UserViewModel {
 
     private Long id;
 
@@ -18,14 +18,14 @@ public class UserServiceModel {
 
     private String userRole;
 
-    public UserServiceModel() {
+    public UserViewModel() {
     }
 
     public Long getId() {
         return id;
     }
 
-    public UserServiceModel setId(Long id) {
+    public UserViewModel setId(Long id) {
         this.id = id;
         return this;
     }
@@ -34,7 +34,7 @@ public class UserServiceModel {
         return username;
     }
 
-    public UserServiceModel setUsername(String username) {
+    public UserViewModel setUsername(String username) {
         this.username = username;
         return this;
     }
@@ -43,7 +43,7 @@ public class UserServiceModel {
         return email;
     }
 
-    public UserServiceModel setEmail(String email) {
+    public UserViewModel setEmail(String email) {
         this.email = email;
         return this;
     }
@@ -52,7 +52,7 @@ public class UserServiceModel {
         return password;
     }
 
-    public UserServiceModel setPassword(String password) {
+    public UserViewModel setPassword(String password) {
         this.password = password;
         return this;
     }
@@ -61,7 +61,7 @@ public class UserServiceModel {
         return confirmPassword;
     }
 
-    public UserServiceModel setConfirmPassword(String confirmPassword) {
+    public UserViewModel setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
         return this;
     }
@@ -70,7 +70,7 @@ public class UserServiceModel {
         return firstName;
     }
 
-    public UserServiceModel setFirstName(String firstName) {
+    public UserViewModel setFirstName(String firstName) {
         this.firstName = firstName;
         return this;
     }
@@ -79,7 +79,7 @@ public class UserServiceModel {
         return lastName;
     }
 
-    public UserServiceModel setLastName(String lastName) {
+    public UserViewModel setLastName(String lastName) {
         this.lastName = lastName;
         return this;
     }
@@ -88,7 +88,7 @@ public class UserServiceModel {
         return userRole;
     }
 
-    public UserServiceModel setUserRole(String userRole) {
+    public UserViewModel setUserRole(String userRole) {
         this.userRole = userRole;
         return this;
     }

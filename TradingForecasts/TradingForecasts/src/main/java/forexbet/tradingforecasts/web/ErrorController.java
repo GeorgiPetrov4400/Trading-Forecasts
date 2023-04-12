@@ -1,6 +1,6 @@
 package forexbet.tradingforecasts.web;
 
-import forexbet.tradingforecasts.model.exception.OrderNotFoundException;
+import forexbet.tradingforecasts.exception.OrderNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

@@ -1,7 +1,7 @@
 package forexbet.tradingforecasts.web;
 
-import forexbet.tradingforecasts.model.dto.ForecastDTO;
-import forexbet.tradingforecasts.model.dto.PictureDTO;
+import forexbet.tradingforecasts.model.view.ForecastViewModel;
+import forexbet.tradingforecasts.model.view.PictureViewModel;
 import forexbet.tradingforecasts.model.entity.Category;
 import forexbet.tradingforecasts.model.entity.enums.CategoryNameEnum;
 import forexbet.tradingforecasts.service.CategoryService;
@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -34,22 +33,17 @@ public class ForecastController {
         return "free-forecasts";
     }
 
-//    @GetMapping("/ui/all")
-//    public String getOrders() {
-//        throw new NullPointerException("Server Error");
-//    }
-
     @GetMapping("/eur-usd-forecast")
     public String forecastsEurUsd(Model model) {
         Category byCategoryNameEnum = categoryService.findByCategoryNameEnum(CategoryNameEnum.EurUsd);
 
-        List<ForecastDTO> allActiveEurUsdForecasts =
+        List<ForecastViewModel> allActiveEurUsdForecasts =
                 forecastService.getActiveForecastsByCategory(byCategoryNameEnum);
 
         addForecastPicture(allActiveEurUsdForecasts);
         model.addAttribute("allActiveEurUsdForecasts", allActiveEurUsdForecasts);
 
-        List<ForecastDTO> allExpiredEurUsdForecast =
+        List<ForecastViewModel> allExpiredEurUsdForecast =
                 forecastService.getAllExpiredForecastsByCategory(byCategoryNameEnum);
 
         addForecastPicture(allExpiredEurUsdForecast);
@@ -62,13 +56,13 @@ public class ForecastController {
     public String forecastEurGbp(Model model) {
         Category byCategoryNameEnum = categoryService.findByCategoryNameEnum(CategoryNameEnum.EurGbp);
 
-        List<ForecastDTO> allActiveEurGbpForecasts =
+        List<ForecastViewModel> allActiveEurGbpForecasts =
                 forecastService.getActiveForecastsByCategory(byCategoryNameEnum);
 
         addForecastPicture(allActiveEurGbpForecasts);
         model.addAttribute("allActiveEurGbpForecasts", allActiveEurGbpForecasts);
 
-        List<ForecastDTO> allExpiredEurGbpForecast =
+        List<ForecastViewModel> allExpiredEurGbpForecast =
                 forecastService.getAllExpiredForecastsByCategory(byCategoryNameEnum);
 
         addForecastPicture(allExpiredEurGbpForecast);
@@ -81,13 +75,13 @@ public class ForecastController {
     public String forecastGold(Model model) {
         Category byCategoryNameEnum = categoryService.findByCategoryNameEnum(CategoryNameEnum.Gold);
 
-        List<ForecastDTO> allActiveGoldForecasts =
+        List<ForecastViewModel> allActiveGoldForecasts =
                 forecastService.getActiveForecastsByCategory(byCategoryNameEnum);
 
         addForecastPicture(allActiveGoldForecasts);
         model.addAttribute("allActiveGoldForecasts", allActiveGoldForecasts);
 
-        List<ForecastDTO> allExpiredGoldForecast =
+        List<ForecastViewModel> allExpiredGoldForecast =
                 forecastService.getAllExpiredForecastsByCategory(byCategoryNameEnum);
 
         addForecastPicture(allExpiredGoldForecast);
@@ -100,13 +94,13 @@ public class ForecastController {
     public String forecastDax(Model model) {
         Category byCategoryNameEnum = categoryService.findByCategoryNameEnum(CategoryNameEnum.Dax);
 
-        List<ForecastDTO> allActiveDaxForecasts =
+        List<ForecastViewModel> allActiveDaxForecasts =
                 forecastService.getActiveForecastsByCategory(byCategoryNameEnum);
 
         addForecastPicture(allActiveDaxForecasts);
         model.addAttribute("allActiveDaxForecasts", allActiveDaxForecasts);
 
-        List<ForecastDTO> allExpiredDaxForecast =
+        List<ForecastViewModel> allExpiredDaxForecast =
                 forecastService.getAllExpiredForecastsByCategory(byCategoryNameEnum);
 
         addForecastPicture(allExpiredDaxForecast);
@@ -119,13 +113,13 @@ public class ForecastController {
     public String forecastDowJones(Model model) {
         Category byCategoryNameEnum = categoryService.findByCategoryNameEnum(CategoryNameEnum.DowJones);
 
-        List<ForecastDTO> allActiveDowJonesForecasts =
+        List<ForecastViewModel> allActiveDowJonesForecasts =
                 forecastService.getActiveForecastsByCategory(byCategoryNameEnum);
 
         addForecastPicture(allActiveDowJonesForecasts);
         model.addAttribute("allActiveDowJonesForecasts", allActiveDowJonesForecasts);
 
-        List<ForecastDTO> allExpiredDowJonesForecast =
+        List<ForecastViewModel> allExpiredDowJonesForecast =
                 forecastService.getAllExpiredForecastsByCategory(byCategoryNameEnum);
 
         addForecastPicture(allExpiredDowJonesForecast);
@@ -138,13 +132,13 @@ public class ForecastController {
     public String forecastNasdaq(Model model) {
         Category byCategoryNameEnum = categoryService.findByCategoryNameEnum(CategoryNameEnum.Nasdaq);
 
-        List<ForecastDTO> allActiveNasdaqForecasts =
+        List<ForecastViewModel> allActiveNasdaqForecasts =
                 forecastService.getActiveForecastsByCategory(byCategoryNameEnum);
 
         addForecastPicture(allActiveNasdaqForecasts);
         model.addAttribute("allActiveNasdaqForecasts", allActiveNasdaqForecasts);
 
-        List<ForecastDTO> allExpiredNasdaqForecast =
+        List<ForecastViewModel> allExpiredNasdaqForecast =
                 forecastService.getAllExpiredForecastsByCategory(byCategoryNameEnum);
 
         addForecastPicture(allExpiredNasdaqForecast);
@@ -153,9 +147,9 @@ public class ForecastController {
         return "nasdaq-forecast";
     }
 
-    private void addForecastPicture(List<ForecastDTO> allActiveForecasts) {
-        for (ForecastDTO activeForecast : allActiveForecasts) {
-            PictureDTO forecastId = pictureService.findByForecastId(activeForecast.getId());
+    private void addForecastPicture(List<ForecastViewModel> allActiveForecasts) {
+        for (ForecastViewModel activeForecast : allActiveForecasts) {
+            PictureViewModel forecastId = pictureService.findByForecastId(activeForecast.getId());
             activeForecast.setPictureUrl(forecastId.getUrl());
         }
     }

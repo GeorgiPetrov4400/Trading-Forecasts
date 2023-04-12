@@ -3,7 +3,7 @@ package forexbet.tradingforecasts.service.impl;
 import forexbet.tradingforecasts.model.entity.User;
 import forexbet.tradingforecasts.model.entity.UserRole;
 import forexbet.tradingforecasts.model.entity.enums.UserRoleEnum;
-import forexbet.tradingforecasts.model.view.UserServiceModel;
+import forexbet.tradingforecasts.model.view.UserViewModel;
 import forexbet.tradingforecasts.repository.UserRepository;
 import forexbet.tradingforecasts.service.UserRoleService;
 import org.junit.jupiter.api.Assertions;
@@ -71,7 +71,7 @@ public class UserServiceImplTest {
         when(mockUserRoleService.findUserRole(UserRoleEnum.User))
                 .thenReturn(Optional.of(new UserRole().setRole(UserRoleEnum.User)));
 
-        UserServiceModel testUserServiceModel = new UserServiceModel()
+        UserViewModel testUserViewModel = new UserViewModel()
                 .setEmail("test@example.com")
                 .setUsername("Test")
                 .setPassword("12345")
@@ -80,7 +80,7 @@ public class UserServiceImplTest {
                 .setLastName("Testov")
                 .setUserRole("User");
 
-        toTest.registerUser(testUserServiceModel);
+        toTest.registerUser(testUserViewModel);
 
         Mockito.verify(mockUserRepository).save(any());
     }
@@ -93,7 +93,7 @@ public class UserServiceImplTest {
         when(mockUserRoleService.findUserRole(UserRoleEnum.User))
                 .thenReturn(Optional.of(new UserRole().setRole(UserRoleEnum.User)));
 
-        UserServiceModel testUserServiceModel = new UserServiceModel()
+        UserViewModel testUserViewModel = new UserViewModel()
                 .setEmail("test@example.com")
                 .setUsername("Test")
                 .setPassword(testPassword)
@@ -102,14 +102,14 @@ public class UserServiceImplTest {
                 .setLastName("Testov")
                 .setUserRole("User");
 
-        when(mockPasswordEncoder.encode(testUserServiceModel.getPassword())).thenReturn(encodedPassword);
+        when(mockPasswordEncoder.encode(testUserViewModel.getPassword())).thenReturn(encodedPassword);
 
-        toTest.registerUser(testUserServiceModel);
+        toTest.registerUser(testUserViewModel);
 
         Mockito.verify(mockUserRepository).save(userArgumentCaptor.capture());
 
         User actualSavedUser = userArgumentCaptor.getValue();
-        Assertions.assertEquals(testUserServiceModel.getEmail(), actualSavedUser.getEmail());
+        Assertions.assertEquals(testUserViewModel.getEmail(), actualSavedUser.getEmail());
         Assertions.assertEquals(encodedPassword, actualSavedUser.getPassword());
     }
 

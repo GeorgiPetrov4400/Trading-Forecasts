@@ -1,7 +1,7 @@
 package forexbet.tradingforecasts.service;
 
 import forexbet.tradingforecasts.model.entity.User;
-import forexbet.tradingforecasts.model.view.UserServiceModel;
+import forexbet.tradingforecasts.model.view.UserViewModel;
 
 public interface UserService {
 
@@ -9,7 +9,7 @@ public interface UserService {
 
     void initModerator();
 
-    void registerUser(UserServiceModel userServiceModel);
+    void registerUser(UserViewModel userViewModel);
 
     User getUserByUsername(String username);
 
