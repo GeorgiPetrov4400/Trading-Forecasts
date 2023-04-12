@@ -38,23 +38,23 @@ nav {
 
 nav li {
     list-style: none;
-    color: white;
+    color: black;
 }
 
 nav a {
     text-decoration: none;
-    color: white;
+    color: black;
     padding-right: 22px;
 }
 
 nav li :hover {
-    color: limegreen;
+    color: forestgreen;
 }
 
 form .button {
     background: none;
     border: none;
-    color: white;
+    color: black;
     font-size: medium;
     cursor: pointer;
 }
