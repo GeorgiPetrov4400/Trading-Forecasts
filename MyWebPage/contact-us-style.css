@@ -3,16 +3,16 @@
   }
   
   /* Style inputs */
-  input[type=text], select, textarea {
+  /* input[type=text], select, textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
     margin-top: 6px;
     margin-bottom: 16px;
     resize: vertical;
-  }
+  } */
   
-  input[type=submit] {
+  /* input[type=submit] {
     background-color: #04AA6D;
     color: white;
     padding: 12px 20px;
@@ -22,7 +22,7 @@
   
   input[type=submit]:hover {
     background-color: #45a049;
-  }
+  } */
   
   /* Style the container/contact section */
   .container {

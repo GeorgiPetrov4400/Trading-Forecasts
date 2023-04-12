@@ -56,15 +56,6 @@ public class HomeControllerIT {
                 .andExpect(view().name("index"));
     }
 
-//    @Test
-//    @WithMockUser(username = "Admin", roles = "Admin")
-//    void testGetAdminPage() throws Exception {
-//        mockMvc.perform(MockMvcRequestBuilders.get("/admin")
-//                        .with(csrf()))
-//                .andExpect(status().isOk())
-//                .andExpect(view().name("admin"));
-//    }
-
     @Test
     @WithMockUser
     void testGetContactUs() throws Exception {
