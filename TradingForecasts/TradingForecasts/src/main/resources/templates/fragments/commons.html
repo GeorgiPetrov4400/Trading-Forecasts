@@ -20,9 +20,9 @@
         <li>
             <a href="/">Home</a>
         </li>
-        <li sec:authorize="hasRole('Admin')">
-            <a th:href="@{/admin}">Admin</a>
-        </li>
+<!--        <li sec:authorize="hasRole('Admin')">-->
+<!--            <a th:href="@{/admin}">Admin</a>-->
+<!--        </li>-->
         <li sec:authorize="isAnonymous()">
             <a th:href="@{/users/register}">Register</a>
         </li>
