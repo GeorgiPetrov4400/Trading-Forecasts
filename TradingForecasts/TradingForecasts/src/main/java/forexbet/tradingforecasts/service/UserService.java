@@ -3,6 +3,8 @@ package forexbet.tradingforecasts.service;
 import forexbet.tradingforecasts.model.entity.User;
 import forexbet.tradingforecasts.model.view.UserViewModel;
 
+import java.util.Optional;
+
 public interface UserService {
 
     void initAdmin();
@@ -14,6 +16,11 @@ public interface UserService {
     User getUserByUsername(String username);
 
     User findById(Long id);
+
+    User getUserByPrincipal(String email);
+
+    void saveUserChanges(User changeUsername);
+
 
 //    boolean foundUserByEmail(String email);
 //

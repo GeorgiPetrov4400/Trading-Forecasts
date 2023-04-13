@@ -111,12 +111,21 @@ public class UserServiceImpl implements UserService {
 
 
     public User getUserByUsername(String username) {
-        return userRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found!"));
+        return userRepository.findByUsername(username).orElse(null);
     }
 
     @Override
     public User findById(Long id) {
         return userRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public User getUserByPrincipal(String email) {
+        return userRepository.findByEmail(email).orElse(null);
+    }
+
+    @Override
+    public void saveUserChanges(User changeUsername) {
+        userRepository.save(changeUsername);
     }
 }

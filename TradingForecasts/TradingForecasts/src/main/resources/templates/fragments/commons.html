@@ -20,20 +20,14 @@
         <li>
             <a href="/">Home</a>
         </li>
-<!--        <li sec:authorize="hasRole('Admin')">-->
-<!--            <a th:href="@{/admin}">Admin</a>-->
-<!--        </li>-->
+        <li sec:authorize="isAuthenticated()">
+            <a th:href="@{/my-account}">My Account</a>
+        </li>
         <li sec:authorize="isAnonymous()">
             <a th:href="@{/users/register}">Register</a>
         </li>
         <li sec:authorize="isAnonymous()">
             <a th:href="@{/users/login}">Login</a>
-        </li>
-        <li sec:authorize="isAuthenticated()">
-            <a th:href="@{/contact}">Contact Us</a>
-        </li>
-        <li>
-            <a th:href="@{/about}">About Us</a>
         </li>
         <li sec:authorize="hasRole('Admin')">
             <a th:href="@{/forecasts/add}">Add Forecast</a>
@@ -43,6 +37,12 @@
         </li>
         <li>
             <a th:href="@{/forecasts/ui}">Free Forecast</a>
+        </li>
+        <li sec:authorize="isAuthenticated()">
+            <a th:href="@{/contact}">Contact Us</a>
+        </li>
+        <li>
+            <a th:href="@{/about}">About Us</a>
         </li>
         <li class="welcome" sec:authorize="isAuthenticated()">
             Welcome

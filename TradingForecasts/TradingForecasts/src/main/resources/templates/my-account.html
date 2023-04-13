@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" th:href="@{/images/favicon.png}">
+    <link rel="stylesheet" th:href="@{/css/my-account-style.css}">
+</head>
+
+<body>
+<nav th:replace="~{fragments/commons::nav}"></nav>
+
+<main>
+    <form th:action="@{/my-account}" th:method="PATCH" object="${changeAccountUsername}"
+          class="mx-auto w-25 bg-blur rounded">
+
+        <div class="form-group">
+            <div class="username">
+                <label for="username" class="username">Enter new username</label>
+            </div>
+            <div>
+                <input id="username" name="username" type="text" placeholder="Username" field="*{username}">
+            </div>
+            <small class="invalid-feedback text-danger" if="${#fields.hasErrors('username')}"
+                   errors="*{username}">
+                Username length must be between 3 and 20 characters!</small>
+        </div>
+
+        <!--            <div class="form-group">-->
+        <!--                <div class="category">-->
+        <!--                    <label for="role" class="category">Role</label>-->
+        <!--                </div>-->
+        <!--                <div>-->
+        <!--                    <select class="custom-select" id="role" name="role">-->
+        <!--                        <option value="">Select role</option>-->
+        <!--                        <option>Admin</option>-->
+        <!--                        <option>Moderator</option>-->
+        <!--                        <option>User</option>-->
+        <!--                    </select>-->
+        <!--                </div>-->
+        <!--                &lt;!&ndash; <small class="text-danger">You must select a category!</small> &ndash;&gt;-->
+        <!--            </div>-->
+
+        <div class="button-change">
+            <button type="submit">Change username</button>
+        </div>
+
+    </form>
+</main>
+
+<footer th:replace="~{fragments/commons::footer}"></footer>
+
+</body>
+
+</html>
