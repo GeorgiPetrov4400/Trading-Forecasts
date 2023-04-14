@@ -1,9 +1,10 @@
-package forexbet.tradingforecasts.model.view;
+package forexbet.tradingforecasts.service.userdetails;
 
 import forexbet.tradingforecasts.model.entity.User;
 import forexbet.tradingforecasts.model.entity.UserRole;
 import forexbet.tradingforecasts.model.entity.enums.UserRoleEnum;
 import forexbet.tradingforecasts.repository.UserRepository;
+import forexbet.tradingforecasts.service.userdetails.TradingForecastsUserDetailsService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

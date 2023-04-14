@@ -1,7 +1,7 @@
 package forexbet.tradingforecasts.config;
 
 import forexbet.tradingforecasts.model.entity.enums.UserRoleEnum;
-import forexbet.tradingforecasts.model.view.TradingForecastsUserDetailsService;
+import forexbet.tradingforecasts.service.userdetails.TradingForecastsUserDetailsService;
 import forexbet.tradingforecasts.repository.UserRepository;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
