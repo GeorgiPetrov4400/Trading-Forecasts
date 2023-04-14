@@ -121,11 +121,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserByPrincipal(String email) {
-        return userRepository.findByEmail(email).orElse(null);
-    }
-
-    @Override
     public void saveUserChanges(User changeUsername) {
         userRepository.save(changeUsername);
     }

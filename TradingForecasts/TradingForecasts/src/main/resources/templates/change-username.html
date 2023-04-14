@@ -21,14 +21,21 @@
           class="mx-auto w-25 bg-blur rounded">
 
         <div class="form-group">
+            <div th:if="${#fields.hasGlobalErrors()}">
+                <p th:each="err : ${#fields.globalErrors()}" th:text="${err}" class="errors alert alert-danger" />
+            </div>
+
             <div class="username">
                 <label for="username" class="username">Enter new username</label>
             </div>
             <div>
                 <input th:field="*{username}" id="username" name="username" type="text" placeholder="Username">
             </div>
-            <small class="errors alert alert-danger" th:if="${#fields.hasErrors('username')}">
-                Username length must be between 3 and 20 characters!</small>
+
+            <p th:each="error : ${#fields.errors('username')}" th:text="${error}"
+               class="errors">
+                Valid username is required
+            </p>
         </div>
 
         <div class="button">

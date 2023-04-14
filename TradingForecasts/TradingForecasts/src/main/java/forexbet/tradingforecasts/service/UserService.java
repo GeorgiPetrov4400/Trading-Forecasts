@@ -18,8 +18,6 @@ public interface UserService {
 
     User findById(Long id);
 
-    User getUserByPrincipal(String email);
-
     void saveUserChanges(User changeUsername);
 
     void changeUserRole(Long id, ChangeAccountRoleDTO changeAccountRoleDTO);

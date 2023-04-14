@@ -39,8 +39,7 @@ public class UserController {
                                   BindingResult bindingResult,
                                   RedirectAttributes redirectAttributes) {
 
-        if (bindingResult.hasErrors() ||
-                !userRegisterDTO.getPassword().equals(userRegisterDTO.getConfirmPassword())) {
+        if (bindingResult.hasErrors()) {
             redirectAttributes
                     .addFlashAttribute("userRegisterDTO", userRegisterDTO)
                     .addFlashAttribute("org.springframework.validation.BindingResult.userRegisterDTO", bindingResult);
