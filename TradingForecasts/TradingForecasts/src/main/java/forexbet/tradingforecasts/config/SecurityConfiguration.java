@@ -34,9 +34,9 @@ public class SecurityConfiguration {
                 .requestMatchers("/", "/about", "/users/login-error", "/free-forecasts",
                         "/api/free-forecasts", "/forecasts/ui").permitAll()
                 .requestMatchers("/users/register", "/users/login").anonymous()
-                .requestMatchers("/about", "/contact", "/orders/order").authenticated()
+                .requestMatchers("/about", "/contact", "/orders/order", "/my-account").authenticated()
                 .requestMatchers("/orders/order", "/orders/order/expire/{id}").hasRole(UserRoleEnum.Moderator.name())
-                .requestMatchers("/admin", "/forecasts/add", "/orders/order", "/orders/order/expire/{id}")
+                .requestMatchers("/forecasts/add", "/orders/order", "/orders/order/expire/{id}", "/change-role")
                 .hasRole(UserRoleEnum.Admin.name())
                 .requestMatchers("/orders/order/buy/{id}").hasRole(UserRoleEnum.User.name())
                 .anyRequest()

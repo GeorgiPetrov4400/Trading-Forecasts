@@ -1,5 +1,6 @@
 package forexbet.tradingforecasts.service.impl;
 
+import forexbet.tradingforecasts.model.dto.ChangeAccountRoleDTO;
 import forexbet.tradingforecasts.model.entity.User;
 import forexbet.tradingforecasts.model.entity.UserRole;
 import forexbet.tradingforecasts.model.entity.enums.UserRoleEnum;
@@ -127,5 +128,24 @@ public class UserServiceImpl implements UserService {
     @Override
     public void saveUserChanges(User changeUsername) {
         userRepository.save(changeUsername);
+    }
+
+    @Override
+    public void changeUserRole(Long id, ChangeAccountRoleDTO changeAccountRoleDTO) {
+        Optional<User> userOptional = userRepository.findById(id);
+        User user = userOptional.get();
+
+        List<UserRole> roles = userOptional.get().getRoles();
+
+        if (changeAccountRoleDTO.getNewRole().equals("Admin")) {
+            userOptional.get().setRoles(List.of(roles.get(0)));
+        } else if (changeAccountRoleDTO.getNewRole().equals("Moderator")) {
+            userOptional.get().setRoles(List.of(roles.get(1)));
+        } else {
+            userOptional.get().setRoles(List.of(roles.get(2)));
+        }
+
+        userRepository.saveAndFlush(user);
+
     }
 }

@@ -1,5 +1,6 @@
 package forexbet.tradingforecasts.service;
 
+import forexbet.tradingforecasts.model.dto.ChangeAccountRoleDTO;
 import forexbet.tradingforecasts.model.entity.User;
 import forexbet.tradingforecasts.model.view.UserViewModel;
 
@@ -20,6 +21,8 @@ public interface UserService {
     User getUserByPrincipal(String email);
 
     void saveUserChanges(User changeUsername);
+
+    void changeUserRole(Long id, ChangeAccountRoleDTO changeAccountRoleDTO);
 
 
 //    boolean foundUserByEmail(String email);
