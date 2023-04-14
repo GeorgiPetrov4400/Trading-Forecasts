@@ -17,7 +17,7 @@
 <nav th:replace="~{fragments/commons::nav}"></nav>
 
 <main>
-    <form th:action="@{/change-role}" th:method="patch" object="${changeAccountRole}"
+    <form th:action="@{/change-role}" th:method="patch" th:object="${changeAccountRoleDTO}"
           class="mx-auto w-25 bg-blur rounded">
 
         <div class="form-group">

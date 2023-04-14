@@ -17,7 +17,7 @@
 <nav th:replace="~{fragments/commons::nav}"></nav>
 
 <main>
-    <form th:action="@{/my-account}" th:method="patch" th:object="${changeAccountUserNameDTO}"
+    <form th:action="@{/my-account}" th:method="patch" th:object="${changeAccountUsernameDTO}"
           class="mx-auto w-25 bg-blur rounded">
 
         <div class="form-group">
@@ -25,9 +25,9 @@
                 <label for="username" class="username">Enter new username</label>
             </div>
             <div>
-                <input field="*{username}" id="username" name="username" type="text" placeholder="Username">
+                <input th:field="*{username}" id="username" name="username" type="text" placeholder="Username">
             </div>
-            <small class="errors alert alert-danger" if="${#fields.hasErrors('username')}">
+            <small class="errors alert alert-danger" th:if="${#fields.hasErrors('username')}">
                 Username length must be between 3 and 20 characters!</small>
         </div>
 

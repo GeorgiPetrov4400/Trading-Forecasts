@@ -2,6 +2,7 @@ package forexbet.tradingforecasts.web;
 
 import forexbet.tradingforecasts.model.dto.ChangeAccountRoleDTO;
 import forexbet.tradingforecasts.model.dto.ChangeAccountUsernameDTO;
+import forexbet.tradingforecasts.model.dto.ForecastAddDTO;
 import forexbet.tradingforecasts.service.UserService;
 import forexbet.tradingforecasts.service.account.AccountService;
 import jakarta.validation.Valid;
@@ -10,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -23,6 +25,16 @@ public class ChangeAccountDetailsController {
     public ChangeAccountDetailsController(AccountService accountService, UserService userService) {
         this.accountService = accountService;
         this.userService = userService;
+    }
+
+    @ModelAttribute
+    public ChangeAccountUsernameDTO changeAccountUsernameDTO() {
+        return new ChangeAccountUsernameDTO();
+    }
+
+    @ModelAttribute
+    public ChangeAccountRoleDTO changeAccountRoleDTO() {
+        return new ChangeAccountRoleDTO();
     }
 
     @GetMapping("/my-account")
