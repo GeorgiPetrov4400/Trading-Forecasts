@@ -3,6 +3,7 @@ package forexbet.tradingforecasts.web;
 import forexbet.tradingforecasts.model.dto.ChangeAccountRoleDTO;
 import forexbet.tradingforecasts.model.dto.ChangeAccountUsernameDTO;
 import forexbet.tradingforecasts.model.dto.ForecastAddDTO;
+import forexbet.tradingforecasts.model.entity.User;
 import forexbet.tradingforecasts.model.view.UserViewModel;
 import forexbet.tradingforecasts.service.UserService;
 import forexbet.tradingforecasts.service.account.AccountService;
@@ -10,6 +11,7 @@ import jakarta.validation.Valid;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +19,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.security.Principal;
 
 @Controller
 public class ChangeAccountDetailsController {
@@ -73,7 +77,13 @@ public class ChangeAccountDetailsController {
     }
 
     @GetMapping("/change-role")
-    public String getMyRoles() {
+    public String getMyRoles(Model model, Principal principal) {
+
+        UserViewModel adminUser = userService.getCurrentAdminAccount(principal.getName());
+
+        model.addAttribute("account", adminUser);
+        model.addAttribute("changeAccountRoleDTO", new ChangeAccountRoleDTO());
+
         return "change-role";
     }
 

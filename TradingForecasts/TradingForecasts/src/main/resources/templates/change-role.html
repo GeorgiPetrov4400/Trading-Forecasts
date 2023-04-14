@@ -29,25 +29,28 @@
                 <label for="role" class="role" sec:authorize="isAuthenticated()">Current Role: </label>
                 <div>
                     <p>
-                        <th:block authentication="changeAccountRoleDTO.currentRole"></th:block>
+                        <th:block th:authentication="changeAccountRoleDTO.currentRole"></th:block>
                     </p>
                 </div>
                 <hr>
 
             </div>
-            <div class="role">
-                <label for="role" class="role">Select new role</label>
+            <div class="newRole" th:action="@{/change-role/{id}(id=${account.getId()})}">
+                <label for="newRole" class="newRole">Select new role</label>
             </div>
             <div>
-                <select class="custom-select" id="role" name="role">
+                <select class="custom-select" id="newRole" name="newRole" th:field="*{newRole}">
                     <option value="">Select role</option>
-                    <option>Admin</option>
-                    <option>Moderator</option>
-                    <option>User</option>
+                    <option th:value="Admin">Admin</option>
+                    <option th:value="Moderator">Moderator</option>
+                    <option th:value="User">User</option>
+
+                    <!--                    <option th:each="role : ${T(forexbet.tradingforecasts.model.entity.enums.UserRoleEnum).values()}"-->
+                    <!--                            th:value="${role}" th:text="${role}"></option>-->
                 </select>
             </div>
 
-            <p each="error : ${#fields.errors('role')}" text="${error}" class="errors">
+            <p th:each="error : ${#fields.errors('newRole')}" th:text="${error}" class="errors">
                 You have to select role!
             </p>
 

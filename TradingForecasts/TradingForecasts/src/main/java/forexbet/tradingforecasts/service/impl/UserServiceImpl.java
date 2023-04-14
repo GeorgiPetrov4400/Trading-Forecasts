@@ -132,15 +132,26 @@ public class UserServiceImpl implements UserService {
 
         List<UserRole> roles = userOptional.get().getRoles();
 
-        if (changeAccountRoleDTO.getNewRole().equals("Admin")) {
-            userOptional.get().setRoles(List.of(roles.get(0)));
-        } else if (changeAccountRoleDTO.getNewRole().equals("Moderator")) {
-            userOptional.get().setRoles(List.of(roles.get(1)));
-        } else {
-            userOptional.get().setRoles(List.of(roles.get(2)));
+        if (roles.isEmpty() && changeAccountRoleDTO.getNewRole().equals("Admin")) {
+            user.setRoles(List.of());
+        } else if (roles.isEmpty() && changeAccountRoleDTO.getNewRole().equals("Moderator")) {
+            user.setRoles(List.of());
+        } else if (roles.isEmpty() && changeAccountRoleDTO.getNewRole().equals("User")) {
+            user.setRoles(List.of());
+        }
+
+        if (changeAccountRoleDTO.getNewRole().equals("Admin") && !roles.isEmpty()) {
+            roles.clear();
         }
 
         userRepository.saveAndFlush(user);
 
     }
+
+    @Override
+    public UserViewModel getCurrentAdminAccount(String username) {
+        return userRepository.findByUsername(username)
+                .map(user -> modelMapper.map(user, UserViewModel.class)).orElse(null);
+    }
+
 }

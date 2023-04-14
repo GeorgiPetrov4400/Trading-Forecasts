@@ -22,6 +22,8 @@ public interface UserService {
 
     void changeUserRole(Long id, ChangeAccountRoleDTO changeAccountRoleDTO);
 
+    UserViewModel getCurrentAdminAccount(String username);
+
 
 //    boolean foundUserByEmail(String email);
 //
