@@ -21,8 +21,22 @@
           class="mx-auto w-25 bg-blur rounded">
 
         <div class="form-group">
-            <div class="category">
-                <label for="role" class="category">Role</label>
+            <div if="${#fields.hasGlobalErrors()}">
+                <p each="err : ${#fields.globalErrors()}" text="${err}" class="errors alert alert-danger"/>
+            </div>
+
+            <div class="role">
+                <label for="role" class="role" sec:authorize="isAuthenticated()">Current Role: </label>
+                <div>
+                    <p>
+                        <th:block authentication="changeAccountRoleDTO.currentRole"></th:block>
+                    </p>
+                </div>
+                <hr>
+
+            </div>
+            <div class="role">
+                <label for="role" class="role">Select new role</label>
             </div>
             <div>
                 <select class="custom-select" id="role" name="role">
@@ -32,6 +46,10 @@
                     <option>User</option>
                 </select>
             </div>
+
+            <p each="error : ${#fields.errors('role')}" text="${error}" class="errors">
+                You have to select role!
+            </p>
 
         </div>
 
