@@ -23,9 +23,9 @@
         <li sec:authorize="isAuthenticated()">
             <a th:href="@{/my-account}">My Account</a>
         </li>
-        <li sec:authorize="hasRole('Admin')">
-            <a th:href="@{/change-role}">Roles</a>
-        </li>
+<!--        <li sec:authorize="hasRole('Admin')">-->
+<!--            <a th:href="@{/change-role}">Roles</a>-->
+<!--        </li>-->
         <li sec:authorize="isAnonymous()">
             <a th:href="@{/users/register}">Register</a>
         </li>
@@ -48,7 +48,7 @@
             <a th:href="@{/about}">About Us</a>
         </li>
         <li class="welcome" sec:authorize="isAuthenticated()">
-            Welcome
+            Welcome,
             <th:block sec:authentication="name"></th:block>!
         </li>
         <li>

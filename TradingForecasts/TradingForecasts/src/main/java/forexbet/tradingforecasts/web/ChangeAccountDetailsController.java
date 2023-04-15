@@ -1,6 +1,7 @@
 package forexbet.tradingforecasts.web;
 
-import forexbet.tradingforecasts.model.dto.ChangeAccountRoleDTO;
+//import forexbet.tradingforecasts.model.dto.ChangeAccountRoleDTO;
+
 import forexbet.tradingforecasts.model.dto.ChangeAccountUsernameDTO;
 import forexbet.tradingforecasts.model.dto.ForecastAddDTO;
 import forexbet.tradingforecasts.model.entity.User;
@@ -8,7 +9,10 @@ import forexbet.tradingforecasts.model.view.UserViewModel;
 import forexbet.tradingforecasts.service.UserService;
 import forexbet.tradingforecasts.service.account.AccountService;
 import jakarta.validation.Valid;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,10 +42,10 @@ public class ChangeAccountDetailsController {
         return new ChangeAccountUsernameDTO();
     }
 
-    @ModelAttribute
-    public ChangeAccountRoleDTO changeAccountRoleDTO() {
-        return new ChangeAccountRoleDTO();
-    }
+//    @ModelAttribute
+//    public ChangeAccountRoleDTO changeAccountRoleDTO() {
+//        return new ChangeAccountRoleDTO();
+//    }
 
     @GetMapping("/my-account")
     public String getMyAccount() {
@@ -76,22 +80,22 @@ public class ChangeAccountDetailsController {
         return "redirect:/";
     }
 
-    @GetMapping("/change-role")
-    public String getMyRoles(Model model, Principal principal) {
-
-        UserViewModel adminUser = userService.getCurrentAdminAccount(principal.getName());
-
-        model.addAttribute("account", adminUser);
-        model.addAttribute("changeAccountRoleDTO", new ChangeAccountRoleDTO());
-
-        return "change-role";
-    }
-
-    @PatchMapping("/change-role/{id}")
-    public String changeUserRole(@PathVariable("id") Long id, ChangeAccountRoleDTO changeAccountRoleDTO) {
-
-        userService.changeUserRole(id, changeAccountRoleDTO);
-
-        return "redirect:/change-role";
-    }
+//    @GetMapping("/change-role")
+//    public String getMyRoles(Model model, Principal principal) {
+//
+//        UserViewModel adminUser = userService.getCurrentAdminAccount(principal.getName());
+//
+//        model.addAttribute("account", adminUser);
+//        model.addAttribute("changeAccountRoleDTO", new ChangeAccountRoleDTO());
+//
+//        return "change-role";
+//    }
+//
+//    @PatchMapping("/change-role/{id}")
+//    public String changeUserRole(@PathVariable("id") Long id, ChangeAccountRoleDTO changeAccountRoleDTO) {
+//
+//        userService.changeUserRole(id, changeAccountRoleDTO);
+//
+//        return "redirect:/change-role";
+//    }
 }

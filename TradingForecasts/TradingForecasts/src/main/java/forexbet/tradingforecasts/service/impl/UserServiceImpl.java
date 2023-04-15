@@ -1,6 +1,6 @@
 package forexbet.tradingforecasts.service.impl;
 
-import forexbet.tradingforecasts.model.dto.ChangeAccountRoleDTO;
+//import forexbet.tradingforecasts.model.dto.ChangeAccountRoleDTO;
 import forexbet.tradingforecasts.model.entity.User;
 import forexbet.tradingforecasts.model.entity.UserRole;
 import forexbet.tradingforecasts.model.entity.enums.UserRoleEnum;
@@ -125,33 +125,33 @@ public class UserServiceImpl implements UserService {
         userRepository.save(changeUsername);
     }
 
-    @Override
-    public void changeUserRole(Long id, ChangeAccountRoleDTO changeAccountRoleDTO) {
-        Optional<User> userOptional = userRepository.findById(id);
-        User user = userOptional.get();
-
-        List<UserRole> roles = userOptional.get().getRoles();
-
-        if (roles.isEmpty() && changeAccountRoleDTO.getNewRole().equals("Admin")) {
-            user.setRoles(List.of());
-        } else if (roles.isEmpty() && changeAccountRoleDTO.getNewRole().equals("Moderator")) {
-            user.setRoles(List.of());
-        } else if (roles.isEmpty() && changeAccountRoleDTO.getNewRole().equals("User")) {
-            user.setRoles(List.of());
-        }
-
-        if (changeAccountRoleDTO.getNewRole().equals("Admin") && !roles.isEmpty()) {
-            roles.clear();
-        }
-
-        userRepository.saveAndFlush(user);
-
-    }
-
-    @Override
-    public UserViewModel getCurrentAdminAccount(String username) {
-        return userRepository.findByUsername(username)
-                .map(user -> modelMapper.map(user, UserViewModel.class)).orElse(null);
-    }
+//    @Override
+//    public void changeUserRole(Long id, ChangeAccountRoleDTO changeAccountRoleDTO) {
+//        Optional<User> userOptional = userRepository.findById(id);
+//        User user = userOptional.get();
+//
+//        List<UserRole> roles = userOptional.get().getRoles();
+//
+//        if (roles.isEmpty() && changeAccountRoleDTO.getNewRole().equals("Admin")) {
+//            user.setRoles(List.of());
+//        } else if (roles.isEmpty() && changeAccountRoleDTO.getNewRole().equals("Moderator")) {
+//            user.setRoles(List.of());
+//        } else if (roles.isEmpty() && changeAccountRoleDTO.getNewRole().equals("User")) {
+//            user.setRoles(List.of());
+//        }
+//
+//        if (changeAccountRoleDTO.getNewRole().equals("Admin") && !roles.isEmpty()) {
+//            roles.clear();
+//        }
+//
+//        userRepository.saveAndFlush(user);
+//
+//    }
+//
+//    @Override
+//    public UserViewModel getCurrentAdminAccount(String username) {
+//        return userRepository.findByUsername(username)
+//                .map(user -> modelMapper.map(user, UserViewModel.class)).orElse(null);
+//    }
 
 }

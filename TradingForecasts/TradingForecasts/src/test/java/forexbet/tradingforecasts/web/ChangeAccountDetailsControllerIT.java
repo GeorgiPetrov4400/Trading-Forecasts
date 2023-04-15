@@ -75,7 +75,7 @@ public class ChangeAccountDetailsControllerIT {
         SecurityContextHolder.getContext().setAuthentication(auth);
 
         when(userRepository.findById(anyLong())).thenReturn(Optional.of(user));
-        doNothing().when(userService).changeUserRole(anyLong(), any());
+//        doNothing().when(userService).changeUserRole(anyLong(), any());
         doNothing().when(accountService).editAccountUsername(any(), any());
     }
 
@@ -87,13 +87,13 @@ public class ChangeAccountDetailsControllerIT {
                 .andExpect(view().name("change-username"));
     }
 
-    @Test
-    @WithMockUser
-    public void testGetChangeRole() throws Exception {
-        mockMvc.perform(get("/change-role"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("change-role"));
-    }
+//    @Test
+//    @WithMockUser
+//    public void testGetChangeRole() throws Exception {
+//        mockMvc.perform(get("/change-role"))
+//                .andExpect(status().isOk())
+//                .andExpect(view().name("change-role"));
+//    }
 
 //    @Test
 //    @WithMockUser

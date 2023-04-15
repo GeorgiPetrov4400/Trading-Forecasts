@@ -1,5 +1,8 @@
 package forexbet.tradingforecasts.service.account;
 
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +28,15 @@ public class AccountService {
         if (userService.getUserByUsername(newUserDto.getUsername()) != null) {
             throw new RuntimeException("Username is already in use");
         }
+
+        Authentication newAuthentication =
+                new UsernamePasswordAuthenticationToken(newUserDto.getUsername(),
+                        principal.isCredentialsNonExpired(), principal.getAuthorities());
+
+        SecurityContextHolder.getContext().setAuthentication(newAuthentication);
+
         user.setUsername(newUserDto.getUsername());
+
         userService.saveUserChanges(user);
     }
 }
