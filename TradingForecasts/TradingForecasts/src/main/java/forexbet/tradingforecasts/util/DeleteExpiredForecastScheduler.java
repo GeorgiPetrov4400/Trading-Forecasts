@@ -35,7 +35,7 @@ public class DeleteExpiredForecastScheduler {
     }
 
 //    @Scheduled(cron = "* */2 * * * *")
-//    public void deleteForecastsExpiredBeforeMinute() {
+//    public void deleteForecastsExpiredBeforeTenMinutes() {
 //        List<ForecastDTO> expiredForecasts = forecastService.getExpiredForecasts();
 //
 //        for (ForecastDTO expiredForecast : expiredForecasts) {
