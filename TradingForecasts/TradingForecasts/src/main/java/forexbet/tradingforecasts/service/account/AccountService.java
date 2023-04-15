@@ -22,6 +22,9 @@ public class AccountService {
     public void editAccountUsername(ChangeAccountUsernameDTO newUserDto,
                                     UserDetails principal) {
 
+        if (principal == null) {
+            throw new RuntimeException("If you want to change username again you have to logout and login");
+        }
 
         User user = userService.getUserByUsername(principal.getUsername());
 
