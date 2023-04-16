@@ -23,7 +23,7 @@ public class AccountService {
                                     UserDetails principal) {
 
         if (principal == null) {
-            throw new RuntimeException("If you want to change username more than once you have to logout and login again");
+            throw new RuntimeException("If you want to change username more than once you have to logout and then login again");
         }
 
         User user = userService.getUserByUsername(principal.getUsername());

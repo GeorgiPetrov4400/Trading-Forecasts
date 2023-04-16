@@ -1,4 +1,4 @@
-package forexbet.tradingforecasts.service.userdetails;
+package forexbet.tradingforecasts.service.security;
 
 import forexbet.tradingforecasts.repository.UserRepository;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
