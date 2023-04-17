@@ -54,6 +54,14 @@ form .button {
     cursor: pointer;
 }
 
+footer {
+    position: fixed;
+    color: black;
+    bottom: 0;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
 @media screen and (max-width: 600px) {
     .column, input[type=submit] {
         width: 100%;

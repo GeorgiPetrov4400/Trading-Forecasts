@@ -97,8 +97,9 @@ label {
 }
 
 footer {
-    position: static;
+    position: fixed;
     color: white;
     bottom: 0;
     width: 100%;
+    margin-bottom: 10px;
 }

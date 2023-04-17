@@ -1,6 +1,5 @@
 package forexbet.tradingforecasts.service.impl;
 
-//import forexbet.tradingforecasts.model.dto.ChangeAccountRoleDTO;
 import forexbet.tradingforecasts.model.entity.User;
 import forexbet.tradingforecasts.model.entity.UserRole;
 import forexbet.tradingforecasts.model.entity.enums.UserRoleEnum;
@@ -9,7 +8,6 @@ import forexbet.tradingforecasts.repository.UserRepository;
 import forexbet.tradingforecasts.service.UserRoleService;
 import forexbet.tradingforecasts.service.UserService;
 import org.modelmapper.ModelMapper;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -72,7 +70,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void registerUser(UserViewModel userViewModel) {
         if (!userViewModel.getPassword().equals(userViewModel.getConfirmPassword())) {
-            throw new RuntimeException("Passwords should match");
+            throw new RuntimeException("Password and confirm password should match");
         }
 
         Optional<User> findByEmail = userRepository.findByEmail(userViewModel.getEmail());
@@ -124,34 +122,4 @@ public class UserServiceImpl implements UserService {
     public void saveUserChanges(User changeUsername) {
         userRepository.save(changeUsername);
     }
-
-//    @Override
-//    public void changeUserRole(Long id, ChangeAccountRoleDTO changeAccountRoleDTO) {
-//        Optional<User> userOptional = userRepository.findById(id);
-//        User user = userOptional.get();
-//
-//        List<UserRole> roles = userOptional.get().getRoles();
-//
-//        if (roles.isEmpty() && changeAccountRoleDTO.getNewRole().equals("Admin")) {
-//            user.setRoles(List.of());
-//        } else if (roles.isEmpty() && changeAccountRoleDTO.getNewRole().equals("Moderator")) {
-//            user.setRoles(List.of());
-//        } else if (roles.isEmpty() && changeAccountRoleDTO.getNewRole().equals("User")) {
-//            user.setRoles(List.of());
-//        }
-//
-//        if (changeAccountRoleDTO.getNewRole().equals("Admin") && !roles.isEmpty()) {
-//            roles.clear();
-//        }
-//
-//        userRepository.saveAndFlush(user);
-//
-//    }
-//
-//    @Override
-//    public UserViewModel getCurrentAdminAccount(String username) {
-//        return userRepository.findByUsername(username)
-//                .map(user -> modelMapper.map(user, UserViewModel.class)).orElse(null);
-//    }
-
 }

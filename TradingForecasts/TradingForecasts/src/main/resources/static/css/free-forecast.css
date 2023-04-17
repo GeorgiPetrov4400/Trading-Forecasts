@@ -86,10 +86,10 @@ ul li {
 }
 
 footer {
-    position: relative;
-    left: 20px;
-    height: 30px;
+    position: fixed;
+    color: white;
+    bottom: 0;
     width: 100%;
-    color: #fff;
+    margin-bottom: 10px;
 }
 
