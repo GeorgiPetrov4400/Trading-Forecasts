@@ -6,6 +6,7 @@ import forexbet.tradingforecasts.model.entity.Picture;
 import forexbet.tradingforecasts.model.entity.User;
 import forexbet.tradingforecasts.model.entity.enums.CategoryNameEnum;
 import forexbet.tradingforecasts.model.entity.enums.ForecastTypeEnum;
+import forexbet.tradingforecasts.model.view.ForecastViewModel;
 import forexbet.tradingforecasts.repository.ForecastRepository;
 import forexbet.tradingforecasts.repository.PictureRepository;
 import forexbet.tradingforecasts.repository.UserRepository;
@@ -23,8 +24,11 @@ import org.springframework.security.test.context.support.WithMockUser;
 
 import java.math.BigDecimal;
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -101,40 +105,57 @@ public class ForecastServiceImplTest {
         verify(forecastRepository, never()).save(any(Forecast.class));
     }
 
-//    @Test
-//    @WithMockUser(username = username, roles = "USER")
-//    void testGetUserBoughtForecasts() {
-//        List<ForecastViewModel> expectedForecasts = new ArrayList<>();
-//        when(userRepository.findByUsername(username)).thenReturn(Optional.of(new User()));
-//        when(forecastRepository.findAllByBuyer_IdAndPriceNotNullOrderByIdDesc(1L)).thenReturn(Collections.singletonList(new Forecast()));
-//        when(modelMapper.map(new Forecast(), ForecastViewModel.class)).thenReturn(new ForecastViewModel());
-//
-////        List<ForecastViewModel> actualForecasts = forecastService.getUserBoughtForecasts(username);
-//
-////        assertThat(actualForecasts).isEqualTo(expectedForecasts);
-//    }
-//
-//    @Test
-//    @WithMockUser(username = username, roles = "ADMIN")
-//    void testGetOwnForecastsAdded() {
-//        List<ForecastViewModel> expectedForecasts = new ArrayList<>();
-//        when(userRepository.findByUsername(username)).thenReturn(Optional.of(new User()));
-//        when(forecastRepository.findByAdmin_IdAndClosedIsNullOrderByCreatedDesc(1L)).thenReturn(Collections.singletonList(new Forecast()));
-//        when(modelMapper.map(new Forecast(), ForecastViewModel.class)).thenReturn(new ForecastViewModel());
-//
-////        List<ForecastViewModel> actualForecasts = forecastService.getOwnForecastsAdded(username);
-//
-////        assertThat(actualForecasts).isEqualTo(expectedForecasts);
-//    }
+    @Test
+    void testGetUserBoughtForecasts() {
+        User buyer = new User();
+        buyer.setId(1L);
+        buyer.setUsername("buyer");
 
-//    @Test
-//    void testGetActiveForecasts() {
-//        List<ForecastViewModel> expectedForecasts = new ArrayList<>();
-//        when(forecastRepository.findAllByClosedIsNullAndPriceIsNotNullOrderByCreatedDesc()).thenReturn(Collections.singletonList(new Forecast()));
-//        when(modelMapper.map(new Forecast(), ForecastViewModel.class)).thenReturn(new ForecastViewModel());
-//
-//        List<ForecastViewModel> actualForecasts = forecastService.getActiveForecasts();
-//
-//        assertThat(actualForecasts).isEqualTo(expectedForecasts);
-//    }
+        ArrayList<Forecast> forecastList = new ArrayList<Forecast>();
+        Forecast f = new Forecast();
+        f.setId(1L);
+        f.setDescription("test forecast");
+        forecastList.add(f);
+
+        Principal principal = mock(Principal.class);
+        when(principal.getName()).thenReturn("buyer");
+
+        when(userRepository.findByUsername(buyer.getUsername())).thenReturn(Optional.of(buyer));
+
+        when(forecastRepository.findAllByBuyer_IdAndPriceNotNullOrderByIdDesc(buyer.getId()))
+                .thenReturn(forecastList);
+
+
+        List<ForecastViewModel> actualForecasts = forecastService.getUserBoughtForecasts(principal);
+
+        assertEquals(1, actualForecasts.size());
+        assertEquals("test forecast", actualForecasts.get(0).getDescription());
+    }
+
+    @Test
+    void testGetOwnForecastsAdded() {
+        User admin = new User();
+        admin.setId(1L);
+        admin.setUsername("Admin");
+
+        ArrayList<Forecast> forecastList = new ArrayList<Forecast>();
+        Forecast f = new Forecast();
+        f.setId(1L);
+        f.setDescription("description");
+        forecastList.add(f);
+
+        Principal principal = mock(Principal.class);
+        when(principal.getName()).thenReturn("Admin");
+
+        when(userRepository.findByUsername(admin.getUsername())).thenReturn(Optional.of(admin));
+
+        when(forecastRepository.findByAdmin_IdAndClosedIsNullOrderByCreatedDesc(admin.getId()))
+                .thenReturn(forecastList);
+
+
+        List<ForecastViewModel> actualForecasts = forecastService.getOwnForecastsAdded(principal);
+
+        assertEquals(1, actualForecasts.size());
+        assertEquals("description", actualForecasts.get(0).getDescription());
+    }
 }
