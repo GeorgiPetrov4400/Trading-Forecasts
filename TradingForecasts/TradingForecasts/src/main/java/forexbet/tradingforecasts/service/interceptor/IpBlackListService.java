@@ -7,6 +7,5 @@ public class IpBlackListService {
 
     public boolean isBlacklisted(String ipAddress) {
         return ipAddress.startsWith("41") || ipAddress.startsWith("102");
-//        return true;
     }
 }

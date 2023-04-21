@@ -57,5 +57,6 @@ class OrderControllerTest {
         String expectedViewName = "redirect:/orders/order";
         String viewName = orderController.removeForecast(forecastId);
         verify(forecastService, times(1)).removeForecastById(forecastId);
+        Assertions.assertEquals(expectedViewName, viewName);
     }
 }

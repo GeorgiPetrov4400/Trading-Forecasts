@@ -98,17 +98,6 @@ public class UserServiceImpl implements UserService {
         modelMapper.map(userRepository.save(normalUser), UserViewModel.class);
     }
 
-//    @Override
-//    public boolean foundUserByEmail(String email) {
-//        return this.userRepository.findByEmail(email).isPresent();
-//    }
-//
-//    @Override
-//    public boolean foundUserByUsername(String username) {
-//        return this.userRepository.findByUsername(username).isPresent();
-//    }
-
-
     public User getUserByUsername(String username) {
         return userRepository.findByUsername(username).orElse(null);
     }

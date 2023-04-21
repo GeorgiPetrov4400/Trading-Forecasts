@@ -19,8 +19,4 @@ public interface UserService {
 
     void saveUserChanges(User changeUsername);
 
-
-//    boolean foundUserByEmail(String email);
-//
-//    boolean foundUserByUsername(String username);
 }

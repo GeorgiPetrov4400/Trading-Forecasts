@@ -153,6 +153,4 @@ public class ForecastController {
             activeForecast.setPictureUrl(forecastId.getUrl());
         }
     }
-
-
 }
