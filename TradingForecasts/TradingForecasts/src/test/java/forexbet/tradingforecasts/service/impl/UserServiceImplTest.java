@@ -44,6 +44,9 @@ public class UserServiceImplTest {
 
     private UserServiceImpl toTest;
 
+    public UserServiceImplTest() {
+    }
+
     @BeforeEach
     void setUp() {
         toTest = new UserServiceImpl(mockUserRepository, mockUserRoleService, mockPasswordEncoder, mockModelMapper);
@@ -51,14 +54,14 @@ public class UserServiceImplTest {
 
     @Test
     void testInitAdmin() {
-        String testPassword = "12345";
+        String defaultAdminPass = "11111";
 
         when(mockUserRoleService.findAll()).thenReturn(List.of(new UserRole()));
 
         User testAdminUser = new User()
                 .setEmail("admin@example.com")
                 .setUsername("Admin")
-                .setPassword(testPassword)
+                .setPassword(defaultAdminPass)
                 .setFirstName("Admin")
                 .setLastName("Adminov")
                 .setRoles(mockUserRoleService.findAll());
@@ -74,8 +77,8 @@ public class UserServiceImplTest {
         UserViewModel testUserViewModel = new UserViewModel()
                 .setEmail("test@example.com")
                 .setUsername("Test")
-                .setPassword("12345")
-                .setConfirmPassword("12345")
+                .setPassword("11111")
+                .setConfirmPassword("11111")
                 .setFirstName("Tester")
                 .setLastName("Testov")
                 .setUserRole("User");
@@ -87,7 +90,7 @@ public class UserServiceImplTest {
 
     @Test
     void testUserRegisterWithArgumentCaptor() {
-        String testPassword = "12345";
+        String testPassword = "11111";
         String encodedPassword = "encoded_password";
 
         when(mockUserRoleService.findUserRole(UserRoleEnum.User))

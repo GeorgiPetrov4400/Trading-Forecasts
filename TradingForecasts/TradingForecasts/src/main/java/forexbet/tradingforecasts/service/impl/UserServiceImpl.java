@@ -11,6 +11,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,9 +40,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void initAdmin() {
-        var adminRole = userRoleService.findUserRole(UserRoleEnum.Admin).orElseThrow();
-
-        var adminUser = new User()
+        User adminUser = new User()
                 .setEmail("admin@example.com")
                 .setUsername("Admin")
                 .setPassword(passwordEncoder.encode("12345"))
@@ -54,15 +53,21 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void initModerator() {
-        var moderatorRole = userRoleService.findUserRole(UserRoleEnum.Moderator).orElseThrow();
+        List<UserRole> moderatorRoles = new ArrayList<>();
 
-        var moderatorUser = new User()
+        UserRole moderatorRole = userRoleService.findUserRole(UserRoleEnum.Moderator).orElseThrow();
+        UserRole userRole = userRoleService.findUserRole(UserRoleEnum.User).orElseThrow();
+
+        moderatorRoles.add(moderatorRole);
+        moderatorRoles.add(userRole);
+
+        User moderatorUser = new User()
                 .setEmail("moderator@example.com")
                 .setUsername("Moderator")
                 .setPassword(passwordEncoder.encode("12345"))
                 .setFirstName("Moder")
                 .setLastName("Moderatorov")
-                .setRoles(List.of(moderatorRole));
+                .setRoles(moderatorRoles);
 
         userRepository.save(moderatorUser);
     }
