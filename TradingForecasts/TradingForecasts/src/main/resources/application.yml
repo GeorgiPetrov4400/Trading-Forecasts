@@ -16,6 +16,10 @@ spring:
     password: ${DB_Password}
     username: ${DB_Username}
     url: jdbc:mysql://localhost:3306/trading_forecasts?useSSL=false&createDatabaseIfNotExist=true
+  servlet:
+    multipart:
+      max-request-size: 1MB
+      max-file-size: 1MB
 logging:
   level:
     org:
@@ -26,17 +30,13 @@ logging:
       nodeValue: WARN
     blog: WARN
 
-#TradingForecasts:
-#  Admin:
-#    defaultPass: ${DEFAULT_PASS_ADMIN}
-#  Moderator:
-#    defaultPass: ${DEFAULT_PASS_MODERATOR}
-  servlet:
-    multipart:
-      max-request-size: 1MB
-      max-file-size: 1MB
+  #TradingForecasts:
+  #  Admin:
+  #    defaultPass: ${DEFAULT_PASS_ADMIN}
+  #  Moderator:
+  #    defaultPass: ${DEFAULT_PASS_MODERATOR}
 
-  cloudinary:
-    api-key: '915884395922571'
-    api-secret: ${Cloudinary_api_secret}
-    cloud-name: dtg97g3ym
+cloudinary:
+  api-key: ${Cloudinary_api_key}
+  api-secret: ${Cloudinary_api_secret}
+  cloud-name: ${Cloudinary_name}
