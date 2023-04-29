@@ -68,6 +68,11 @@ div p a {
     cursor: pointer;
 }
 
+.history {
+    color: white;
+    text-decoration: none;
+}
+
 main :hover {
     background-image: url(/images/hoverBackground.jpg);
     background-repeat: no-repeat;
@@ -79,7 +84,7 @@ main :hover {
 
 main div :hover {
     background-image: none;
-    background-color: none;
+    /*background-color: none;*/
 }
 
 p {
