@@ -3,6 +3,7 @@ package forexbet.tradingforecasts.model.entity;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Entity
@@ -27,7 +28,7 @@ public class User extends BaseEntity {
     @ManyToMany(fetch = FetchType.EAGER)
     private List<UserRole> roles;
 
-    @ManyToMany(mappedBy = "buyer",fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "buyer", fetch = FetchType.EAGER)
     private List<Forecast> forecasts;
 
     public User() {
@@ -89,11 +90,21 @@ public class User extends BaseEntity {
     }
 
     public List<Forecast> getForecasts() {
-        return forecasts;
+        return Collections.unmodifiableList(forecasts);
     }
 
     public User setForecasts(List<Forecast> forecasts) {
         this.forecasts = forecasts;
         return this;
+    }
+
+    public void addForecast(User buyer, Forecast forecast) {
+        if (buyer != null && buyer.getRoles().size() == 1 && forecast != null && forecast.getPrice() != null) {
+            if (buyer.getForecasts().contains(forecast)) {
+                return;
+            }
+            forecasts.add(forecast);
+            forecast.getBuyer().add(buyer);
+        }
     }
 }

@@ -113,12 +113,8 @@ public class ForecastServiceImpl implements ForecastService {
         if (buyerOptional.isPresent()) {
             User buyer = userRepository.findById(buyerOptional.get().getId()).orElse(null);
 
-            if (buyer != null && buyer.getRoles().size() == 1 && forecast != null && forecast.getPrice() != null) {
-                if (buyer.getForecasts().contains(forecast)) {
-                    return;
-                }
-                buyer.getForecasts().add(forecast);
-                forecast.getBuyer().add(buyer);
+            if (buyer != null && forecast != null) {
+                buyer.addForecast(buyer, forecast);
                 forecastRepository.saveAndFlush(forecast);
                 userRepository.save(buyer);
             }
