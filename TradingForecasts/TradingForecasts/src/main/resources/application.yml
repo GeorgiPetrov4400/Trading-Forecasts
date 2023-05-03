@@ -16,6 +16,7 @@ spring:
     password: ${DB_Password}
     username: ${DB_Username}
     url: jdbc:mysql://localhost:3306/trading_forecasts?useSSL=false&createDatabaseIfNotExist=true
+  #    url: jdbc:mysql://forex-bet.mysql.database.azure.com:3306/trading_forecasts?useSSL=false&createDatabaseIfNotExist=true
   servlet:
     multipart:
       max-request-size: 1MB
