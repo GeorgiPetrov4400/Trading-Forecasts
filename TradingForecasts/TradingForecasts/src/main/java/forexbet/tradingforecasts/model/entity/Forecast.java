@@ -2,6 +2,7 @@ package forexbet.tradingforecasts.model.entity;
 
 import forexbet.tradingforecasts.model.entity.enums.ForecastTypeEnum;
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -20,9 +21,11 @@ public class Forecast extends BaseEntity {
     private BigDecimal price;
 
     @Column(nullable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime created;
 
     @Column
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime closed;
 
     @Column(name = "forecast_type", nullable = false)
