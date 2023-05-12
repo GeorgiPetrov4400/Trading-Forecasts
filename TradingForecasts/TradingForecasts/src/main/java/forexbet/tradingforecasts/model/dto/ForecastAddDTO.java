@@ -1,5 +1,6 @@
 package forexbet.tradingforecasts.model.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import forexbet.tradingforecasts.model.entity.enums.CategoryNameEnum;
 import forexbet.tradingforecasts.model.entity.enums.ForecastTypeEnum;
 import jakarta.persistence.EnumType;
@@ -8,11 +9,12 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public class ForecastAddDTO {
 
@@ -37,10 +39,12 @@ public class ForecastAddDTO {
     @Enumerated(EnumType.STRING)
     private ForecastTypeEnum type;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
     private LocalDateTime created;
 
     public ForecastAddDTO() {
+        this.created = LocalDateTime.of(LocalDate.now(),
+                LocalTime.of(LocalTime.now().getHour(), LocalTime.now().getMinute(), LocalTime.now().getSecond()));
     }
 
     public String getDescription() {

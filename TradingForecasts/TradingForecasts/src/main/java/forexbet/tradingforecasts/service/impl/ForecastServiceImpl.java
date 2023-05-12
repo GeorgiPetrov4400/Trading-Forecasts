@@ -16,7 +16,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.security.Principal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -55,7 +57,7 @@ public class ForecastServiceImpl implements ForecastService {
                     .setForecastType(forecastAddDTO.getType())
                     .setDescription(forecastAddDTO.getDescription())
                     .setPrice(forecastAddDTO.getPrice())
-                    .setCreated(LocalDateTime.now())
+                    .setCreated(forecastAddDTO.getCreated())
                     .setActive(true);
 
             String pictureUrl = pictureCloudService.savePicture(imageFile);
@@ -125,8 +127,11 @@ public class ForecastServiceImpl implements ForecastService {
     public void expireForecastById(Long id) {
         Forecast forecast = forecastRepository.findById(id).orElse(null);
 
+        LocalDateTime dateAndTimeExpired = LocalDateTime.of(LocalDate.now(),
+                LocalTime.of(LocalTime.now().getHour(), LocalTime.now().getMinute(), LocalTime.now().getSecond()));
+
         if (forecast != null) {
-            forecast.setClosed(LocalDateTime.now());
+            forecast.setClosed(dateAndTimeExpired);
             forecast.setActive(false);
             forecastRepository.save(forecast);
         }

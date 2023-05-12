@@ -34,7 +34,10 @@
                         <td style="width: 30%">
                             <a th:text="*{f.getDescription()}">Description</a>
                         </td>
-                        <td style="width: 30%" each="picture : ${allPictures}">
+                        <td style="width: 10%">
+                            <a th:text="*{f.getCreated()}">Date created</a>
+                        </td>
+                        <td style="width: 20%" each="picture : ${allPictures}">
                             <a href=""><img th:src="*{f.pictureUrl}" alt="Image"></a>
                         </td>
                         <td style="width: 8%">
