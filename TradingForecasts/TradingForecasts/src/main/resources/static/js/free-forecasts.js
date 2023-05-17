@@ -31,7 +31,6 @@ function reloadForecasts() {
             row.appendChild(descriptionCol)
 
             forecastTable.appendChild(row)
-
         }))
 
     forecastContainer.appendChild(forecastTable)
