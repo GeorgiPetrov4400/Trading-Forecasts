@@ -12,6 +12,7 @@ function reloadForecasts() {
 
             let categoryCol = document.createElement('td')
             let typeCol = document.createElement('td')
+            let dateCreated = document.createElement('td')
             let pictureCol = document.createElement('td')
             let img = document.createElement("img")
             img.setAttribute("src", forecast.pictureUrl)
@@ -19,11 +20,13 @@ function reloadForecasts() {
 
             categoryCol.textContent = forecast.category.category
             typeCol.textContent = forecast.forecastType
+            dateCreated.textContent = forecast.created
             pictureCol.appendChild(img)
             descriptionCol.textContent = forecast.description
 
             row.appendChild(categoryCol)
             row.appendChild(typeCol)
+            row.appendChild(dateCreated)
             row.appendChild(pictureCol)
             row.appendChild(descriptionCol)
 
